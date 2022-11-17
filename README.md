@@ -16,3 +16,9 @@ Requires python3.
 ```shell
 make serve
 ```
+
+
+
+##Original author ilovexjp
+### This is a mirror of https://codeberg.org/ilovexjp/health-code-simulator/src/branch/main/src
+### https://constitution.congress.gov/browse/amendment-1/
