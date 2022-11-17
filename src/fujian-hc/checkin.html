@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<title>张贴码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#D0E9FE">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/jkm_logo.png">
+<link rel="apple-touch-icon" sizes="360x360" href="./static/jkm_logo.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+<style>
+  view {
+    display: block;
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #eef0f5;
+    min-height: 100vh;
+    position: relative;
+    font-family: "PingFang SC", sans-serif;
+  }
+
+  text {
+    text-align: left;
+  }
+
+  .label-style {
+    color: #919eab;
+    width: 35.467vw;
+  }
+
+  .content-style,
+  .label-style {
+    font-family: PingFangSC-Regular;
+    font-size: 4.267vw;
+    height: 5.867vw;
+    letter-spacing: 0;
+    line-height: 5.867vw;
+  }
+
+  .content-style {
+    color: #000;
+    text-align: right;
+    width: 54.267vw;
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 4.8vw 0 0;
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-vaccination-item {
+    border-radius: 5.333vw;
+    box-shadow: 0 0 8.533vw 0 rgba(13, 25, 79, .1);
+    box-sizing: border-box;
+    height: max-content;
+    position: relative;
+    width: calc(50% - 1.2vw);
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-vaccination-item .status-icon {
+    border-radius: 5.333vw;
+    height: 100%;
+    width: 100%;
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-vaccination-item .nucleic-vaccination-name {
+    color: #27282e;
+    font-family: PingFangSC-Semibold;
+    font-size: 5.867vw;
+    font-weight: 700;
+    height: 8.267vw;
+    letter-spacing: 0;
+    line-height: 8.267vw;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-vaccination-item .nucleic-vaccination-line {
+    background-image: linear-gradient(-45deg, rgba(39, 40, 46, 0), #27282e);
+    height: 0.267vw;
+    margin: 1.067vw 0 3.2vw;
+    opacity: .2;
+    width: 21.2vw;
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-vaccination-item .nucleic-vaccination-status {
+    color: #999;
+    font-size: 4.267vw;
+    height: 6vw;
+    letter-spacing: 0;
+    line-height: 6vw;
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-vaccination-item .nucleic-vaccination-status-icon {
+    bottom: 0;
+    height: 18.667vw;
+    position: absolute;
+    right: 0;
+    width: 18.667vw;
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-vaccination-item .nucleic-vaccination-status-icon .status-icon {
+    height: 18.667vw;
+    width: 18.667vw;
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-item.status-48-72-hours {
+    background-color: #f1f5fc;
+    border: 0.133vw solid hsla(0, 0%, 100%, .64);
+    box-shadow: 0 3.2vw 8.533vw 0 rgba(13, 37, 79, .16);
+  }
+
+  .wa-comp-fj-jkm-NucleicAcidTestAndVaccination.nucleic-vaccination-con .nucleic-item.status-negative {
+    background-color: #f6f1ff;
+    border: 0.133vw solid hsla(0, 0%, 100%, .64);
+    box-shadow: 0 3.2vw 8.533vw 0 rgba(54, 18, 125, .16);
+  }
+</style>
+<view align="center" backgroundColor="#EEF0F5" class="type-fj-jkm:Page" hideTitle="false" id="uuid_6e121430" left="0"
+  name="张贴码" showBack="false" showCustom="false" showFooter="false" showHome="true">
+  <view class="type-gsd-h5-react:Container" id="uuid_5e746185" slot="content"
+    style="background: linear-gradient(rgb(208, 233, 254) 0%, rgb(238, 240, 245) 520px);">
+    <view class="type-gsd-h5-react:Container" id="uuid_3aefb917" style="padding: 5.333vw;">
+      <view class="weui-navigation-bar">
+        <view class="weui-navigation-bar__placeholder"></view>
+        <view class="weui-navigation-bar__inner" style="color: black;">
+          <view class="weui-navigation-bar__left">
+            <div class="weui-navigation-bar__buttons" onclick="history.back();">
+              <div class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></div>
+            </div>
+          </view>
+          <view class="weui-navigation-bar__center" style="font-weight: normal;">
+            <text>张贴码</text>
+          </view>
+          <view class="weui-navigation-bar__right">
+          </view>
+        </view>
+        <div class="capsule dark" onclick="navigateHome();">
+          <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="14" r="9.5" />
+            <circle cx="54" cy="14" r="6" />
+            <circle cx="10" cy="14" r="6" />
+          </svg>
+          <div class="splitter"></div>
+          <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="9" />
+            <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+          </svg>
+        </div>
+      </view>
+      <view class="type-gsd-h5-react:Container" id="uuid_a4bb1b59"
+        style="padding: 5.333vw; border-radius: 5.333vw; background: rgb(255, 255, 255); box-shadow: 0vw 3.2vw 8.533vw 0vw rgba(0,13,69,0.10); filter: blur(32);">
+        <view class="type-gsd-h5-react:Container" id="uuid_d8935842"
+          style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <text class="type-gsd-h5-react:Text" id="place"
+            style="color: rgb(39, 40, 46); font-size: 5.867vw; line-height: 8.267vw; font-weight: 500; font-family: PingFangSC-Medium; letter-spacing: 0vw;"></text>
+          <view class="type-gsd-h5-react:Container" id="uuid_8a562711"
+            style="height: 8.267vw; padding-left: 2.133vw; display: flex; align-items: center; flex-shrink: 0;">
+            <view class="type-gsd-h5-react:Container" id="uuid_64ac4334"
+              style="height: 5.333vw; padding-right: 1.6vw; padding-left: 1.6vw; display: flex; justify-content: center; align-items: center; border: 0.267vw solid rgb(136, 234, 188); border-radius: 0.533vw; background: rgb(219, 249, 234); flex-shrink: 0; flex-basis: 20.267vw;">
+              <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_facbc198" mode="scaleToFill"
+                src="./static/success.png" style="width: 3.2vw; height: 3.2vw; flex-shrink: 0;"></image>
+              <text class="type-gsd-h5-react:Text" id="uuid_6dde4d08"
+                style="margin-left: 1.067vw; color: rgb(43, 165, 102); font-size: 3.2vw; line-height: 3.2vw; font-weight: 400; font-family: PingFangSC-Regular; letter-spacing: 0vw; flex-shrink: 0;">登记成功</text>
+            </view>
+          </view>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_2c375512"
+          style="margin-top: 4.267vw; color: rgb(82, 86, 102); font-size: 4.267vw; line-height: 6vw; font-weight: 400; font-family: PingFangSC-Regular; letter-spacing: -0.3px;">
+          <view class="type-gsd-h5-react:Container" id="uuid_ea5ff845"
+            style="display: flex; justify-content: flex-start; align-items: center;">
+            <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_67454747" mode="aspectFit"
+              src="./static/datetime.png" style="width: 4.267vw; height: 4.267vw; flex-shrink: 0;"></image>
+            <text class="type-gsd-h5-react:Text" id="datetime"
+              style="margin-left: 2.667vw;"></text>
+          </view>
+          <view class="type-gsd-h5-react:Container" id="uuid_46fecb38"
+            style="margin-top: 2.133vw; display: flex; justify-content: flex-start; align-items: center;">
+            <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_fa758538" mode="aspectFit"
+              src="./static/place_address.png" style="width: 4.267vw; flex-shrink: 0;"></image>
+            <text class="type-gsd-h5-react:Text" id="place-address"
+              style="margin-left: 2.667vw;"></text>
+          </view>
+        </view>
+      </view>
+      <view class="type-gsd-h5-react:Container" id="uuid_c76e5532"
+        style="margin: 5.333vw 0vw 0vw; padding-top: 2.4vw; display: flex; flex-direction: column; border-radius: 5.333vw; background: rgb(255, 255, 255); position: relative; filter: blur(32); overflow: hidden;">
+        <view class="type-gsd-h5-react:Container" id="uuid_9f5b8851" style="padding: 2.4vw 5.333vw 2.667vw;">
+          <text class="type-gsd-h5-react:Text" id="name"
+            style="display: block; color: rgb(39, 40, 46); font-size: 5.867vw; line-height: 8.267vw; font-weight: 500; font-family: PingFangSC-Medium; letter-spacing: 0vw;"></text>
+          <text class="type-gsd-h5-react:Text" id="idcard"
+            style="margin-top: 1.067vw; display: block; color: rgb(82, 86, 102); font-size: 4.267vw; line-height: 5.067vw; font-family: Helvetica; letter-spacing: 0vw;"></text>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_f4b50588"
+          style="width: 78.667vw; height: 0.267vw; border-bottom: 0.133vw dashed rgb(147, 154, 160); align-self: center;"></view>
+        <view class="type-gsd-h5-react:Container" id="uuid_d9777907" style="padding: 6.667vw 5.333vw 6.4vw;">
+          <view class="type-gsd-h5-react:Container" id="uuid_3bc5ff80" style="display: flex; justify-content: center;">
+            <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_af4f3746" mode="scaleToFill"
+              src="./static/icon_00.png" style="width: 26.667vw; height: 26.667vw;"></image>
+          </view>
+          <view class="type-gsd-h5-react:Container" id="uuid_f4d0ff05"
+            style="width: 100%; margin-top: 5.333vw; display: inline-block; font-size: 5.867vw; line-height: 8.267vw; text-align: center; font-weight: 600; font-family: PingFangSC-Semibold; letter-spacing: 0.66px; color: #57AC6C;">
+            <text class="type-gsd-h5-react:Text" id="uuid_dec7e271">绿码</text><text class="type-gsd-h5-react:Text"
+              id="uuid_fbd0fd99">：</text><text class="type-gsd-h5-react:Text" id="uuid_96c08382">健康状态为低风险</text>
+          </view>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_f4b50588"
+          style="width: 78.667vw; height: 0.267vw; border-bottom: 0.133vw dashed rgb(147, 154, 160); align-self: center;"></view>
+        <view bindtap="onuuid_194f0622$tap" class="wa-comp-fj-jkm-TravelCard type-gsd-h5-react:Container"
+          id="uuid_194f0622"
+          style="width: 100%; height: 22.667vw; padding-right: 4.267vw; padding-left: 5.333vw; display: flex; justify-content: space-between; align-items: center; flex-direction: row; border-bottom-right-radius: 5.333vw; border-bottom-left-radius: 5.333vw; background: rgb(255, 255, 255); position: relative; overflow: hidden;">
+          <view class="type-gsd-h5-react:Container" id="uuid_beb0e836"
+            style="width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 1; position: relative;"
+            onclick="navigateToTripCard();">
+            <view class="type-gsd-h5-react:Container" id="uuid_259dfd84">
+              <view class="type-gsd-h5-react:Container" id="uuid_8ba24d83"
+                style="display: flex; align-items: center; color: rgb(82, 86, 102); font-size: 5.333vw; line-height: 6.4vw; font-weight: bolder;">
+                <text class="type-gsd-h5-react:Text" id="uuid_b0d7cc24" style="font-size: 20px;">点击查询行程卡</text>
+                <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_f0850377" mode="scaleToFill"
+                  src="./static/icon-arrow-right@2x.png" style="width: 4.267vw; height: 4.267vw; margin-left: 0.533vw;">
+                </image>
+              </view>
+              <view class="type-gsd-h5-react:Container" id="uuid_280c0677" style="margin-top: 1.333vw;">
+                <text class="type-gsd-h5-react:Text" id="uuid_e574bb50"
+                  style="color: rgb(82, 86, 102); font-size: 4.267vw; font-weight: 400; font-family: PingFangSC-Regular; letter-spacing: 0vw;">查询本人在疫情期间7天内到访地信息</text>
+              </view>
+            </view>
+          </view>
+          <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_f5ea9424" mode="scaleToFill"
+            src="./static/travel-card@2x.png"
+            style="width: 21.733vw; height: 19.333vw; position: absolute; right: 0vw; bottom: 0vw;"></image>
+        </view>
+      </view>
+      <view
+        class="wa-comp-fj-jkm-NucleicAcidTestAndVaccination nucleic-vaccination-con type-gsd-h5-react:Container type-WeApps_STD_COMP:Icon"
+        id="uuid_99915118"
+        style="width: 100%; display: flex; justify-content: space-between; align-items: center; flex-direction: row;">
+        <view bindtap="onuuid_5c181a64$tap" class="nucleic-vaccination-item type-gsd-h5-react:Container"
+          id="uuid_5c181a64" style="width: 43.6vw; height: 27.733vw; padding: 0vw; position: relative;">
+          <image alt="[图片]" class="status-icon type-gsd-h5-react:Image" id="uuid_0bbbf666" mode="aspectFit"
+            src="./static/nucleic-24h.png" style="width: 100%; height: 100%; display: block; line-height: 0vw;">
+          </image>
+          <view class="type-gsd-h5-react:Container" id="uuid_61e66366"
+            style="width: 100%; height: 100%; padding-right: 2.667vw; padding-left: 5.333vw; position: absolute; left: 0vw; top: 0vw;">
+            <text class="type-gsd-h5-react:Text" id="uuid_ae58c966"
+              style="height: 50%; display: flex; align-items: center; color: rgb(39, 40, 46); font-size: 5.6vw; font-weight: 600;">阴性</text>
+            <text class="type-gsd-h5-react:Text" id="uuid_b55b1166"
+              style="height: 50%; padding-right: 9.6vw; display: flex; align-items: center; color: rgb(82, 86, 102); font-size: 4.267vw; font-weight: 400;">核酸检测</text>
+          </view>
+        </view>
+        <view bindtap="onuuid_326c8e85$tap" class="nucleic-vaccination-item type-gsd-h5-react:Container"
+          id="uuid_326c8e85" style="width: 43.6vw; height: 27.733vw; padding: 0vw; position: relative;">
+          <image alt="[图片]" class="status-icon type-gsd-h5-react:Image" id="uuid_2774dd30" mode="aspectFit"
+            src="./static/vaccination-done.png" style="width: 100%; height: 100%; display: block; line-height: 0vw;">
+          </image>
+          <view class="type-gsd-h5-react:Container" id="uuid_e739c467"
+            style="width: 100%; height: 100%; padding-right: 2.667vw; padding-left: 5.333vw; position: absolute; left: 0vw; top: 0vw;">
+            <text class="type-gsd-h5-react:Text" id="uuid_4cf39b59"
+              style="height: 50%; display: flex; align-items: center; color: rgb(39, 40, 46); font-size: 5.6vw; font-weight: 600;">已加强接种</text>
+            <text class="type-gsd-h5-react:Text" id="uuid_0cc0d346"
+              style="height: 50%; padding-right: 9.6vw; display: flex; align-items: center; color: rgb(82, 86, 102); font-size: 4.267vw; font-weight: 400;">疫苗接种</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<script>
+  setStaticTime("#datetime");
+
+  addStorageField("_name", "#name", "名字", "习近平", presetFilters.name_keepfirstname);
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", presetFilters.idcard());
+  addStorageField("_place", "#place", "场所名称", "四通桥");
+  addStorageField("_place_address", "#place-address", "场所地址", "福建省福州市长安街64号");
+  
+  initServiceWorker("fujian-hc");
+</script>

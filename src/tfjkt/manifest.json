@@ -1,0 +1,16 @@
+{
+  "short_name": "四川天府健康通",
+  "name": "四川天府健康通",
+  "icons": [
+    {
+      "src": "static/message-icon.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ],
+  "id": "ilovexjp-tfjkt-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "四川天府健康通模拟"
+}

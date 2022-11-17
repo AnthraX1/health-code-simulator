@@ -1,0 +1,16 @@
+{
+  "short_name": "威海场所码",
+  "name": "威海场所码",
+  "icons": [
+    {
+      "src": "static/new_te2.jpg",
+      "type": "image/jpeg",
+      "sizes": "136x137"
+    }
+  ],
+  "id": "ilovexjp-weihai-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "威海场所码模拟"
+}

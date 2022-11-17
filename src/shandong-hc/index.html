@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<title>健康码出示</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="apple-touch-icon" sizes="360x360" href="./static/logo.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+
+<view class="weui-navigation-bar">
+  <view class="weui-navigation-bar__placeholder"></view>
+  <view class="weui-navigation-bar__inner" style="color: black; background: white;">
+    <view class="weui-navigation-bar__left">
+      <view class="weui-navigation-bar__buttons" onclick="history.back();">
+        <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view>
+      </view>
+    </view>
+    <view class="weui-navigation-bar__center">
+      <text>健康码出示</text>
+    </view>
+    <view class="weui-navigation-bar__right">
+
+    </view>
+  </view>
+</view>
+<div class="capsule" onclick="navigateHome();">
+  <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5"/>
+    <circle cx="54" cy="14" r="6"/>
+    <circle cx="10" cy="14" r="6"/>
+  </svg>
+  <div class="splitter"></div>
+  <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9"/>
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
+  </svg>
+</div>
+<view class="bg green">
+  <view class="shade"></view>
+  <view class="qrcode" style="background-image: url(./static/sy.png); background-size: 98.667vw 115.067vw; background-repeat: no-repeat;">
+    <!-- <view class="sy" style="display: none;">
+      <image src="./static/sy.png"></image>
+      <image src="./static/sy.png" style="position: relative;top: -2.133vw;left: -5.867vw"></image>
+    </view> -->
+    <view class="over-time" style="font-size: 8vw;"><span id="month"></span>月<span id="day"></span>日 <span id="time"></span></view>
+    <view class="health-text">健康状况核验<text class="green">未见异常（绿码）</text>
+    </view>
+    <view class="qr-info">
+      <view class="code-wrap" onclick="toggleCheckin();">
+        <image class="old " src="./static/shield1.png"></image>
+        <image class="old1" src="./static/newdp.gif"></image>
+        <img style="width: 230px; height: 230px" src="data:image/png;base64,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">
+        <image class="qrcode-bg" src="./static/bg1.gif"></image>
+      </view>
+      <view style="position: relative;">
+        <section id="masked">
+          <span id="name-masked"></span>
+          <view id="idcard-masked"></view>
+          <image class="eye" src="./static/cleye.png" onclick="toggleMask(false);"></image>
+        </section>
+        <section id="unmasked" style="display: none;">
+          <span id="name"></span>
+          <view id="idcard"></view>
+          <image class="eye" src="./static/opeye.png" onclick="toggleMask(true);"></image>
+        </section>
+      </view>
+      <section id="checkin" style="display: none;">
+        <view id="place-name"></view>
+        <view id="place-address"></view>
+      </section>
+    </view>
+  </view>
+  <view class="card-menu">
+    <view bindtap="getNATRes" class="card">
+      <view class="head">
+        <text>核酸检测 </text>
+        <image src="./static/right.png"></image>
+      </view>
+      <view>
+        <view class="ncov-flag"></view>
+        <text style="font-size: 4vw;">
+          <text style="font-weight: bold;">阴性 </text>
+          <text style="font-size: 12vw;font-weight: bold;color: green;">1</text>
+          <text>天</text>
+        </text>
+      </view>
+    </view>
+    <view onclick="navigateToTripCard();" class="card" style="float: right;">
+      <view class="head">
+        <text>通信⼤数据⾏程卡</text>
+        <image src="./static/right.png"></image>
+      </view>
+      <view style="margin-top: 5.867vw;">
+        <view style="margin: 0;"></view>
+        <view class="btn">点击查询</view>
+      </view>
+    </view>
+  </view>
+  <view class="other-menu green">
+    <view bindtap="vaccineInfo" class="item">
+      <view class="left">
+        <view>疫苗接种查询</view>
+      </view>
+      <view class="more">
+        <view class="result">已全程接种</view>
+        <image class="more" src="./static/right.png"></image>
+      </view>
+    </view>
+    <view bindtap="toPhoneList" class="item">
+      <view class="left">
+        <view>各地健康码服务热线</view>
+      </view>
+      <image class="more" src="./static/right.png"></image>
+    </view>
+  </view>
+  <view class="tips">数据来源：国家政务服务平台、通信⼤数据⾏程卡、⼭东省公共管理机构</view>
+</view>
+<script>
+  addStorageField("_name", "#name-masked", "名字", "习近平", presetFilters.lastcharonly);
+  addStorageField("_name", "#name", "名字", "习近平");
+  addStorageField("_idcard", "#idcard-masked", "身份证号", "110101195306153019", presetFilters.idcard(4, 4));
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019");
+
+  addStorageField("_place_name", "#place-name", "场所名称", "四通桥");
+  addStorageField("_place_address", "#place-address", "场所地址", "点击修改场所地址");
+
+  setDynamicTime("#month", 5, 7);
+  setDynamicTime("#day", 8, 10);
+  setDynamicTime("#time", 11, 19);
+
+  function toggleMask(b) {
+    document.getElementById("unmasked").style.display = b ? "none" : "block";
+    document.getElementById("masked").style.display = b ? "block" : "none";
+  }
+
+  let b = false;
+  function toggleCheckin() {
+    b = !b;
+    if (b) {
+      document.querySelector(".bg").classList.add("blue");
+      document.getElementById("checkin").style.display = "block";
+      document.body.style.backgroundColor = "#468af9";
+    } else {
+      document.querySelector(".bg").classList.remove("blue");
+      document.getElementById("checkin").style.display = "none";
+      document.body.style.backgroundColor = "green";
+    }
+  }
+  if (window.location.hash == "#checkin") {
+    toggleCheckin();
+  }
+
+  initServiceWorker("shandong-hc");
+</script>

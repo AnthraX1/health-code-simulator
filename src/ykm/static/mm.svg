@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>粤康码信息-名美</title>
+    <g id="粤康码信息-名美" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" opacity="0.100000001" fill-rule="nonzero" x="0" y="0" width="40" height="40"></rect>
+        <rect id="矩形" stroke="#000000" stroke-width="2" x="8" y="8" width="24" height="26" rx="4"></rect>
+        <line x1="15" y1="17" x2="25" y2="17" id="直线" stroke="#000000" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="15" y1="25" x2="25" y2="25" id="直线备份" stroke="#000000" stroke-width="2" stroke-linecap="round"></line>
+    </g>
+</svg>

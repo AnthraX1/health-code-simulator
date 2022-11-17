@@ -1,0 +1,16 @@
+{
+  "short_name": "湖北健康码·武汉",
+  "name": "湖北健康码·武汉",
+  "icons": [
+    {
+      "src": "static/QRlogo.png",
+      "type": "image/png",
+      "sizes": "676x676"
+    }
+  ],
+  "id": "ilovexjp-wuhan-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "湖北健康码（武汉）模拟"
+}

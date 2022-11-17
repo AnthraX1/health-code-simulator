@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 44 44" class="design-iconfont">
+  <defs>
+    <linearGradient x1="8.23383522%" y1="4.22734876%" x2="82.9410367%" y2="64.4459407%" id="xig1yeneyc">
+      <stop stop-color="#869FFF" offset="0%"/>
+      <stop stop-color="#365DF5" offset="100%"/>
+    </linearGradient>
+    <filter x="-13.9%" y="-13.9%" width="138.9%" height="138.9%" filterUnits="objectBoundingBox" id="445fcnsgta">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0.256083561 0 0 0 0 0.347788495 0 0 0 0 0.695727804 0 0 0 0.2 0" in="shadowBlurOuter1"/>
+    </filter>
+    <path d="M351.877949,121.542857 L351.877949,138 L339.652597,138 C337.443458,138 335.652597,136.209139 335.652597,134 L335.652597,121.542857 L351.877949,121.542857 Z M360.497668,132.857143 L360.497668,138 L355.427245,138 L355.427245,132.857143 L360.497668,132.857143 Z M371.652597,132.857143 L371.652597,138 L366.582175,138 L366.582175,132.857143 L371.652597,132.857143 Z M366.582175,132.857143 L360.497668,132.857143 L360.497668,129.771429 L355.427245,129.771429 L355.427245,121.542857 L360.497668,121.542857 L360.497668,127.714286 L366.582175,127.714286 L366.582175,121.542857 L371.652597,121.542857 L371.652597,129.771429 L366.582175,129.771429 L366.582175,132.857143 Z M351.877949,102 L351.877949,118.457143 L335.652597,118.457143 L335.652597,106 C335.652597,103.790861 337.443458,102 339.652597,102 L351.877949,102 Z M367.145555,102 C369.354694,102 371.145555,103.790861 371.145555,106 L371.145555,118.457143 L354.920203,118.457143 L354.920203,102 L367.145555,102 Z" id="qvfrj4y42b"/>
+  </defs>
+  <g transform="translate(-334 -100)" fill="none" fill-rule="evenodd">
+    <use fill="#000" filter="url(#445fcnsgta)" xlink:href="#qvfrj4y42b"/>
+    <use fill="url(#xig1yeneyc)" xlink:href="#qvfrj4y42b"/>
+  </g>
+</svg>

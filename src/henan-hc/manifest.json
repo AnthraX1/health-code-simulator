@@ -1,0 +1,16 @@
+{
+  "short_name": "豫康码",
+  "name": "豫康码",
+  "icons": [
+    {
+      "src": "static/logo.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    }
+  ],
+  "id": "ilovexjp-henan-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "豫康码模拟"
+}

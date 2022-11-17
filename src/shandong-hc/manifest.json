@@ -1,0 +1,16 @@
+{
+  "short_name": "山东健康通行码",
+  "name": "山东健康通行码",
+  "icons": [
+    {
+      "src": "static/logo.png",
+      "type": "image/png",
+      "sizes": "288x288"
+    }
+  ],
+  "id": "ilovexjp-shandong-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "山东健康通行码模拟"
+}

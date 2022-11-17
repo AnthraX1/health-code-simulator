@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<title>湖北健康码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="apple-touch-icon" sizes="460x460" href="./static/logo.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+
+<view class="weui-navigation-bar">
+  <view class="weui-navigation-bar__placeholder"></view>
+  <view class="weui-navigation-bar__inner" style="background-color: white;">
+    <view class="weui-navigation-bar__left">
+      <view class="weui-navigation-bar__buttons" onclick="history.back();">
+        <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view>
+      </view>
+    </view>
+    <view class="weui-navigation-bar__center">
+      <text>湖北健康码</text>
+    </view>
+    <view class="weui-navigation-bar__right">
+
+    </view>
+  </view>
+  <div class="capsule" onclick="navigateHome();">
+    <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="14" r="9.5" />
+      <circle cx="54" cy="14" r="6" />
+      <circle cx="10" cy="14" r="6" />
+    </svg>
+    <div class="splitter"></div>
+    <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="9" />
+      <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+    </svg>
+  </div>
+</view>
+
+<view class="container data-v-57280228">
+  <view class="user data-v-57280228">
+    <view class="name data-v-57280228">
+      <view class="name-item data-v-57280228">姓名</view>
+      <view class="data-v-57280228" style="font-size:5.333vw;" id="name"></view>
+      <!-- <view class="data-v-57280228" wx:else>{{oldUserInfo.name}}</view> -->
+    </view>
+    <view class="idcard data-v-57280228">
+      <view class="name-item data-v-57280228">身份证</view>
+      <view class="data-v-57280228" style="font-size:5.333vw;" id="idcard"></view>
+      <!-- <view class="data-v-57280228" wx:else>{{oldUserInfo.idcard}}</view> -->
+    </view>
+    <view class="code data-v-57280228" style="height: calc(100vh - 21.333vw - 44px - env(safe-area-inset-top, 0));">
+      <view class="tiem data-v-57280228">
+        <text class="data-v-57280228"><span id="datetime"></span><text class="time-second data-v-57280228"
+            id="sec"></text>
+        </text>
+      </view>
+      <view class="data-v-57280228">
+        <view class="canvas-content data-v-57280228">
+          <!-- <view class="data-v-57280228" style="{{'display:'+(show?'none':'block')+';'}}">
+            <canvas canvasId="myQrcode" class="icon-qrcode data-v-57280228"></canvas>
+          </view> -->
+          <view class="data-v-57280228" style="display: flex; align-items: center; justify-content: center">
+            <img style="width: 10.933vw; height: 13.333vw; position: absolute;" src="./static/dun.png">
+            <image mode class="canvas-img data-v-57280228"
+              src="data:image/png;base64,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">
+            </image>
+          </view>
+          <image class="qrcode-img-border data-v-57280228" src="./static/bian.png">
+          </image>
+          <!-- <image class="qrcode-img-stamp data-v-57280228" src="./static/green_new.png"></image> -->
+        </view>
+      </view>
+      <view class="data-v-57280228" style="height:5.333vw;background:#fff;"></view>
+      <!-- <view class="sampling data-v-57280228" wx:if="{{userInfo.cyFlag==1}}">
+        <view class="data-v-57280228">核酸<text class="label data-v-57280228">已采样</text>
+        </view>
+        <view class="data-v-57280228">{{handleCyDate}}</view>
+      </view> -->
+      <view class="data-v-57280228" style="height:2.667vw;background:#fff;"></view>
+      <view bindtap="__e" class="travelcard data-v-57280228" onclick="navigateToTripCard();">
+        <view class="travelcard-box data-v-57280228">
+          <image mode class="travelcard-card data-v-57280228" src="./static/card.png"></image>
+          <text class="travelcard-text data-v-57280228">出示我的行程卡</text>
+        </view>
+        <image mode class="travelcard-right data-v-57280228" src="./static/right.png"></image>
+      </view>
+      <view class="state data-v-57280228">
+        <view bindtap="__e" class="nucleic data-v-57280228 twenty-four-bgc">
+          <view class="title data-v-57280228">
+            <image class="icon-img data-v-57280228" src="./static/icon_success_white.png">
+            </image>
+            <!-- <image class="icon-img data-v-57280228" src="./static/icon_success.png" wx:else></image> -->
+            <text class="lable data-v-57280228" style="color: #fff;">核酸检测</text>
+            <image class="icon-img data-v-57280228" src="./static/icon_white.png"></image>
+            <!-- <image class="icon-img data-v-57280228" src="./static/icon_right.png" wx:else></image> -->
+          </view>
+          <view class="item lately data-v-57280228">
+            <!-- <text class="date data-v-57280228" wx:if="{{hsType==4}}">5</text> -->
+            <text class="date data-v-57280228">24</text>
+            <!-- <view class="day data-v-57280228" wx:if="{{hsType==4}}">天核酸</view> -->
+            <view class="text data-v-57280228">
+              <text class="data-v-57280228">小时</text>
+              <text class="data-v-57280228">阴性</text>
+            </view>
+          </view>
+          <!-- <view class="item stateDetails data-v-57280228" wx:else>
+            <text class="details data-v-57280228"
+              style="color: #5a87e3;">阴性</text>
+          </view> -->
+          <text class="item-date data-v-57280228" style="color: #fff;" id="covid-test-date"></text>
+        </view>
+        <view bindtap="__e" class="vaccines data-v-57280228"
+          data-event-opts="{{[ [ 'tap',[ [ 'toPage',['/pages/totalVaccines/totalVaccines','$0','$1'],['oldUserInfo','userInfo.vaccine'] ] ] ] ]}}"
+          style="background-color:#fff;">
+          <view class="title data-v-57280228">
+            <image class="icon-img data-v-57280228" src="./static/icon_success.png"></image>
+            <text class="lable data-v-57280228">疫苗接种</text>
+            <image class="icon-img data-v-57280228" src="./static/icon_right.png"></image>
+          </view>
+          <view class="item data-v-57280228">3<text class="data-v-57280228"
+              style="font-size:3.2vw;margin-left:0.8vw;">次</text>
+          </view>
+          <text class="data-v-57280228" style="font-size:2.933vw;" id="vaccination-date"></text>
+        </view>
+      </view>
+      <view class="copyright data-v-57280228">
+        <view class="copyright-phone data-v-57280228">
+          <image mode class="copyright-image data-v-57280228" src="./static/phone.png"></image>服务热线：12345
+        </view>
+        <text class="copyright-text data-v-57280228">本服务由湖北省新冠肺炎疫情防控指挥部提供</text>
+      </view>
+    </view>
+  </view>
+</view>
+<script>
+  setDynamicTime("#datetime", 0, 17);
+  setDynamicTime("#sec", 17, 19);
+  setStaticTime("#covid-test-date", 0, 16, 8, 4);
+
+  addStorageField("_hb_vaccination_date", "#vaccination-date", "疫苗接种时间", "2021-06-16 12:00");
+  addStorageField("_name", "#name", "名字", "习近平", presetFilters.lastcharonly);
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", (s) => "****** ******** " + s.slice(-4));
+
+  initServiceWorker("hubei-hc");
+</script>

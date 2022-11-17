@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<title>随申码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#DDC089">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/ssbapp-logo.png">
+<link rel="apple-touch-icon" sizes="492x492" href="./static/ssbapp-logo.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+<style>
+  .eyes-open #img-eyes-open {
+    display: block;
+  }
+  .eyes-open #img-eyes-closed {
+    display: none;
+  }
+  #img-eyes-open {
+    display: none;
+  }
+  #img-eyes-closed {
+    display: block;
+  }
+</style>
+<div class="capsule" onclick="navigateHome();">
+  <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5"/>
+    <circle cx="54" cy="14" r="6"/>
+    <circle cx="10" cy="14" r="6"/>
+  </svg>
+  <div class="splitter"></div>
+  <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9"/>
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
+  </svg>
+</div>
+<view class="top" style="height: 58px; padding-top: env(safe-area-inset-top, 0); box-sizing: content-box;">
+  <image src="./static/suishenma_bg.png" style="width:100%;height:813.11px;"></image>
+  <view class="text" style="bottom:3.333vw">随申码</view>
+  <view bindtap="goBack" class="back">
+    <image src="./static/back.png" onclick="history.back();"></image>
+  </view>
+</view>
+<view class="page" style="padding-top: 58px; padding-top: calc(58px + env(safe-area-inset-top, 0));">
+  <canvas class="my-qrcode" id="myQrcode" type="2d"></canvas>
+  <view class="content contentBox">
+    <view style="height: 7.467vw;">
+      <image class="title" src="./static/suishenma_title.png"></image>
+    </view>
+    <view style="display: flex;justify-content: center;margin-top: 4.267vw;">
+      <view class="photo photoPicAfter">
+        <image class="photoPic" mode="aspectFit" src="./static/suishenma_logo.png" id="_img"></image>
+      </view>
+    </view>
+    <view class="nameBox">
+      <view class="tainerBox eyes-open">
+        <view class="name" id="_name"></view>
+        <view bindtap="handleShowName" class="nameHide" id="img-eyes-open" onclick="switchNameDisplay(false);">
+          <image src="./static/eysOpen.png" style="width:5.333vw;height:5.333vw;"></image>
+        </view>
+        <view bindtap="handleShowName" class="nameHide" id="img-eyes-closed" onclick="switchNameDisplay(true);">
+          <image src="./static/eyeClose.png" style="width:5.333vw;height:5.333vw;"></image>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;justify-content: center;margin-top: 3.2vw;">
+      <view bindtap="goFm" class="qsm">
+        <image class="icon" src="./static/suishenma_people.png"></image>
+        <text>亲属随申码</text>
+      </view>
+    </view>
+    <view class="time">
+      <span id="_date"></span>
+      <span id="_time"></span><span class="timeSecond" id="_sec"></span>
+    </view>
+    <view style="display: flex;justify-content: center;margin-top: 2.133vw;" onclick="window.location.href = './checkin.html';">
+      <view class="qrCode">
+        <view style="background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyCAIAAABnRsZeAAAIQElEQVR4nO3cMXLzuhWA0SijxllW9uIs6u3Fb1lpmfYvMnCBDwZIn9NqLFEU/Q2KO/f18fX5j2f577//Grz6r7//s+Vvx+54VWNn3o1d7njNM/65+wKAp5EVICYrQExWgJisADFZAWKyAsRkBYjJChB7j1+emZVcZ9305x3naNd97q7vO2PXE7tuUvaO/4NOK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgJitA7Jsp27HnTRbumv78bVtjz9zdO3bmxtkz/wedVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2NSU7R3tmkrcNc86Zqfsn2au+cyNs7s4rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsV83ZTu2bi/szN+eudt11w7ddXb9gs/jtALEZAWIyQoQkxUgJitATFaAmKwAMVkBYrICxKambJ83OzgzK7lu6nTXBOeuvbC7Zo7P3Dc8dub/oNMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChD7Zsp21+zgLs+b4Fw3oXvm932eO94NpxUgJitATFaAmKwAMVkBYrICxGQFiMkKEJMVIPa6rmv3NfyoXXthx9ZtjV03o7lrh+6Z21v5k9MKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChB775poPHPX6bpp111mrmp8N86chV13VXfcKTu27m44rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsW922Z45szgzg3vmLOzYuonkM3/BXc58Jnfd55lrdloBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWLv8cu75v9mtqiOnTkbesc9qeuejTMng59n3X12WgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYq+Pr8/By2fOle7a0Hnm9OeuuzFj15088zc681cYs8sW+FGyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFi7zPn/8ZmrmrXNc/4bbO/Y2fuo73jczVj/Cs4rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsdd1XYOX7zjReMc9qTOfu86ZO4PH1r3zjDOfjXX/R04rQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0Ds9fH1OXh51ybUXc7cSLprp+yuSdkZ6yZHz/zbXUzZAj9KVoCYrAAxWQFisgLEZAWIyQoQkxUgJitAbOGU7Yxd+2jHnreB9bf9vmdOUY/d8blyWgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYq/rugYvP28j6ZnOvM8z7vgb3XFb7Zl7cJ1WgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDYN1O2M3bNLI6tm2g883NnnHmvzpxYPfN53vXOTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQOw9fvnMjaQzV3XmFtXnTY6O7frbXdb9CrveecxpBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIfbPL9sz9nWfa9X3vOHU6duZe2F3OfHLssgV+lKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjCKdsZZ847jq2b7zxzcvSO3/fM7cszzrxXTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQGxqynaXmV2nM++8zplTmDN2PTnrno11nvc8O60AMVkBYrICxGQFiMkKEJMVICYrQExWgJisALH3+OWZ+b8zN92eOYW5biPpmTOad9zOe+aE7tiuX99pBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIvXdNyo6deVXPuxszE7rjz113Vesmv+84NT62a27YaQWIyQoQkxUgJitATFaAmKwAMVkBYrICxGQFiL1nZgd3bSQ9cxpy1wzujOdtb52x7m48779szGkFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYi9Pr4+By+fOXc4duZm0F13ctce3LEzJ5LP/BV2Pc8znFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjruq7d1/B/nDkpO/POu5x5J+84GTy26xuN7XqenVaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNh73VvPTBbecZJybNdV7Zr+3LWf9cx51ufNdo+v2WkFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYi9Pr4+F731mRs61znz++6adn3epttdd/JM47vhtALEZAWIyQoQkxUgJitATFaAmKwAMVkBYrICxF7Xde2+hh+1axpy19TpDBOrf9o1+zt25syx0woQkxUgJitATFaAmKwAMVkBYrICxGQFiMkKEHufOdE4Y91E48znztznO26cfd5k8Dq7JnTXcVoBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWKvj6/PwctnTvjt2t+5zrqZ1DO3qO7627EzZ3/HzpySd1oBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWLvmT9+3lTirqnidXO0u77v8z535j6fOQu7jtMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChCbmrK9o107VnfZtdt13eeeufd317Nx5ryy0woQkxUgJitATFaAmKwAMVkBYrICxGQFiMkKEPt1U7ZjZ05wjt1xMnjmc8/8vut+313zyjOcVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2NSU7bopvV3WTWHumg294xzt2B03zo7dce/vmNMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChD7Zsp219zhOnf8Rmfuwb3j5+5yxx3JY+NrdloBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWL/A32nk4AKWFFIAAAAAElFTkSuQmCC'); background-size: 85% 85%; background-position: center; background-repeat:no-repeat; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+          <img src="./static/logo.png" style="width: 12vw; height: 12vw;">
+        </view>
+      </view>
+    </view>
+    <view class="qrText"> 绿色 </view>
+    <view class="yimaduoyong">
+      <!-- <view class="btn3">
+        <view class="place">地铁</view>
+        <view class="address">地铁</view>
+      </view> -->
+      <!-- <view class="btn1">
+        <view class="left">
+          <view class="left-top">一码多用</view>
+          <view class="left-bottom">开通后，可刷码就医、乘公交等</view>
+        </view>
+        <view bindtap="clickToScene" class="right" id="">去开通</view>
+      </view> -->
+      <view class="btn2" onclick="window.location.href = './checkin.html';">
+        <view bindtap="clickToScene" class="left">已支持刷公交、医保</view>
+        <view bindtap="clickToScene" class="right">去配置</view>
+      </view>
+    </view>
+    <view class="hesuan">
+      <view style="color: #333333;">
+        <text style="color: #09BD65;font-weight:bold;font-size:10.667vw;">24</text> 小时内核酸检测结果<text style="color: #09BD65;font-weight:bold;">【阴性】</text>
+      </view>
+    </view>
+  </view>
+  <view class="more contentBox">
+    <view class="rec-swiper" style="height:19.467vw">
+      <view class="case">
+        <view bindtap="goHesuan" class="caseItem">
+          <view style="width:14.4vw;height:14.4vw;">
+            <image class="caseItemIcon" src="./static/nucleic_acid_vaccine.png"></image>
+          </view>
+          <view class="caseItemName">疫苗&核酸</view>
+        </view>
+        <view bindtap="handleClickMoreItem" class="caseItem">
+          <view style="width:14.4vw;height:14.4vw;">
+            <image class="caseItemIcon" src="./static/newhscyd.png"></image>
+          </view>
+          <view class="caseItemName">采样点</view>
+        </view>
+        <view bindtap="handleClickMoreItem" class="caseItem">
+          <view style="width:14.4vw;height:14.4vw;">
+            <image class="caseItemIcon" src="./static/kangyuan.png"></image>
+          </view>
+          <view class="caseItemName">抗原查询</view>
+        </view>
+        <view bindtap="goXingchengma" class="caseItem" onclick="navigateToTripCard();">
+          <view style="width:14.4vw;height:14.4vw;">
+            <image class="caseItemIcon" src="./static/icon_xingcheng.png"></image>
+          </view>
+          <view class="caseItemName">行程卡</view>
+        </view>
+      </view>
+    </view>
+    <view ariaHidden="true" class="dots-rec2" style="margin-top: 1.867vw;">
+      <view class="dot2 active"></view>
+      <view class="dot2"></view>
+    </view>
+    <view class="link">
+      <text bindtap="goQa">常见问题</text>
+      <text>|</text>
+      <text bindtap="goKf">智能客服</text>
+      <text>|</text>
+      <text bindtap="toScan">扫码记录</text>
+      <text>|</text>
+      <text bindtap="goShensu">我要申诉</text>
+    </view>
+  </view>
+</view>
+<input type="file" style="display: none;" id="upload" oninput="onInput(this);">
+<script>
+  setDynamicTime("#_date", 0, 10);
+  setDynamicTime("#_time", 11, 17);
+  setDynamicTime("#_sec", 17, 19);
+
+  let _name = localStorage.getItem("_name") || "习近平";
+  document.getElementById("_name").addEventListener("click", () => {
+    const res = window.prompt("修改名字：", _name);
+    if (res == "" || res == null) localStorage.removeItem("_name");
+    else localStorage.setItem("_name", res);
+    _name = res || "习近平";
+    switchNameDisplay(show_name);
+  });
+  let show_name = false;
+  function switchNameDisplay(t) {
+    show_name = t;
+    const hidden_name = new Array(_name.length).join("*") + _name.substr(-1);
+    document.getElementById("_name").innerText = show_name ? _name : hidden_name;
+    document.getElementsByClassName("tainerBox")[0].classList.add(t ? "eyes-open" : "eyes-closed");
+    document.getElementsByClassName("tainerBox")[0].classList.remove(t ? "eyes-closed" : "eyes-open");
+  }
+  switchNameDisplay(false);
+
+  const default_img = "./static/suishenma_logo.png";
+  document.getElementById("_img").attributes["src"].value = localStorage.getItem("_img") || default_img;
+  document.getElementById("_img").addEventListener("click", () => {
+    if (localStorage.getItem("_img")) {
+      localStorage.removeItem("_img");
+      document.getElementById("_img").attributes["src"].value = default_img;
+      return;
+    }
+    const input = document.getElementById("upload");
+    input.click();
+  });
+
+  function onInput(t) { 
+    // getting a hold of the file reference
+    const file = t.files[0]; 
+
+    // setting up the reader
+    const reader = new FileReader();
+    
+    // here we tell the reader what to do when it's done reading...
+    reader.onload = readerEvent => {
+      const content = readerEvent.target.result; // this is the content!
+      if (content) {
+        try {
+          localStorage.setItem("_img", content);
+        } catch (e) {
+          alert("照片文件较大，暂时不能保存在本地。");
+          localStorage.setItem("_img", default_img);
+        }
+        document.getElementById("_img").attributes["src"].value = content;
+      }
+    }
+    
+    reader.readAsDataURL(file); // this is reading as data url
+  }
+
+  initServiceWorker("ssm");
+</script>

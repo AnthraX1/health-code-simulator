@@ -1,0 +1,16 @@
+{
+  "short_name": "苏康码",
+  "name": "苏康码",
+  "icons": [
+    {
+      "src": "src/jszwfw.png",
+      "type": "image/png",
+      "sizes": "492x492"
+    }
+  ],
+  "id": "ilovexjp-skm-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "苏康码模拟"
+}

@@ -1,0 +1,16 @@
+{
+  "short_name": "福建健康码",
+  "name": "福建健康码",
+  "icons": [
+    {
+      "src": "static/jkm_logo.png",
+      "type": "image/png",
+      "sizes": "288x288"
+    }
+  ],
+  "id": "ilovexjp-fujian-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "福建健康码模拟"
+}

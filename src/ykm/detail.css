@@ -1,0 +1,277 @@
+.title {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 5.333vw;
+  padding-right: 5.333vw;
+  margin-top: 4.933vw;
+}
+
+.title__text {
+  flex: 1;
+  font-size: 8.53vw;
+  font-weight: 700;
+  line-height: 12vw;
+}
+
+.tabs {
+  position: relative;
+  width: 100%;
+}
+
+.tabs__header {
+  align-items: center;
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 850;
+}
+
+.tabs__header-border:after {
+  background-color: #ccc;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleY(.5);
+  width: 100%;
+}
+
+.tabs__item__wrap {
+  color: #666;
+  flex: 1;
+  font-size: 4vw;
+  line-height: 5.333vw;
+  text-align: center;
+}
+
+.tabs__item {
+  margin-bottom: 3.333vw;
+  margin-top: 3.333vw;
+}
+
+.tabs__item-border {
+  border-right: 0.133vw solid #ccc;
+}
+
+.tabs__item-inline {
+  display: inline-block;
+}
+
+.tabs__item--active {
+  color: #4293f4;
+}
+
+.tabs__slider {
+  background-color: #4293f4;
+  bottom: 0vw;
+  height: 0.533vw;
+  left: calc(17vw - 4px);
+  position: absolute;
+  z-index: 1;
+  width: calc(16vw + 8px);
+}
+
+.g-preview {
+  display: block;
+  margin-left: 5.333vw;
+  margin-right: 5.333vw;
+  position: relative;
+}
+
+.g-preview:after {
+  background-color: #ebebeb;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleY(.5);
+  width: 100%;
+}
+
+.g-preview:first-child {
+  margin-top: 4vw;
+}
+
+.g-preview:not(:first-child):before {
+  display: none;
+}
+
+.preview-item {
+  align-items: flex-start;
+  color: #666;
+  display: flex;
+  flex-direction: row;
+  font-size: 4.267vw;
+  justify-content: flex-start;
+  line-height: 5.867vw;
+  padding: 2.667vw 0;
+}
+
+.preview-item__label {
+  margin-right: 4.8vw;
+  width: 25.6vw;
+}
+
+.preview-item__content {
+  flex: 1;
+  word-break: break-all;
+}
+
+.preview-item__content__text-right {
+  max-width: 58.933vw;
+  text-align: right;
+}
+
+/* wxss */
+
+view, block {
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "PingFang SC", sans-serif;
+}
+
+.type {
+  max-width: 33.333vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.noresult {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
+}
+
+.noresult-text {
+  color: #666;
+  font-family: PingFangSC-Regular;
+  font-size: 4.8vw;
+  letter-spacing: 0;
+  line-height: 8vw;
+  text-align: center;
+}
+
+.member-list {
+  width: 100%;
+}
+
+.member-item,.member-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.member-item {
+  box-sizing: border-box;
+  padding: 4.8vw 0;
+  position: relative;
+}
+
+.member-top {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.8vw;
+  padding: 0 10.667vw 0 5.333vw;
+  position: relative;
+}
+
+.member-name {
+  color: #000;
+  font-size: 6.4vw;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 8.8vw;
+}
+
+.member-status {
+  color: #000;
+  font-size: 4vw;
+  letter-spacing: 0;
+  line-height: 5.333vw;
+  text-align: right;
+}
+
+.select-top {
+  height: 13.333vw;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+
+.reload {
+  height: 4.8vw;
+  width: 4.8vw;
+}
+
+.reload_box {
+  align-items: center;
+  color: #4293f4;
+  display: flex;
+  font-size: 4.8vw;
+  letter-spacing: 0;
+  line-height: 6.4vw;
+  opacity: .9;
+  text-align: right;
+}
+
+.error,.reload_box {
+  font-family: PingFangSC-Regular;
+}
+
+.province_btn {
+  bottom: 0;
+  margin: 15px 0;
+  padding: 5.333vw;
+  position: fixed;
+  width: calc(100% - 10.667vw);
+  left: 5.333vw;
+  border-radius: 5px;
+  height: 46px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.province_btn,.province_text {
+  color: #fff;
+  background-color: #4293f4;
+  text-align: center;
+}
+
+.province_text {
+  padding: 5.333vw 5.333vw 9.333vw;
+}
+
+.txt {
+  color: #666;
+  font-family: PingFangSC-Regular;
+  font-size: 4.267vw;
+  font-weight: 400;
+  line-height: 5.867vw;
+  margin-top: 2.667vw;
+  padding-left: 5.333vw;
+  padding-right: 5.333vw;
+}

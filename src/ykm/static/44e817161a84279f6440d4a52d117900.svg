@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>箭头</title>
+    <desc>Created with Sketch.</desc>
+    <g id="箭头" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Rectangle-2">
+            <g>
+                <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="12" height="20"></rect>
+                <path d="M3.06066017,18.8388348 C2.47487373,19.4246212 1.52512627,19.4246212 0.939339828,18.8388348 C0.353553391,18.2530483 0.353553391,17.3033009 0.939339828,16.7175144 L7.65685425,10 L0.939339828,3.28248558 C0.353553391,2.69669914 0.353553391,1.74695167 0.939339828,1.16116524 C1.52512627,0.575378798 2.47487373,0.575378798 3.06066017,1.16116524 L10.8388348,8.93933983 C11.3901632,9.49066824 11.4225943,10.3643981 10.936128,10.9536561 L10.8388348,11.0606602 L3.06066017,18.8388348 Z" id="Path" fill="#C7C7CC"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "short_name": "健康码",
+  "name": "健康码",
+  "icons": [
+    {
+      "src": "common/logo.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512"
+    }
+  ],
+  "id": "ilovexjp-index",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "健康码模拟"
+}

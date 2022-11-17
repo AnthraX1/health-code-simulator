@@ -1,0 +1,140 @@
+view,
+block {
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #3858E6;
+  margin: 0;
+  height: 100vh;
+  font-family: "PingFang SC", sans-serif;
+}
+
+.nav {
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 44px;
+  padding-top: env(safe-area-inset-top, 0);
+  color: #fff;
+}
+
+.nav .title {
+  font-size: 4.533vw;
+  font-weight: 600;
+}
+
+.nav.makemargin+* {
+  margin-top: calc(6vw + 28px);
+}
+
+.wa-comp-tf-jkt-Marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+@-webkit-keyframes loop {
+  from {
+    -webkit-transform: translateX(calc(100vw - 50px));
+    transform: translateX(calc(100vw - 50px));
+  }
+
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes loop {
+  from {
+    -webkit-transform: translateX(calc(100vw - 50px));
+    transform: translateX(calc(100vw - 50px));
+  }
+
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.wa-comp-tf-jkt-Marquee .container {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: loop;
+  animation-name: loop;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  position: absolute;
+}
+
+.wa-comp-tf-jkt-Marquee .text {
+  white-space: nowrap;
+}
+
+.wa-comp-tf-jkt-Marquee .text:not(:first-child) {
+  margin-left: 150px;
+}
+
+#functions .title {
+  margin-top: 2.667vw;
+  color: rgb(29, 31, 36);
+  font-size: 3.733vw;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  letter-spacing: 0;
+}
+
+#functions .subtitle {
+  color: rgb(29, 31, 36);
+  font-size: 3.733vw;
+  line-height: 5.333vw;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  letter-spacing: 0;
+}
+
+#functions .icon {
+  width: 13.33vw;
+  height: 13.33vw;
+}
+
+#functions .wrapper {
+  width: 33.33%;
+  margin-top: 5.333vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wa-comp-tf-jkt-XingChengKa .code_down_line {
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: line-loop;
+  animation-name: line-loop;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  position: relative
+}
+
+@-webkit-keyframes line-loop {
+  to {
+    -webkit-transform: translateX(-30%);
+    transform: translateX(-30%)
+  }
+}
+
+@keyframes line-loop {
+  to {
+    -webkit-transform: translateX(-30%);
+    transform: translateX(-30%)
+  }
+}

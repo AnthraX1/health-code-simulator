@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>电子健康卡二维码</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+  <meta name="theme-color" content="#EDEDED">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="./static/logo-b18dcf7bf55c412ec04989061d0512ad.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./static/logo-b18dcf7bf55c412ec04989061d0512ad.png">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="../common/nav.css">
+  <script src="../common/base.js"></script>
+</head>
+<body class="vsc-initialized">
+  <div class="weui-navigation-bar browser">
+    <div class="weui-navigation-bar__placeholder"></div>
+    <div class="weui-navigation-bar__inner">
+      <div class="weui-navigation-bar__left">
+        <div class="weui-navigation-bar__buttons" onclick="navigateHome();">
+          <div class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></div>
+        </div>
+      </div>
+      <div class="weui-navigation-bar__center">
+        <text>电子健康卡二维码</text>
+      </div>
+      <div class="weui-navigation-bar__right">
+  
+      </div>
+    </div>
+  </div>
+  <div data-v-0fea14a0="" id="app">
+    <div data-v-8d952c2c="" data-v-0fea14a0="" class="container default-page">
+      <header data-v-8d952c2c="" class="">
+        <div data-v-8d952c2c="" class="card-info">
+          <div data-v-8d952c2c="" class="card-info-name">
+            <span id="name"></span>
+          </div>
+          <div data-v-8d952c2c="">
+            <div data-v-8d952c2c="" class="card-info-normal"><span data-v-8d952c2c="">证件号码：</span><span id="idcard"></span></div>
+            <div data-v-8d952c2c="" class="card-info-normal"><span data-v-8d952c2c="">手机号码：</span><span id="phone"></span></div>
+          </div>
+        </div>
+        <div data-v-8d952c2c="" class="qrcode xgymDone xgymDone3" onclick="window.location.href = 'checkin.html'">
+          <div data-v-8d952c2c="" class="qrcode-img-body"><img data-v-8d952c2c=""
+              src="static/logo-b18dcf7bf55c412ec04989061d0512ad.png" alt="" class="qrcode-logo">
+            <img data-v-8d952c2c="" alt="" class="qrcode-img"
+              src="data:image/png;base64,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" style="width: 90%; height: 90%;">
+          </div>
+        </div>
+        <div data-v-8d952c2c="" class="qrcode-tips">
+          <div data-v-8d952c2c="" class="qrcode-tips-content">
+            <div data-v-8d952c2c="" class="qrcode-tips-label">湖南</div>
+            <div data-v-8d952c2c="" class="qrcode-tips-color" style="color: rgb(37, 106, 10);"> 绿码
+              <!---->
+            </div>
+            <div data-v-8d952c2c="" class="qrcode-tips-label">外省</div>
+            <div data-v-8d952c2c="" class="qrcode-tips-value"> 未查验 </div>
+          </div>
+          <!---->
+          <!---->
+          <div data-v-8d952c2c="" class="qrcode-tips-time time"></div>
+          <!---->
+        </div>
+        <!---->
+        <ul data-v-8d952c2c="" class="qrcode-tips fxdj"></ul>
+      </header>
+      <div data-v-8d952c2c="" class="custom-box">
+        <div data-v-8d952c2c="" class="custom-box__title"><span data-v-8d952c2c="">核酸检测</span>
+          <div data-v-55beb7fc="" data-v-8d952c2c="" class="local__reload"><img data-v-55beb7fc=""
+              src="data:image/png;base64,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"
+              class="local__reload--mask">
+            <div data-v-55beb7fc="" class="local__reload--tip"><u data-v-55beb7fc="">点击获取最新数据</u></div>
+          </div>
+        </div>
+        <div data-v-a08fc80a="" data-v-8d952c2c="" class="custom-box__body">
+          <div data-v-a08fc80a="" class="hsjc-body">
+            <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjc__panel normal">
+              <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjcItem1">
+                <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjcItem1-top">
+                  <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjcItem1-hs color_normal">
+                    <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjcItem1-hs-hours">24</div>
+                    <div data-v-8d952c2c="" data-v-a08fc80a="">
+                      <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjcItem1-hs-str">阴性</div>
+                      <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjcItem1-hs-str">小时内</div>
+                    </div>
+                  </div>
+                  <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjcItem1-top-right">
+                    <div data-v-8d952c2c="" data-v-a08fc80a="" id="test-institution"></div>
+                    <div data-v-8d952c2c="" data-v-a08fc80a="" class="mt16"><span id="covid-test-month"></span>月<span id="covid-test-day"></span>日<span id="covid-test-hour"></span>时<span id="covid-test-min"></span>分检测</div>
+                  </div>
+                </div>
+                <div data-v-8d952c2c="" data-v-a08fc80a="" class="hsjcItem1-bottom">
+                  <div data-v-8d952c2c="" data-v-a08fc80a=""><span data-v-8d952c2c="" data-v-a08fc80a="" id="sample-spot"></span>
+                  </div>
+                  <div data-v-8d952c2c="" data-v-a08fc80a="" class="more bg_normal72"><span data-v-8d952c2c=""
+                      data-v-a08fc80a="">更多</span><img data-v-8d952c2c="" data-v-a08fc80a=""
+                      src="data:image/png;base64,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"
+                      alt=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-v-8d952c2c="" class="custom-box">
+        <div data-v-8d952c2c="" class="custom-box__title"><span data-v-8d952c2c="">新冠疫苗</span>
+          <div data-v-55beb7fc="" data-v-8d952c2c="" class="local__reload"><img data-v-55beb7fc=""
+              src="data:image/png;base64,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"
+              class="local__reload--mask">
+            <div data-v-55beb7fc="" class="local__reload--tip"><u data-v-55beb7fc="">点击获取最新数据</u></div>
+          </div>
+        </div>
+        <div data-v-a08fc80a="" data-v-8d952c2c="" class="custom-box__body">
+          <div data-v-a08fc80a="" class="custom-box__body--info" style="width: 100%;">
+            <div data-v-8d952c2c="" data-v-a08fc80a="" class="custom-box__body--info2"><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--date">2021年03月03日</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--state">完成</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--jc">首针</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--factory-name">(北京科兴中维)</span></div>
+            <div data-v-8d952c2c="" data-v-a08fc80a="" class="custom-box__body--info2"><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--date">2021年03月31日</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--state">完成</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--jc">第二针</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--factory-name">(北京科兴中维)</span></div>
+            <div data-v-8d952c2c="" data-v-a08fc80a="" class="custom-box__body--info2"><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--date">2021年10月23日</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--state">完成</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--jc">第三针</span><span data-v-8d952c2c=""
+                data-v-a08fc80a="" class="custom-box__body--info2--factory-name">(北京科兴中维)</span></div>
+          </div>
+        </div>
+      </div>
+      <div data-v-8d952c2c="" class="banner-container">
+        <!---->
+      </div>
+      <div data-v-8d952c2c="" class="menu-container main-menu"></div>
+      <div data-v-8d952c2c="" class="menu-container other-menu">
+        <div data-v-8d952c2c="" class="menu-container-title">帮助中心</div>
+        <div data-v-8d952c2c="" class="other-menu-container">
+          <div data-v-8d952c2c="" class="menu-item xck-box" onclick="navigateToTripCard();">
+            <div data-v-8d952c2c="" class="menu-item-info" style="flex: 0 1 auto; overflow: hidden;">
+              <!---->
+              <div data-v-8d952c2c="" class="item-detail" style="max-width: 100%;">
+                <div data-v-8d952c2c="" class="item-title"
+                  style="max-width: 100%; display: inline-flex; align-items: center;">
+                  <div data-v-8d952c2c="" style="flex: 0 0 auto; margin-right: 5px;">通信大数据行程卡</div>
+                  <!---->
+                </div>
+                <div data-v-8d952c2c="" class="item-desc">疫情防控人人有责</div>
+              </div>
+            </div>
+            <div data-v-8d952c2c="" class="menu-item-right"><span data-v-8d952c2c="" class="item-arrow"> &gt; </span>
+            </div>
+          </div>
+          <!---->
+          <div data-v-8d952c2c="" class="menu-item">
+            <div data-v-8d952c2c="" class="menu-item-info" style="flex: 0 1 auto; overflow: hidden;">
+              <!---->
+              <div data-v-8d952c2c="" class="item-detail" style="max-width: 100%;">
+                <div data-v-8d952c2c="" class="item-title"
+                  style="max-width: 100%; display: inline-flex; align-items: center;">
+                  <div data-v-8d952c2c="" style="flex: 0 0 auto; margin-right: 5px;">国家政务服务平台</div>
+                  <!---->
+                </div>
+                <div data-v-8d952c2c="" class="item-desc">健康证明跨省市互通</div>
+              </div>
+            </div>
+            <div data-v-8d952c2c="" class="menu-item-right"><span data-v-8d952c2c="" class="item-arrow"> &gt; </span>
+            </div>
+          </div>
+          <div data-v-8d952c2c="" class="menu-item">
+            <div data-v-8d952c2c="" class="menu-item-info" style="flex: 0 1 auto; overflow: hidden;">
+              <!---->
+              <div data-v-8d952c2c="" class="item-detail" style="max-width: 100%;">
+                <div data-v-8d952c2c="" class="item-title"
+                  style="max-width: 100%; display: inline-flex; align-items: center;">
+                  <div data-v-8d952c2c="" style="flex: 0 0 auto; margin-right: 5px;">健康账户</div>
+                  <!---->
+                </div>
+                <div data-v-8d952c2c="" class="item-desc">申领电子健康账户</div>
+              </div>
+            </div>
+            <div data-v-8d952c2c="" class="menu-item-right"><span data-v-8d952c2c="" class="item-arrow"> &gt; </span>
+            </div>
+          </div>
+          <div data-v-8d952c2c="" class="menu-item">
+            <div data-v-8d952c2c="" class="menu-item-info" style="flex: 0 1 auto; overflow: hidden;">
+              <!---->
+              <div data-v-8d952c2c="" class="item-detail" style="max-width: 100%;">
+                <div data-v-8d952c2c="" class="item-title"
+                  style="max-width: 100%; display: inline-flex; align-items: center;">
+                  <div data-v-8d952c2c="" style="flex: 0 0 auto; margin-right: 5px;">诊间支付(试点)</div>
+                  <!---->
+                </div>
+                <div data-v-8d952c2c="" class="item-desc">基层医疗门诊缴费</div>
+              </div>
+            </div>
+            <div data-v-8d952c2c="" class="menu-item-right"><span data-v-8d952c2c="" class="item-arrow"> &gt; </span>
+            </div>
+          </div>
+          <div data-v-8d952c2c="" class="menu-item">
+            <div data-v-8d952c2c="" class="menu-item-info" style="flex: 0 1 auto; overflow: hidden;">
+              <!---->
+              <div data-v-8d952c2c="" class="item-detail" style="max-width: 100%;">
+                <div data-v-8d952c2c="" class="item-title"
+                  style="max-width: 100%; display: inline-flex; align-items: center;">
+                  <div data-v-8d952c2c="" style="flex: 0 0 auto; margin-right: 5px;">管理健康卡</div>
+                  <!---->
+                </div>
+                <div data-v-8d952c2c="" class="item-desc">管理健康卡</div>
+              </div>
+            </div>
+            <div data-v-8d952c2c="" class="menu-item-right"><span data-v-8d952c2c="" class="item-arrow"> &gt; </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-v-8d952c2c="" class="btn unbind-btn">解绑此卡</div>
+      <div data-v-8d952c2c="" class="cardcode-notes">
+        <div data-v-8d952c2c="" class="notes-title"> 温馨提示： </div>
+        <div data-v-8d952c2c="">
+          <div data-v-8d952c2c="" class="notes-content"><img data-v-8d952c2c=""
+              src="static/code-red-3c12d9761b32ffbdc3e8e8ce553e8449.png" alt="">
+            <div data-v-8d952c2c="">持
+              红码人员。请勿出行，第一时间向所在地社区或县级疾控中心主动报告，做好自我隔离，等待工作人员上门进行流行病学调查。经调查确认为高风险者，请在定点医
+              疗机构或集中隔离场所进行诊疗或隔离医学观察。如流调后发现赋码错误可申请改码。健康码查验单位发现红码人员，请在第一时间报告所在地社区或县级疾控中
+              心。</div>
+          </div>
+          <div data-v-8d952c2c="" class="notes-content"><img data-v-8d952c2c=""
+              src="static/code-yellow-164dd85a5a378007a8130efa1db6cb81.png" alt="">
+            <div data-v-8d952c2c="">持
+              黄码人员。第一时间向所在地社区主动报告。每天主动健康监测、定期核酸检测并向社区报告相关情况。本人或共同居住者出现发热、咳嗽等新冠肺炎十大新冠肺炎
+              症状，应立即向社区报告，及时到定点医疗机构排查。在未排除感染风险前原则上不外出，确需出行的，须持48小时内核酸检测阴性证明。<span
+                style="color: red;">原则上在家办公、不上学等。不得参加</span>聚餐、会展、旅游、培训等聚集性活动，<span
+                style="color: red;">不得</span>进入学校、养老院、福利院等特定机构，<span
+                style="color: red;">不得</span>进入农产品批发市场、农贸市场和超市，<span
+                style="color: red;">不得</span>进入图书馆、博物馆、美术馆、展览馆、健身馆等室内场馆，<span
+                style="color: red;">不得</span>进入影剧院、歌舞厅、浴室、网吧等密闭场所，<span
+                style="color: red;">不得</span>乘坐出租车、网约车、公共汽车、地铁、火车等公共交通工具，非本人就诊需要不进入医疗机构。必要外出时，如领取生活物资、快递或参加非聚集性活动，须做好个人防护。
+            </div>
+          </div>
+          <div data-v-8d952c2c="" class="notes-content"><img data-v-8d952c2c=""
+              src="static/code-green-64c9b5ddb9932f9f3cea748c3db25990.png" alt="">
+            <div data-v-8d952c2c="">持绿码人员。可正常出行，近14天内有高、中风险地区或疫情严重地区旅居史者，或发现通行行程卡带*号，须向社区主动报备，做好自我监测，入湘后24小时内进行一次核酸检测。
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer data-v-8d952c2c=""><img data-v-8d952c2c="" src="static/note-4c1d024ad82becb246a75d136a8e944f.png" alt=""
+          class="note-img">
+        <div data-v-8d952c2c="">
+          <div data-v-8d952c2c="">如健康卡注册的手机号码与健康卡实际使用人不一致将产生误判</div>
+          <div data-v-8d952c2c="">请妥善保管二维码信息，以防他人窃取</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+    addStorageField("_name", "#name", "名字", "习近平");
+    addStorageField("_idcard", "#idcard", "证件号码", "110101195306153019", presetFilters.idcard(4, 4));
+    addStorageField("_phone", "#phone", "手机号码", "13019890604", presetFilters.phone());
+    addStorageField("_sample_spot", "#sample-spot", "采样点", "社区卫生服务站采样点采样");
+    addStorageField("_test_institution", "#test-institution", "检测中心", "湖南圣维尔医学检验实验室");
+
+    const traceback_hours = 6 + Math.random() * 8;
+    setDynamicTime(".qrcode-tips-time");
+    setStaticTime("#covid-test-month", 5, 7, traceback_hours);
+    setStaticTime("#covid-test-day", 8, 10, traceback_hours);
+    setStaticTime("#covid-test-hour", 11, 13, traceback_hours);
+    setStaticTime("#covid-test-min", 14, 16, traceback_hours);
+
+    initServiceWorker("hunan-hc");
+  </script>
+</body>
+
+</html>

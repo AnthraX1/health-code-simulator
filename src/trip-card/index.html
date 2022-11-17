@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<title>通信大数据行程卡</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/img_arrow@2x.png">
+<link rel="apple-touch-icon" sizes="360x360" href="./static/img_arrow@2x.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+
+<view class="weui-navigation-bar">
+  <view class="weui-navigation-bar__placeholder"></view>
+  <view class="weui-navigation-bar__inner" style="color: black; background: white;">
+    <view class="weui-navigation-bar__left">
+      <view class="weui-navigation-bar__buttons" onclick="history.back();">
+        <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view>
+      </view>
+    </view>
+    <view class="weui-navigation-bar__center">
+      <span>通信行程卡</span>
+    </view>
+    <view class="weui-navigation-bar__right">
+
+    </view>
+  </view>
+</view>
+<div class="capsule" onclick="navigateHome();">
+  <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5"/>
+    <circle cx="54" cy="14" r="6"/>
+    <circle cx="10" cy="14" r="6"/>
+  </svg>
+  <div class="splitter"></div>
+  <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9"/>
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
+  </svg>
+</div>
+<view class="container">
+  <image class="home" mode="widthFix" src="./static/g2.png"></image>
+  <view class="main">
+    <view class="tel1">
+      <image class="tel1_phone" src="./static/withtext@2x.png"></image>
+    </view>
+    <view class="text1">
+      <span class="text_text1"><span id="phone"></span>的动态行程卡</span>
+    </view>
+    <view class="text2">
+      <span class="text_text2">更新于：<span id="datetime"></span></span>
+    </view>
+    <view class="tel2">
+      <image class="tel2_phone" src="./static/gif_green.gif"></image>
+    </view>
+    <view class="tel3"></view>
+    <view class="tel4_end">
+      <view>
+        <span class="tel4_phone_text">您于前7天内到达或途经：</span><span class="tel4_phone1_text"></span>
+      </view>
+    </view>
+  </view>
+  <view class="text2_text">
+    <span class="text2_text1">结果包含您在前7天内到访的国家（地区）与停留4小时以上的国内城市</span>
+  </view>
+  <view class="text2_text">
+    <span class="text2_text1">色卡仅对到访地作提醒，不关联健康状况</span>
+  </view>
+  <view class="section">
+    <view class="section1"></view>
+    <view class="section2">
+      <span class="text" style="white-space: nowrap;">本服务联合提供</span>
+    </view>
+    <view class="section3"></view>
+  </view>
+  <view class="imag_section">
+    <image class="caict" mode="widthFix" src="./static/xty0.png"></image>
+    <image class="imag_section1" mode="widthFix" src="./static/dianxin0.png"></image>
+    <image class="imag_section2" mode="widthFix" src="./static/yidong0.png"></image>
+    <image class="imag_section3" mode="widthFix" src="./static/liant0.png"></image>
+    <image class="imag_section4" mode="widthFix" src="./static/guangdian0.png"></image>
+  </view>
+  <view class="service_tel">
+    <span class="service_text" decode="true">客服热线：</span>
+    <span bindtap="callNum" class="service_text" data-num="10000" decode="true">10000&ensp;</span>
+    <span class="service_text" decode="true">/</span>
+    <span bindtap="callNum" class="service_text" data-num="10086" decode="true">&ensp;10086&ensp;</span>
+    <span class="service_text" decode="true">/</span>
+    <span bindtap="callNum" class="service_text" data-num="10010" decode="true">&ensp;10010&ensp;</span>
+    <span class="service_text" decode="true">/</span>
+    <span bindtap="callNum" class="service_text" data-num="10099" decode="true">&ensp;10099&ensp;</span>
+  </view>
+  <view>
+    <div class="imag_section6">
+      <image class="imag_ucload" mode="heightFix" src="./static/ucload.png"></image>
+      <span class="text-unit" style="white-space: nowrap;">提供云服务技术支持</span>
+    </div>
+  </view>
+  <view class="bottom_nothing"></view>
+  <view bindtap="yztcClick" class="app_bottom">
+    <span class="text1_bottom">一证通查来了！</span>
+    <span class="text2_bottom">立即点击进入</span>
+    <view class="app_bottom_button">
+      <span class="text1_bottom_button">全国移动电话卡"一证通查"</span>
+      <span class="text2_bottom_button">防范诈骗，保护你我</span>
+    </view>
+  </view>
+</view>
+<script>
+  addStorageField("_phone", "#phone", "手机号码", "13019890604", presetFilters.phone());
+  addStorageField("_trip_card_places", ".tel4_phone1_text", "途经地点（以逗号分隔）", "浙江省杭州市", (x) => x.replace(/，/g, ","));
+  setStaticTime("#datetime", 0, 19, 0, 0, (s) => s.replaceAll("-", "."));
+</script>

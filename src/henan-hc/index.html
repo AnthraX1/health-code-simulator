@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<title>豫康码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="apple-touch-icon" sizes="676x676" href="./static/logo.png">
+
+<style>
+  html {
+    font-size: 50px
+  }
+
+  @media only screen and (max-width:240px) {
+    html {
+      font-size: 32px !important
+    }
+  }
+
+  @media only screen and (min-width:240px) {
+    html {
+      font-size: 32px !important
+    }
+  }
+
+  @media only screen and (min-width:320px) {
+    html {
+      font-size: 42.665px !important
+    }
+  }
+
+  @media only screen and (min-width:360px) {
+    html {
+      font-size: 48px !important
+    }
+  }
+
+  @media only screen and (min-width:375px) {
+    html {
+      font-size: 50px !important
+    }
+  }
+
+  @media only screen and (min-width:384px) {
+    html {
+      font-size: 51.2px !important
+    }
+  }
+
+  @media only screen and (min-width:390px) {
+    html {
+      font-size: 52px !important
+    }
+  }
+
+  @media only screen and (min-width:400px) {
+    html {
+      font-size: 53.33px !important
+    }
+  }
+
+  @media only screen and (min-width:411px) {
+    html {
+      font-size: 54.8px !important
+    }
+  }
+
+  @media only screen and (min-width:412px) {
+    html {
+      font-size: 54.935px !important
+    }
+  }
+
+  @media only screen and (min-width:414px) {
+    html {
+      font-size: 55.2px !important
+    }
+  }
+
+  @media only screen and (min-width:428px) {
+    html {
+      font-size: 57.1px !important
+    }
+  }
+
+  @media only screen and (min-width:480px) {
+    html {
+      font-size: 64px !important
+    }
+  }
+
+  @media only screen and (min-width:600px) {
+    html {
+      font-size: 80px !important
+    }
+  }
+
+  @media only screen and (min-width:640px) {
+    html {
+      font-size: 85.33px !important
+    }
+  }
+
+  @media only screen and (min-width:720px) {
+    html {
+      font-size: 96px !important
+    }
+  }
+
+  @media only screen and (min-width:733px) {
+    html {
+      font-size: 97.73px !important
+    }
+  }
+
+  @media only screen and (min-width:768px) {
+    html {
+      font-size: 102.4px !important
+    }
+  }
+
+  @media only screen and (min-width:1024px) {
+    html {
+      font-size: 136.53px !important
+    }
+  }
+
+  @media only screen and (min-width:1080px) {
+    html {
+      font-size: 144px !important
+    }
+  }
+
+  @media only screen and (min-width:1280px) {
+    html {
+      font-size: 170.67px !important
+    }
+  }
+</style>
+<link href="./static/common.deed9a9a.css" rel="stylesheet">
+<link href="./static/code.fdf7167f.css" rel="stylesheet">
+<link href="../common/nav.css" rel="stylesheet">
+<script src="../common/base.js"></script>
+<div id="app">
+  <div class="page-green___2ThI9" style="padding-top: 88px;">
+    <div class="alipay-nav dark">
+      <!-- <div class="weui-navigation-bar__placeholder"></div> -->
+      <div class="alipay-nav-title">
+        豫康码
+      </div>
+      <div class="capsule" onclick="navigateHome();">
+        <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="14" r="6" />
+          <circle cx="54" cy="14" r="6" />
+          <circle cx="10" cy="14" r="6" />
+        </svg>
+        <div class="splitter"></div>
+        <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- <circle cx="30" cy="30" r="9" /> -->
+          <line x1="20" y1="20" x2="40" y2="40" stroke-width="6" />
+          <line x1="40" y1="20" x2="20" y2="40" stroke-width="6" />
+          <circle cx="30" cy="30" r="26" stroke-width="6" fill="transparent" />
+        </svg>
+      </div>
+    </div>
+    <div class="main-container___1b3g8">
+      <div class="mainContent">
+        <div class="qrcodeContainer">
+          <div class="card-container" data-aspm="c43622">
+            <div id="masked-info">
+              <div class="name-wrap">
+                <div class="text" id="masked-name">**平</div>
+              </div>
+              <div class="id-wrap">
+                <div class="text" id="masked-idcard"></div>
+                <div class="eye-close" onclick="toggleMask(false);"></div>
+              </div>
+            </div>
+            <div id="info" style="display: none;">
+              <div class="name-wrap">
+                <div class="text" id="name"></div>
+              </div>
+              <div class="id-wrap">
+                <div class="text id-unmasked" id="idcard"></div>
+                <div class="eye-open" onclick="toggleMask(true);"></div>
+              </div>
+            </div>
+            <div class="qrcode-btns">
+              <div class="btn-item">成员管理</div>
+            </div>
+          </div>
+          <div class="qrcode">
+            <div>
+              <div class="refresh-time-large">
+                <div class="refresh-time">11-08 16:56:54</div>
+              </div>
+            </div>
+            <div class="download"><span
+                class="download-text">纸质码</span><img class="download-icon"
+                src="./static/A5SeORrczUVUAAAAAAAAAAAAAARQnAQ.png" alt="">
+            </div>
+            <div class="adm-center-popup adm-modal offline-container" style="display: none; pointer-events: none;">
+              <div class="adm-mask adm-center-popup-mask"
+                style="background: rgba(0, 0, 0, 0.55); opacity: 0; display: none;">
+                <div class="adm-mask-aria-button" role="button" aria-label="背景蒙层"></div>
+                <div class="adm-mask-content"></div>
+              </div>
+              <div class="adm-center-popup-wrap">
+                <div style="opacity: 0; transform: scale(0.8);"><a class="adm-center-popup-close adm-plain-anchor"><svg
+                      width="1em" height="1em" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink" class="antd-mobile-icon"
+                      style="vertical-align: -0.125em;">
+                      <g id="CloseOutline-CloseOutline" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="CloseOutline-编组">
+                          <rect id="CloseOutline-矩形" fill="#FFFFFF" opacity="0" x="0" y="0" width="48" height="48">
+                          </rect>
+                          <path
+                            d="M10.6085104,8.11754663 L24.1768397,21.8195031 L24.1768397,21.8195031 L37.7443031,8.1175556 C37.8194278,8.04168616 37.9217669,7.999 38.0285372,7.999 L41.1040268,7.999 C41.3249407,7.999 41.5040268,8.1780861 41.5040268,8.399 C41.5040268,8.50440471 41.4624226,8.60554929 41.3882578,8.68044752 L26.2773302,23.9408235 L26.2773302,23.9408235 L41.5021975,39.3175645 C41.65763,39.4745475 41.6563731,39.7278104 41.4993901,39.8832429 C41.4244929,39.9574004 41.3233534,39.999 41.2179546,39.999 L38.1434012,39.999 C38.0366291,39.999 37.9342885,39.9563124 37.8591634,39.8804408 L24.1768397,26.0621438 L24.1768397,26.0621438 L10.4936501,39.8804497 C10.4185257,39.9563159 10.3161889,39.999 10.2094212,39.999 L7.13584526,39.999 C6.91493136,39.999 6.73584526,39.8199139 6.73584526,39.599 C6.73584526,39.4936017 6.77744443,39.3924627 6.85160121,39.3175656 L22.0763492,23.9408235 L22.0763492,23.9408235 L6.96554081,8.68044639 C6.81010226,8.52346929 6.81134951,8.27020637 6.9683266,8.11476782 C7.04322474,8.04060377 7.14436883,7.999 7.24977299,7.999 L10.3242852,7.999 C10.4310511,7.999 10.5333863,8.04168267 10.6085104,8.11754663 Z"
+                            id="CloseOutline-路径" fill="currentColor" fill-rule="nonzero"></path>
+                        </g>
+                      </g>
+                    </svg></a>
+                  <div class="adm-center-popup-body adm-modal-body">
+                    <div class="adm-modal-content"><canvas class="content" width="702" height="988"></canvas></div>
+                    <div class="adm-space adm-space-block adm-space-vertical adm-modal-footer">
+                      <div class="adm-space-item"><button type="button"
+                          class="adm-button adm-button-primary adm-button-block adm-button-fill-none adm-button-shape-default adm-modal-button"><span>保存到相册</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="qrcode-img withGoldenBorder" onclick="window.location.href = 'checkin.html';"
+             ><img class="qrcodeImg-img q-img"
+                src="data:image/png;base64,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">
+            </div>
+          </div>
+          <div class="qrcode-tip green">
+            <div class="qrcode-tip-title" style="color: rgb(59, 197, 109);">绿码</div><img class="qrcode-tip-icon"
+              src="./static/Apbe5QbKkU14AAAAAAAAAAAAAARQnAQ.png">
+          </div>
+        </div>
+      </div>
+      <div class="head-services-container" data-aspm="c121268">
+        <div class="head-services">
+          <div class="head-services-item">
+            <div class="head-service-acid" data-acid="green">
+              <div class="head-service-acid-result">
+                <div class="head-service-acid-time">24</div>
+                <div class="head-service-acid-info"><span class="head-service-acid-desc">小时内</span><span
+                    class="head-service-acid-result2">阴性</span></div>
+              </div>
+              <div class="head-service-acid-btn"><span
+                  class="head-service-acid-btn-text">核酸检测</span><img class="head-service-acid-btn-icon"
+                  src="./static/Acb_AQbrUPVAAAAAAAAAAAAAAARQnAQ.png"></div>
+            </div>
+          </div>
+          <div class="head-services-item">
+            <div class="head-services-item-title">行程卡</div>
+            <div class="head-services-item-subtitle head-services-item-subtitle-travel">查看14天是否到过中高风险地区</div>
+            <div class="head-services-item-btn" onclick="navigateToTripCard();">立即查看</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-service" data-aspm="c104577">
+        <div class="service-container">
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/AoNGFRZnWseQAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">疫苗接种</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/AAE0_Q5LBeuoAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">核酸报告</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/A1k4zRovE_bUAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">来豫报备</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/AvuV2SpriSJ4AAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">转码申诉</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/Ae4rkQItFlVsAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">采样点查询</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/APpLHR6uoJVYAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">咨询热线</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="more-service" data-aspm="c106158">
+        <p class="service-header">更多服务</p>
+        <div class="service-container">
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/AJd-0Sb3G_ikAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">核酸预约</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/A2S3dTIou2YsAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">出行政策</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/Ao83ZRZGfQNMAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">风险等级</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/A_K4HToyDDUUAAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">就医查询</div>
+            </div>
+          </div>
+          <div class="service-list"
+           ><img class="service-icon ignore-t2"
+              src="./static/A5dkJQJC1ie4AAAAAAAAAAAAAARQnAQ.png" alt="">
+            <div class="service-content">
+              <div class="service-title">常见问题</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-wrap">
+        <div class="service-provider">本服务由河南省疫情防控指挥部提供</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="adm-px-tester" style="--size:10;"></div>
+<div class="adm-px-tester"></div>
+
+<script>
+  setDynamicTime(".refresh-time", 5, 19);
+
+  function toggleMask(t) {
+    document.getElementById("masked-info").style.display = t ? "block" : "none";
+    document.getElementById("info").style.display = t ? "none" : "block";
+  }
+
+  addStorageField("_name", "#masked-name", "名字", "习近平", presetFilters.lastcharonly);
+  addStorageField("_name", "#name", "名字", "习近平");
+  addStorageField("_idcard", "#masked-idcard", "身份证号", "110101195306153019", (s) => 
+      `<div class="id-unmasked">${s[0]}</div><div class="id-masked">*** **** **** **** *</div><div class="id-unmasked">${s.slice(-1)}</div>`);
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019");
+
+  const nav_scroll = () => {
+    window.addEventListener('scroll', () => {
+      const scroll_percentage = window.pageYOffset / document.documentElement.clientHeight;
+      if (scroll_percentage > 0.25) {
+        document.querySelector(".alipay-nav").classList.remove("dark");
+      } else if (scroll_percentage < 0.18) {
+        document.querySelector(".alipay-nav").classList.add("dark");
+      }
+    });
+  };
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setTimeout(nav_scroll, 1);
+  } else {
+    document.addEventListener("DOMContentLoaded", nav_scroll);
+  }
+
+  initServiceWorker("henan-hc");
+</script>

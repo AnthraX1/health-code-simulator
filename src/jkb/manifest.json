@@ -1,0 +1,16 @@
+{
+  "short_name": "北京健康宝",
+  "name": "北京健康宝",
+  "icons": [
+    {
+      "src": "static/logo_jiankangbao1@2x.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ],
+  "id": "ilovexjp-jkb-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "北京健康宝模拟"
+}

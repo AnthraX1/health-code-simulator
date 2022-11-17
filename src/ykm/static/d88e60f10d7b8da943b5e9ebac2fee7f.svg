@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="30px" viewBox="0 0 26 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>chevron</title>
+    <g id="chevron" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" x="0" y="0" width="26" height="30"></rect>
+        <path d="M8,6 C8.55228475,6 9,6.44771525 9,7 L9,16 L18,16 C18.5522847,16 19,16.4477153 19,17 C19,17.5522847 18.5522847,18 18,18 L7,18 L7,7 C7,6.44771525 7.44771525,6 8,6 Z" id="形状结合" fill="#000000" transform="translate(13.000000, 12.000000) rotate(-45.000000) translate(-13.000000, -12.000000) "></path>
+    </g>
+</svg>

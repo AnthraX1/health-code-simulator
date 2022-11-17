@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<title>场所登记信息</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#3858E6">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/message-icon.png">
+<link rel="apple-touch-icon" href="./static/message-icon.png">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+<style>
+  .nav {
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 44px;
+    padding-top: env(safe-area-inset-top, 0);
+    color: #fff;
+  }
+
+  .nav .title {
+    font-size: 4.533vw;
+    font-weight: 600;
+  }
+  
+  .nav.makemargin+* {
+    margin-top: calc(6vw + 28px);
+    margin-top: calc(6vw + 28px + env(safe-area-inset-top, 0));
+  }
+
+  view {
+    display: block;
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-family: "PingFang SC", sans-serif;
+    background: #3858e6;
+    position: absolute;
+    top: 0;
+  }
+
+  .g-preview-item {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 20px 0;
+  }
+
+  .g-preview-item .label-style {
+    margin-right: 40px;
+    width: 200px;
+  }
+
+  .g-preview-item .content-style {
+    flex: 1;
+  }
+
+  .label-style {
+    color: #919eab;
+    width: 35.467vw;
+  }
+
+  .content-style,
+  .label-style {
+    font-family: PingFangSC-Regular;
+    font-size: 4.267vw;
+    height: 5.867vw;
+    letter-spacing: 0;
+    line-height: 5.867vw;
+  }
+
+  .content-style {
+    color: #000;
+    text-align: right;
+    width: 54.267vw;
+  }
+
+  .rotate_bg {
+    animation: myRotate 10s linear 1.5s infinite;
+    opacity: 0;
+    transform-origin: center;
+  }
+
+  @-webkit-keyframes myRotate {
+    0% {
+      opacity: 1;
+      -webkit-transform: rotate(0deg);
+    }
+
+    50% {
+      opacity: 1;
+      -webkit-transform: rotate(180deg);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: rotate(1turn);
+    }
+  }
+
+  @keyframes myRotate {
+    0% {
+      opacity: 1;
+      -webkit-transform: rotate(0deg);
+    }
+
+    50% {
+      opacity: 1;
+      -webkit-transform: rotate(180deg);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: rotate(1turn);
+    }
+  }
+
+  .content_bg {
+    animation: scaleContentBgIn 1.2s ease-in-out 1.6s infinite;
+  }
+
+  .bg1 {
+    animation: scaleXyIn 1s .1s both;
+    opacity: 0;
+  }
+
+  .bg2 {
+    animation: scaleIbg2In 1s .5s;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .bg3 {
+    animation: scaleIbg3In 1.2s .9s infinite;
+    opacity: 0;
+  }
+
+  .imgG {
+    animation: scaleImgIn 1.3s .8s both;
+  }
+
+  @-webkit-keyframes scaleContentBgIn {
+    0% {
+      transform: scale(1, 1);
+    }
+
+    50% {
+      transform: scale(.8, .8);
+    }
+
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+
+  @keyframes scaleContentBgIn {
+    0% {
+      transform: scale(1, 1);
+    }
+
+    50% {
+      transform: scale(.8, .8);
+    }
+
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+
+  @-webkit-keyframes scaleXyIn {
+    0% {
+      opacity: 0;
+      transform: scale(0, 0);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.2, 1.2);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+
+  @keyframes scaleXyIn {
+    0% {
+      opacity: 0;
+      transform: scale(0, 0);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.2, 1.2);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+
+  @-webkit-keyframes scaleIbg2In {
+    0% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(0, 0);
+    }
+  }
+
+  @keyframes scaleIbg2In {
+    0% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(0, 0);
+    }
+  }
+
+  @-webkit-keyframes scaleIbg3In {
+    0% {
+      opacity: 1;
+      transform: scale(.4, .4);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1, 1);
+    }
+  }
+
+  @keyframes scaleIbg3In {
+    0% {
+      opacity: 1;
+      transform: scale(.4, .4);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1, 1);
+    }
+  }
+
+  @-webkit-keyframes scaleImgIn {
+    0% {
+      transform: scale(0, 0);
+    }
+
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+
+  @keyframes scaleImgIn {
+    0% {
+      transform: scale(0, 0);
+    }
+
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+</style>
+
+<div class="capsule" onclick="navigateHome();">
+  <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5" />
+    <circle cx="54" cy="14" r="6" />
+    <circle cx="10" cy="14" r="6" />
+  </svg>
+  <div class="splitter"></div>
+  <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9" />
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+  </svg>
+</div>
+<div class="nav makemargin">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="position: absolute; left: 10px;" onclick="history.back();"><path fill="none" d="M0 0h24v24H0V0z" opacity=".87"/><path d="M16.62 2.99c-.49-.49-1.28-.49-1.77 0L6.54 11.3c-.39.39-.39 1.02 0 1.41l8.31 8.31c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.38 12l7.25-7.25c.48-.48.48-1.28-.01-1.76z" id="nav-back-icon" fill="white"/></svg>
+  <span class="title">场所登记信息</span>
+  <div></div>
+</div>
+<view class=" type-gsd-h5-react:Container" id="id3"
+  style="width: 100%; padding: 2.667vw 5.333vw; background: rgb(56, 88, 230); position: relative;">
+  <view class=" type-gsd-h5-react:Container" id="id28">
+    <view class=" type-gsd-h5-react:Container" id="id30"
+      style="height: 33.333vw; margin-bottom: 3.2vw; display: flex; border-radius: 3.2vw; background: rgb(255, 255, 255);">
+      <view class=" type-gsd-h5-react:Container" id="id32"
+        style="padding-right: 5.333vw; padding-left: 5.333vw; display: flex; justify-content: center; flex-direction: column; flex: 1;">
+        <view class=" type-gsd-h5-react:Container" id="id33"
+          style="width: 77.333vw; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+          <text class=" type-gsd-h5-react:Text" id="place"
+            style="color: #1D1F24; font-size: 6.4vw; line-height: 9.6vw; font-weight: bolder;"></text>
+        </view>
+        <view class=" type-gsd-h5-react:Container" id="id43"
+          style="width: 80vw; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+          <text class=" type-gsd-h5-react:Text" id="place-type"
+            style="color: #FF9838; font-size: 3.733vw; line-height: 5.867vw;"></text>
+        </view>
+        <view class=" type-gsd-h5-react:Container" id="id34"
+          style="width: 80vw; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+          <text class=" type-gsd-h5-react:Text" id="place-address-line1"
+            style="color: #333333; font-size: 4.267vw; line-height: 5.867vw;"></text>
+        </view>
+        <view class=" type-gsd-h5-react:Container" id="id35"
+          style="width: 80vw; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+          <text class=" type-gsd-h5-react:Text" id="place-address-line2"
+            style="color: #919EAB; font-size: 4.267vw; line-height: 5.867vw;"></text>
+        </view>
+      </view>
+    </view>
+    <view class=" type-gsd-h5-react:Container" id="id5" style="border-radius: 3.2vw; background: rgb(255, 255, 255);">
+      <view class=" type-gsd-h5-react:Container" id="id10"
+        style="padding-top: 5.333vw; padding-right: 5.333vw; padding-left: 5.333vw;">
+        <view class=" type-gsd-h5-react:Container" id="uuid_3fe37b37"
+          style="display: flex; justify-content: space-between; flex-direction: row;">
+          <text class=" type-gsd-h5-react:Text" id="name"
+            style="color: rgb(0, 0, 0); font-size: 6.4vw; line-height: 9.067vw; font-family: PingFangSC-Medium; letter-spacing: 0vw;"></text>
+          <view class=" type-gsd-h5-react:Container" id="uuid_d4551804"
+            style="display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+          </view>
+        </view>
+        <text class=" type-gsd-h5-react:Text"
+          style="margin-top: 0.8vw; display: block; color: rgb(145, 158, 171); font-size: 4.267vw; line-height: 5.867vw; font-family: PingFangSC-Regular; letter-spacing: 0vw;"><span>身份证号：</span><span
+            id="idcard"></span></text>
+        <view class="type-gsd-h5-react:Container" id="uuid_05bf1008"
+          style="width: 78.667vw; height: 0.267vw; margin: 2.133vw 0vw 3.733vw; border-bottom: 0.133vw dashed #939AA0;">
+        </view>
+        <text class="type-gsd-h5-react:Text" id="datetime"
+          style="margin-top: 2.667vw; display: block; color: rgb(0, 0, 0); font-size: 6.4vw; line-height: 13.333vw; text-align: center; font-family: PingFangSC-Medium; letter-spacing: 0vw;"></text>
+        <view class=" type-gsd-h5-react:Container" id="id23"
+          style="margin-top: 4vw; display: flex; justify-content: center; flex-direction: row; text-align: center;">
+          <view class=" type-gsd-h5-react:Container" id="uuid_2a0c2b44" style="position: relative;">
+            <view class="content_bg type-gsd-h5-react:Container" id="uuid_f257a199"
+              style="width: 43.467vw; height: 43.467vw; display: flex; justify-content: center; align-items: center;">
+              <view class="bg1 type-gsd-h5-react:Container" id="uuid_5d829100"
+                style="width: 33.067vw; height: 33.067vw; z-index: 9; border-radius: 50%; background: rgb(0, 168, 111); background-color: #00a86f;">
+              </view>
+              <view class="bg2 type-gsd-h5-react:Container" id="uuid_92e90300"
+                style="width: 21.333vw; height: 21.333vw; z-index: 10; border-radius: 50%; background: rgba(255, 255, 255, 0.4); position: absolute;">
+              </view>
+              <image alt="[图片]" class="imgG type-gsd-h5-react:Image" id="uuid_3dfd5000" mode="scaleToFill"
+                src="./static/gou.png" style="width: 17.867vw; height: 13.6vw; z-index: 10; position: absolute;">
+              </image>
+              <view class="bg3 type-gsd-h5-react:Container" id="uuid_b2a43100"
+                style="width: 43.367vw; height: 43.367vw; z-index: 1; border-radius: 50%; background: rgba(0, 168, 111, 0.7); position: absolute;">
+              </view>
+            </view>
+          </view>
+        </view>
+        <text class=" type-gsd-h5-react:Text" id="id24"
+          style="margin-top: 4.267vw; display: block; color: #57AC6C; font-size: 7.467vw; line-height: 10.4vw; text-align: center; font-family: PingFangSC-Medium; letter-spacing: 0;">绿码</text>
+        <text class=" type-gsd-h5-react:Text" id="id25"
+          style="margin-top: 3.2vw; display: block; color: #57AC6C; font-size: 6.4vw; line-height: 8.933vw; text-align: center; font-family: PingFangSC-Regular; letter-spacing: 0;">健康状态为低风险</text>
+      </view>
+      <view class="type-gsd-h5-react:Container" id="uuid_ae16bb45" style="margin-top: 4vw; padding-bottom: 4vw;">
+        <view class="wa-comp-tf-jkt-XingChengKa  type-gsd-h5-react:Container" id="uuid_3febf311"
+          style="position: relative; width: 100%;">
+          <view class=" type-gsd-h5-react:Container" id="uuid_bd243074">
+            <view class=" type-gsd-h5-react:Container" id="uuid_fe40e190"
+              style="width: 90%; margin: 0vw auto; overflow: hidden; box-sizing: border-box;">
+              <view class=" type-gsd-h5-react:Container" id="uuid_d398af93"
+                style="margin: 4vw 0; display: flex; flex-direction: row;">
+                <view class=" type-gsd-h5-react:Container" id="uuid_4943af93"
+                  style="height: 20vw; padding: 1.6vw; border-radius: 1.067vw; position: relative; flex: 1; box-sizing: border-box; background-color: #00a870;">
+                  <text class=" type-gsd-h5-react:Text" id="uuid_9d310d93"
+                    style="color: white; font-size: 3.467vw; font-weight: 600; font-family: 'PingFang SC'; font-style: normal; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">省内24小时核酸：阴性</text>
+                  <text class=" type-gsd-h5-react:Text" id="covid-test-datetime"
+                    style="display: block; font-size: 2.667vw; font-weight: 400; font-family: 'PingFang SC'; font-style: normal; color: white;"></text>
+                  <text class=" type-gsd-h5-react:Text" id="uuid_28198393"
+                    style="color: rgb(0, 0, 0); font-size: 8.533vw; font-weight: 600; opacity: 0.2; position: absolute; right: 1.067vw; top: 2.667vw; font-family: 'PingFang SC'; font-style: normal; top: 10px; right: 4px;"">24</text>
+                  <view class=" type-gsd-h5-react:Container" id="uuid_a7c25c93"
+                    style="width: 29.467vw; height: 29.467vw; opacity: 0.1; border-radius: 50%; background: rgb(255, 255, 255); position: absolute; right: -12vw; top: 0;">
+                  </view>
+                  <view bindtap="onuuid_b7160c93$tap" class=" type-gsd-h5-react:Container" id="uuid_b7160c93"
+                    style="width: 92%; height: 5.6vw; display: flex; justify-content: center; align-items: center; border-radius: 2.667vw; background: rgb(255, 255, 255); position: absolute; bottom: 1.6vw;">
+                    <text class=" type-gsd-h5-react:Text" id="tap-to-update"
+                      style="font-size: 3.2vw; font-weight: 600; font-family: 'PingFang SC'; font-style: normal; color: #00A870; opacity: 1;">点击更新</text>
+                  </view>
+                </view>
+                <view class=" type-gsd-h5-react:Container" id="uuid_2c64ac93"
+                  style="height: 20vw; margin-left: 1.333vw; padding: 1.6vw; border-radius: 1.067vw; position: relative; flex: 1; box-sizing: border-box; background-color: #00a870;">
+                  <text class=" type-gsd-h5-react:Text" id="uuid_60c3fd94"
+                    style="font-size: 3.467vw; font-weight: 600; font-family: 'PingFang SC'; font-style: normal; color: white;"
+                    text="风险城市旅居史">风险城市旅居史</text>
+                  <text class=" type-gsd-h5-react:Text" id="trace-update-datetime" selectable="false"
+                    style="display: block; font-size: 2.667vw; font-weight: 400; font-family: 'PingFang SC'; font-style: normal; color: white;"></text>
+                  <text class=" type-gsd-h5-react:Text" id="uuid_e0782f94" selectable="false"
+                    style="color: rgb(0, 0, 0); font-size: 8.533vw; font-weight: 600; opacity: 0.2; position: absolute; right: 2.933vw; top: 5.333vw; font-family: 'PingFang SC'; font-style: normal;">无</text>
+                  <view class=" type-gsd-h5-react:Container" id="uuid_5a175794"
+                    style="width: 29.467vw; height: 29.467vw; opacity: 0.1; border-radius: 50%; background: rgb(255, 255, 255); position: absolute; right: -12vw; top: 0vw;">
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- Begin Sichuan Footer -->
+<view class="wa-comp-tf-jkt-SichuanFooter type-gsd-h5-react:Container" id="id1"
+  style="height: 9.6vw; margin: 9.6vw 2.667vw 13.467vw; color: rgb(255, 255, 255); font-size: 3.2vw; line-height: 4.8vw; font-family: PingFangSC-Regular; letter-spacing: 0;">
+  <text class="type-gsd-h5-react:Text" id="id2"
+    style="display: block; text-align: center; opacity: .75;">四川省应对新型冠状病毒肺炎疫情应急指挥部</text>
+  <text class="type-gsd-h5-react:Text" id="id3"
+    style="display: block; text-align: center; opacity: .75;">四川省大数据中心提供支持</text>
+</view>
+<!-- End Sichuan Footer -->
+<script>
+  setDynamicTime("#datetime");
+  setStaticTime("#covid-test-datetime", 5, 13, 6, 5, (x) => x.replace("-", "/") + "时");
+  setStaticTime("#trace-update-datetime", 5, 13, 2, 1, (x) => x.replace("-", "/") + "时");
+
+  addStorageField("_name", "#name", "名字", "习近平", presetFilters.name_keepfirstname);
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", presetFilters.idcard());
+
+  addStorageField("_place", "#place", "场所名称", "二仙桥");
+  addStorageField("_place_type", "#place-type", "场所类型", "公共场所");
+  addStorageField("_place_address_line1", "#place-address-line1", "场所地址（第一行）", "四川省/成都市/成华区");
+  addStorageField("_place_address_line2", "#place-address-line2", "场所地址（第二行）", "建设北路三段");
+
+  initServiceWorker("tfjkt");
+
+  const nav_scroll = () => {
+    window.addEventListener('scroll', () => {
+      const percentage = Math.max(0, Math.min(window.pageYOffset / document.documentElement.clientHeight / 0.18, 1));
+      document.querySelector(".nav").style.backgroundColor = `rgba(255, 255, 255, ${percentage})`;
+      const color = 255 - Math.ceil(percentage * 255);
+      document.querySelector(".nav").style.color = `rgb(${color}, ${color}, ${color})`;
+      document.querySelector(".nav > svg") && (document.querySelector("#nav-back-icon").style.fill = `rgb(${color}, ${color}, ${color})`);
+    });
+  };
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setTimeout(nav_scroll, 1);
+  } else {
+    document.addEventListener("DOMContentLoaded", nav_scroll);
+  }
+
+  const update_button = document.getElementById("tap-to-update");
+  let countdown = 60;
+  window.setInterval(() => {
+    if (countdown > 1) {
+      countdown--;
+      update_button.style.opacity = 0.5;
+      update_button.innerText = `点击更新（${countdown}）`;
+    } else {
+      countdown = 0;
+      update_button.style.opacity = 1;
+      update_button.innerText = `点击更新`;
+    }
+  }, 1000);
+  update_button.addEventListener("click", () => {
+    if (countdown == 0) {
+      countdown = 60;
+    }
+  });
+</script>

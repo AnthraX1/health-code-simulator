@@ -1,0 +1,227 @@
+<title>浙江健康码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#0F52D0">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/vnd.microsoft.icon" href="./static/logo.ico">
+<link rel="apple-touch-icon" sizes="64x64" href="./static/logo.ico">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+<page>
+  <view class="weui-navigation-bar dark">
+    <view class="weui-navigation-bar__placeholder"></view>
+    <view class="weui-navigation-bar__inner" style="color: white; background-color: #0F52D0;">
+      <view class="weui-navigation-bar__left">
+        <view class="weui-navigation-bar__buttons" onclick="history.back();">
+          <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view>
+        </view>
+      </view>
+      <view class="weui-navigation-bar__center">
+        <text>浙江健康码</text>
+      </view>
+      <view class="weui-navigation-bar__right">
+
+      </view>
+    </view>
+    <div class="capsule" onclick="navigateHome();">
+      <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="14" r="9.5" />
+        <circle cx="54" cy="14" r="6" />
+        <circle cx="10" cy="14" r="6" />
+      </svg>
+      <div class="splitter"></div>
+      <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="9" />
+        <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+      </svg>
+    </div>
+  </view>
+  <view>
+    <view id="root" class="h5-div">
+      <view class="h5-div rax-view-v2 Home--container--wZ9fweI">
+        <view class="h5-div rax-view-v2 Home--contentWrap--yQNl43k">
+          <view class="h5-div rax-view-v2 Home--cityWrap--mg1qHf9">
+            <view class="h5-div rax-view-v2" id="city">
+            </view>
+            <view class="h5-div rax-view-v2">
+              其他地区 >
+            </view>
+          </view>
+          <view class="h5-div rax-view-v2 NameCard--container--Q3sWT2Y">
+            <view class="h5-div rax-view-v2 NameCard--card--vuewl_Z">
+              <view class="h5-div rax-view-v2 NameCard--nameWrap--NOA5szM">
+                <view class=" h5-div rax-view-v2 NameCard--left--YTgr_BY">
+                  <view class="h5-div rax-view-v2 NameCard--name--tNI4G8C" id="name">习近平</view>
+                </view>
+                <view class="h5-div rax-view-v2 NameCard--userCenter--karrlxe">个人中心</view>
+              </view>
+              <view class="h5-div rax-view-v2 NameCard--idWrap--lS8xAvV">
+                <view class="h5-div rax-view-v2 NameCard--idWrapLeft--rqlXF9Y">
+                  <view class="h5-div rax-view-v2 NameCard--id--pUPR0vq" id="masked-idcard"></view>
+                  <view class="h5-div rax-view-v2 NameCard--id--pUPR0vq" id="idcard" style="display: none;"></view>
+                  <image
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAATCAYAAADiQ08DAAAAAXNSR0IArs4c6QAAAlZJREFUSA3FlT1oU1EUx19iW4ggtbQaWmILDtLBQjtExEE6CIVUcFC7dAwhxaFgFbr0AxEnJxcRLBTHFoppoVPFJQ7SUhSkWihi6aB0UBdx6Ifp7yT3PF/iS95LUpMDP8595/zvOSf3Ji+WhWUymQl4BmfluZ7GDGGYhansHCzOg9oHFmfqNSC9W0FmUOuU0wvCR43gNyBS6yHpKSf3HtRkpqCe4jkevmgGvwMXazUkveQWt0BN1h15/QlEYFMV+F9wO0/0Hx7ocQ2+g5qcYti1FYk2SKvS+Cf4k64bqghSswEm4QDUXrI4VbIsgiZY1R3Gy5FfLbmxjCS1emDd1Fb3lkXAswyiJPzRXQ4vsQWo+LvJ3i6YgX1ws0clB2RHAnQ48dNQeJqHxOYgBo0lC5JEcwL6QQbbA6eleBgH7Sm5h641ScQdQtkQFyFeXkMj8AMK7SeBF3APbsEliMJNuAvPYRcK7TOBQR2EdeGtPdBc1iPoBf0U4hN5Ah6InYb7sA2V2hobh+Gfkycmh6AzsMxcsWfg4bpEMBEk7YTLgrxc2SiUazdcyuWFKHjHUfSyJBuMYhk/Cu8CgcAbE3N15OU7mHvD5xSPca9AXqztuZD1Ff8NBmDMxFqNL+qo/ZTaaQQh1qtFhV4Jirx2fNILxfRouh26xWK6Y43TsAX0NfHJqzha/Xf6zbrsF77zqrx6aT7GQr8afk4lZTaG8HLlZVklA/79dVnWko9uOqBI+3zoq5NwTUPmilfw3n9NtEM3D/I+jFbX3eduGjX7lNoy9vj6MPYGszgCEfl2cnTrz14AAAAASUVORK5CYII="
+                    role="img" class="h5-img NameCard--eye--AdzzUEb" onclick="toggleInfoMask(false);" id="eye-closed">
+                  </image>
+                  <image
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAZCAMAAACFDcfaAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABIUExURUdwTP///////////////////////////////////////////////////////////////////////////////////////////wV68vgAAAAXdFJOUwD4VdTlN53vEAe7RRkiyX6osox0aSphMDvWQAAAAVJJREFUKM91U1uChCAMK8hDBEQUnfvfdAP4AGe2H4I0tGlaiFrbk5qFZmKIwRr6x8Zt+DSmlfyJCvrztukbyS/UlKRkN1KNfbAFZ9nLEv6MqKB8IGwD85nYEvCxZLZ4hZ4Tdux4qsR9bQlgRePc8JPjhG84YQ6wwZPHkSPV1rESrVhS5YY4A+hakCHT1bvAndnwjEOEwWE9QIhkh5uzHxE1/ByLL8qAc5h7/UrCWDbw1Irkl8woqxAD/530R5yd/O4Hr44175ZKtxLtTddm2CKEh+pb1Ye9cPXY6yIQpdKGs5KuCnPLZs58ugK3TpSSNXek6kHmaQ5/alElhkSt7JquAoz1eiizqpfqO9id6y5VnCqMu3TnGOVpE3s7gEdOOPP2TUiV64+un2cXa77N7m708lhL/itHa3J66yy2329uX8UDYpH/+zJBnQe1RLUm+QL9ARoCKW1p5nH4AAAAAElFTkSuQmCC"
+                    role="img" class="h5-img NameCard--eye--AdzzUEb" onclick="toggleInfoMask(true);"
+                    style="display: none;" id="eye-open"></image>
+                </view>
+                <view class="h5-div rax-view-v2 NameCard--btns--CUrAYGY">
+                  <text class="rax-text-v2 NameCard--btn--K_jflQT">修改</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="h5-div rax-view-v2 HealthCard--container--riOwtwy">
+            <view class="h5-div rax-view-v2 HealthCard--card--cLZEWaR">
+              <view class="h5-div rax-view-v2 Time--time--ovzGkhG">
+                <view class="h5-div rax-view-v2 Time--timeDate--MVxzVvv" style="flex-direction: row;"><span
+                    id="month"></span>月<span id="day"></span>日</view>
+                <view class="h5-div rax-view-v2 Time--timeHour--CTrDSaA"><span id="time"></span></view>
+              </view>
+              <view class="h5-div rax-view-v2">
+                <view class="h5-div rax-view-v2 QrCode--qrcode--S2b8aAv">
+                  <view class="h5-div rax-view-v2 QrCode--qrcodeImg--LGdbrhe"
+                    style="display: flex; justify-content: center; align-items: center;">
+                    <!-- <canvas id="canvas" type="2d" class="QrCode--qrcodeImg--LGdbrhe"> -->
+                    <img src="./static/b26f98d44882ea99faa72eff4c4a2bff.png"
+                      style="position: absolute; width: 18.013vw;">
+                    <img id="canvas" class="QrCode--qrcodeImg--LGdbrhe"
+                      src="
+                    data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaCAIAAAC5ZBI0AAAJoUlEQVR4nO3dMXLsuBVAUculHTqQFyGvxptwIK9RTmcS6JfxMXi8fU6qapLdrb7F4AF8+/j6/FvLf/7x7//7tf/8779+45X8ulvXfO68O0eeed61c1d168hP9PfbFwDwe8gZECFnQIScARFyBkTIGRAhZ0CEnAERcgZEvK//fGvGeu3cNPP6/Z47b2/S/dZrd9z6ftdufftP/O27OwMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyJ+WBWwdms6f8fOxPmtWfZbU/I7R7712h3n1oTcWm1yzszfvrszIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgYmtVAL/u1m7xM/fsf+Le+Wu9Jyc8kbszIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgwqqAPzk3gX1rhn7nyLf2zl+7NWF/7tM499pXWzPg7gyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIjYWhXQmzk+N/m9Y+aKglvf/rnz9tY5nDPzt+/uDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiPhhVcCtmeMnOrdL/a0nGNy65ld77UxP/O27OwMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLevr+/b1/DX2rm3vkzr2rHq+1hb0XBBO7OgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6AiLePr8/Fn3emmW85N50/88g7Zl7V2hPXG8xc9dH7/bo7AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIn54VsC5HdDXXm0efeYnee68t3bWv7XqY+3Wtz/zW9jh7gyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIh4uWcFzHwawBP37F+buZJh5s76M1cj7Jz31n+suzMgQs6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyDi/db87swp+Vvn7c1n79h5RzP/n9dmrq7ZcWtthrszIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMgYutZAWszd22f+Y52nHtGwY6Z3++rHXnnvDtuXbO7MyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIGLrWQE7s7/n9oNfH3nmZP+OJz7BYMe5p0zMvOYnnnfHzjW7OwMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgAg5AyLevr+/Dx361u7pM3dAv7XT/I5X+wZnrjfoHXlt53N2dwZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkRsrQq4tcf5mp3Xf93Mz3nt1nqDmVPyO+ftrXNwdwZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkS8fXx9Hjr0zEnoc27No/cm+8+ZOct+y8w1A2ueFQC8BDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoCIH54VcG4efW3mRPKOJ35WT5wa33FrrcLaE9eE3Loqd2dAhJwBEXIGRMgZECFnQIScARFyBkTIGRAhZ0DE+7nJ4Fv7st+av5955HPOfc63ZspnPqHi3PqKc5/zratydwZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkRsPStgx8y988+dd623K/+tWfaZ38JMt/6vzn1W7s6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoCIH1YFrJ2bk565d/4TJ79nmjlhP3NFwcxVLrd+3evzujsDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMiDq4KOOfVpsZvHfmcW9f8xHUdr7ZWYef9ujsDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi3j6+Phd/njlFfWua+dxr12Ye+YmvPcdKld9l55N0dwZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkRsrQp44tzw2hN31l8zYf/rzk3Y73jiqo+1c0d2dwZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFyBkS8fX9/L/7cmynfeUdr5468c94dMz/JW2a+o1v/VzNXqrg7AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIt7PHfrWXuPn7Fzzufd7bj575vuduRph5vqZmTv6e1YAwA/kDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIraeFTDTrbnwV9tLfu3WkxN29FaqPPG3sMPdGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRMgZEPH28fV56NAzJ7/Xbs1Yn9sdf+bU+Nqtz3nnyGu3nhVw67xrnhUA8AM5AyLkDIiQMyBCzoAIOQMi5AyIkDMgQs6AiK1VAU+cR585cT7zvGu9mfIdM9d1zPwNru1clbszIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIkDMg4odVAbfmldd6c/Az95I/Z+Y6hx0zfwu31kisnVuN4O4MiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIeD936CfOOq/P+2oT2DvOfRpP/L964jXPfArB+sjuzoAIOQMi5AyIkDMgQs6ACDkDIuQMiJAzIELOgIitZwXs8KyAP3ri7vg7nvhJzpzsn/lEjltPTnB3BkTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEXIGRGytCji3X/jazH3Kd8yc3j533h23Js5veeI7utUNd2dAhJwBEXIGRMgZECFnQIScARFyBkTIGRAhZ0DE2/f39+1r+EvN3Jf91nlnrih44pMEzpm5cmPmt+/uDIiQMyBCzoAIOQMi5AyIkDMgQs6ACDkDIuQMiHifudf4jvXM8bk56XOzzrd2x7/15IS1WysKer+Uc9+vZwUAbJEzIELOgAg5AyLkDIiQMyBCzoAIOQMi5AyIeF//eebe6ucm3deeuGf/E2e7nzj3f+uX8sRrPnded2dAhJwBEXIGRMgZECFnQIScARFyBkTIGRAhZ0DED6sC1s7NZ8+cV565d/45597vE9dmrI88czr/1vMNbn0a7s6ACDkDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoCIrVUBPTtz8Ldeu+PcNe+49VnN/DTO6f0/uzsDIuQMiJAzIELOgAg5AyLkDIiQMyBCzoAIOQMirAr4kyfOSZ97be/97pg593/r+QYz/zfcnQERcgZEyBkQIWdAhJwBEXIGRMgZECFnQIScARFvH1+fiz/fmsBee+Ju8a+2//2tI59z69OYuSv/zE/D3RkQIWdAhJwBEXIGRMgZECFnQIScARFyBkTIGRDxw6qAJ5o5gX1up/mZ590xc1f+tSfO7s9cE+JZAQByBlTIGRAhZ0CEnAERcgZEyBkQIWdAhJwBEf8DKueiZ7Y0o2oAAAAASUVORK5CYII=">
+                  </view>
+                </view>
+                <view style="color: #C2974C;" class="h5-div rax-view-v2 QrCode--qrcodeJiezhong--kjKvCyK">已完成新冠疫苗加强接种
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="h5-div rax-view-v2 XcCard--container--YPd3_EX">
+            <view class="h5-div rax-view-v2 XcCard--card--WQUyox_">
+              <view class="h5-div rax-view-v2 XcCard--hsjc--AxKSKX5">
+                <view class="h5-div rax-view-v2 XcCard--textWrap--S5RN0Vn">
+                  <view class="h5-div rax-view-v2 XcCard--title--tnv3PpH">1</view>
+                  <view class="h5-div rax-view-v2 XcCard--subTite--_WE8ICI">
+                    <view class="h5-div rax-view-v2 XcCard--subTiteTop--AuHMckV">天内</view>
+                    <view class="h5-div rax-view-v2 XcCard--subTiteBottom--zOzFdlS">阴性
+                    </view>
+                  </view>
+                </view>
+                <view class="h5-div rax-view-v2 XcCard--btn--lHHE6XA"> <text
+                    class="rax-text-v2 XcCard--btnText--GYmg4oo">核酸检测</text>
+                  <view class="h5-div rax-view-v2 XcCard--btnImageWrap--WSYBzOt">
+                    <image
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAANCAYAAAB7AEQGAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACoSURBVHgBdc/NDcIwDAXgF5cBOgoSEmfYgGxQOgFM0DIBG6AsgCImKGcqUUZgBAagDg5/gtZ9h8iRvji2gSTzTZog+Bb3tbPTCzqh18GLgDAjJFXmT2MV7ezEAbyRMtWg+b3kvi7lXSHljdHOP1+bbmsN9pAGVRSz9OfKyDJSXkntdGiKN4idrNEAmMvBmTTwt90Q+KJ8X69AtNVAzHNwppELMEcNxDwANmtjxcbpvXMAAAAASUVORK5CYII="
+                      role="img" class="h5-img XcCard--btnImage--am1SZCN"> </image>
+                  </view>
+                </view>
+              </view>
+              <view class="h5-div rax-view-v2 XcCard--line--wa5IWJE"></view>
+              <view class="h5-div rax-view-v2 XcCard--xck--AS6_HKG">
+                <view class="h5-div rax-view-v2 XcCard--title--tnv3PpH">行程卡</view>
+                <view class="h5-div rax-view-v2 XcCard--tip--i363MnS">查看7天内是否到过中高风险地区</view>
+                <view class="h5-div rax-view-v2 XcCard--btn--lHHE6XA" onclick="navigateToTripCard();">立即查看</view>
+              </view>
+            </view>
+          </view>
+          <view class="h5-div rax-view-v2 HsjcCard--container--Gbza6sL">
+            <view class="h5-div rax-view-v2 HsjcCard--card--ETvuupE">
+              <view class="h5-div rax-view-v2 HsjcCard--label--D3Cqlax">最近核酸检测</view>
+              <view class="h5-div rax-view-v2 HsjcCard--value--FAO5Qpe" style="flex-direction: row;"><span
+                  id="covid-test-date"></span>&nbsp;<span id="covid-test-time"></span>&nbsp;报告时间
+              </view>
+            </view>
+          </view>
+          <view class="h5-div rax-view-v2 YmCard--container--KImBVaN">
+            <view class="h5-div rax-view-v2 YmCard--card--Aiw4j3q">
+              <view class="h5-div rax-view-v2 YmCard--item--DQQuEPI">
+                <image
+                  src="data:image/png;base64,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"
+                  role="img" class="h5-img YmCard--img--OLJDJAB">
+                </image> <text class="rax-text-v2 YmCard--text--W7kwdgZ">疫苗接种记录</text>
+              </view>
+              <view class="h5-div rax-view-v2 YmCard--item--DQQuEPI">
+                <image
+                  src="data:image/png;base64,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"
+                  role="img" class="h5-img YmCard--img--OLJDJAB">
+                </image> <text class="rax-text-v2 YmCard--text--W7kwdgZ">核酸检测记录</text>
+              </view>
+              <view class="h5-div rax-view-v2 YmCard--item--DQQuEPI">
+                <image
+                  src="data:image/png;base64,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"
+                  role="img" class="h5-img YmCard--img--OLJDJAB">
+                </image> <text class="rax-text-v2 YmCard--text--W7kwdgZ">核酸采样点查询</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="h5-div rax-view-v2 Footer--footer--vKpblbN">
+          <view class="h5-div rax-view-v2 Footer--telephone--NX5j25N">
+            <image
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAA6CAMAAAD4IJuIAAAAflBMVEUAAABTZIY+VGs+U2o/U2s/U2s/VGs/VW1FWHBHXHI/VGs+U2s+U2s/VGtMZH4/U2o+VGs/U2s/VGs/VWxCWHBGYHk+VGo+U2s+VGs+U2o+VGs/VWtBVGxAV2s/VWo/VGs/U2o/U2s/VGs+U2xCVG1CVGw/Vm8/VGs+VWw+U2qORS0RAAAAKXRSTlMABfj07dpzMRQNhee5ZgripY1+Th4I1M7KwJREPCRIxK+camBGKiire8OuLSMAAAFiSURBVEjHnZTZcoMwDEUdYwhmCUvCDk2ztvr/H+w0QzMoAin0PJ8xF/tKasTPj45p4o16hyLQ8KA+KJmPBP5wfUnenWBCI9kVIGJebwFjLGdbB17wOP0Cr4TcbX4CYc/oNdVTRnepnjC6A5Td/3U5TMiEaajeMnpKbMO1LCD2li0vYKpBcVgk6xw1QHrWs5LIcNklrrguEptwojt2XRpP1LeojYXol+uO90gFWKzBBZPIYQrqjLw8KnGvBrDqb310vL7J6VfFKfDIZuKKZxaZvPzMIOgHjfzSilVANMXY7z6+zD5chP1o9yt74eNbe6r7IfbrQXXPCzvRu+0Ao0v8MdoFhoicvzlyfkrju5wf09sPGd0Z6Jw7jP+lCJ1m/AP195pLT+mW8wSze8os6bma454s6NeF2Y1mbXdxKL+Bonu1SJ8Qm51IG2icZCvNYzo5OiiUyK01Y3vv6j36c5Z5zxw/UAOgL6jnWpoAAAAASUVORK5CYII="
+              role="img" class="h5-img Footer--telephoneImg--t2UjKQ6"></image>
+            <view class="h5-div rax-view-v2 Footer--telephoneText--BujMd7m" id="hotline">
+            </view>
+          </view>
+          <view class="h5-div rax-view-v2 Footer--city--nCx6Zci">- 本服务由当地人民政府提供 -</view>
+          <view class="h5-div rax-view-v2 Footer--pro--OsqVLQc">
+            <view class="h5-div rax-view-v2 Footer--problem--FQmxnPX">申诉入口</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</page>
+<script>
+  const hotline_map = {
+    "杭州": "0571-12345",
+    "宁波": "0574-12345",
+    "温州": "0577-12345",
+    "湖州": "0572-12345",
+    "嘉兴": "0573-12345",
+    "绍兴": "0575-12345",
+    "金华": "0579-12345",
+    "衢州": "0570-12345",
+    "舟山": "0580-12345",
+    "台州": "0576-12345",
+    "丽水": "0578-12345",
+  };
+
+  setDynamicTime("#month", 5, 7);
+  setDynamicTime("#day", 8, 10);
+  setDynamicTime("#time", 11, 19);
+
+  const traceback_hours = 6 + Math.random() * 8;
+  const d = new Date(new Date().getTime() - traceback_hours * 3600 * 1000);
+  setStaticTime("#covid-test-time", 11, 16, traceback_hours);
+  document.getElementById("covid-test-date").innerText = (d.getMonth() + 1) + "月" + d.getDate() + "日";
+
+  addStorageField("_zj_city", "#city", "城市", "宁波", (x) => "当前地区：" + x, (x) => {
+    x = x.trim();
+    if (x in hotline_map) {
+      document.getElementById("hotline").innerText = "服务热线：" + hotline_map[x];
+    } else {
+      document.getElementById("hotline").innerText = "服务热线：12345";
+    }
+  });
+
+  addStorageField("_name", "#name", "名字", "习近平");
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", (x) =>
+    x.slice(0, 4) + " " + x.slice(4, 8) + " " +
+    x.slice(8, 12) + " " + x.slice(12, 16) + " " + x.slice(16)
+  );
+  addStorageField("_idcard", "#masked-idcard", "身份证号", "110101195306153019", (x) => "**** **** **** **** **");
+  
+  function toggleInfoMask(t) {
+    document.getElementById("eye-open").style.display = t ? "none" : "block";
+    document.getElementById("idcard").style.display = t ? "none" : "block";
+    document.getElementById("eye-closed").style.display = t ? "block" : "none";
+    document.getElementById("masked-idcard").style.display = t ? "block" : "none";
+  }
+
+  initServiceWorker("zhejiang-hc");
+</script>

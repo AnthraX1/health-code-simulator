@@ -1,0 +1,16 @@
+{
+  "short_name": "天津数字防疫",
+  "name": "天津数字防疫",
+  "icons": [
+    {
+      "src": "static/img/logo.png",
+      "type": "image/png",
+      "sizes": "460x460"
+    }
+  ],
+  "id": "ilovexjp-tianjin-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "天津数字防疫模拟"
+}

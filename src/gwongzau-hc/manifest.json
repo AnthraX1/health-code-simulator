@@ -1,0 +1,16 @@
+{
+  "short_name": "穗康码",
+  "name": "穗康码",
+  "icons": [
+    {
+      "src": "static/logo.png",
+      "type": "image/png",
+      "sizes": "140x140"
+    }
+  ],
+  "id": "ilovexjp-gwongzau-hc-simulator",
+  "start_url": "./checkin.html",
+  "display": "standalone",
+  "scope": "/",
+  "description": "穗康码模拟"
+}

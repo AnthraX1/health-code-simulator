@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="en" class="pixel-ratio-2 retina android android-6 android-6-0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#3489eb">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>苏康码</title>
+<link rel="stylesheet" href="./plug/bootstrap-4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="./plug/mobileSelect/mobileSelect.css">
+<link rel="stylesheet" href="./css/index20220509.css">
+<link rel="manifest" href="manifest.json">
+<script src="../common/base.js"></script>
+
+<div style="top: 0; left: 0; width: 100%; height: env(safe-area-inset-top, 0); background-color: #3489eb;"></div>
+<div class="wrapper">
+  <div class="title-pic hide">
+    <div class="icons">
+      <div class="icon"></div>
+      <div>苏康码</div>
+    </div>
+  </div>
+  <form id="confirm14day" class="hide">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary hide" id="confirm14day_cancel">返回</button>
+      <div class="icons"></div>
+      <div class="code-name">
+        <div id="confirm-name"></div>
+      </div>
+    </div>
+    <div class="form-groups">
+      <div class="spacing"></div>
+      <p class="confirm14day-info">尊敬的用户，由于您申报信息已超过<span
+          class="update-fday-span">14</span>天，请您主动更新相关信息，否则将影响正常使用，感谢您的配合！请按“确定”更新！
+    </div>
+    <div id="confirm14day_btn">确定</div>
+  </form>
+  <form class="hide" id="fill">
+    <div class="pic"><button type="button" id="cancel" class="btn btn-outline-secondary hide">返回</button>
+      <div class="icons"></div>
+    </div>
+    <div class="form-groups">
+      <div class="form-group2">
+        <div class="form-group" id="grp_10">
+          <div class="field-label"><span class="req">*</span>填报人姓名：</div><input type="text" class="form-control"
+            placeholder="请输入" id="name" readonly="readonly" maxlength="30">
+        </div>
+        <div class="form-group" id="grp_11">
+          <div class="field-label"><span class="req">*</span>证件号：</div><input type="text" class="form-control"
+            placeholder="请输入" id="cardid" readonly="readonly" maxlength="30">
+        </div>
+        <div class="form-group" id="grp_12">
+          <div class="field-label"><span class="req">*</span>手机号码：</div>
+          <div class="input-group mb-3"><input type="text" class="form-control" placeholder="请输入" id="telnum"
+              readonly="readonly" maxlength="11">
+            <div class="input-group-append"><button type="button" class="btn btn-primary" id="editPhoneNum">更新</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spacing"></div>
+      <div class="form-group2">
+        <div class="form-group" id="grp_1">
+          <div class="field-label"><span class="req">*</span>1. 您是从哪里来江苏的？<p style="color: red;">(已在江苏居住7天以上请选择现居住地)
+          </div><input type="text" class="hide" id="arrivalLocation"> <input type="text" class="hide"
+            id="arrivalLocationCode">
+          <div id="trigger2">请选择</div>
+        </div>
+        <div class="form-group" id="grp_2">
+          <div class="field-label"><span class="req">*</span>2. 到江苏后居住地区(选择到乡镇/街道):</div>
+          <div id="trigger3">请选择</div><input type="text" class="hide" id="currentLocation"> <input type="text"
+            class="hide" id="currentLocationCode">
+        </div>
+        <div class="form-group" id="grp_3">
+          <div class="field-label"><span class="req">*</span>3. 到达江苏后详细地址(具体到门牌号码)：</div><input type="text"
+            class="form-control" placeholder="请输入" id="currentAddress" maxlength="40">
+        </div>
+        <div class="form-group" id="grp_6">
+          <div class="field-label"><span class="req">*</span>4. 7天内是否接触过发热咳嗽的人员？</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="grp_7">
+          <div class="field-label"><span class="req">*</span>5. 是否有发热、干咳、乏力、鼻塞流涕、咽痛、嗅觉/味觉减退、结膜炎、肌痛、腹泻等症状？</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="grp_8">
+          <div class="field-label"><span class="req">*</span>6. 是否同行人员无手机号，如儿童、老人、海外归国人员？</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio" id="isgrp_8"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio" id="unGrp_8"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group hide" id="grp_9">
+          <div class="field-label"><span class="req">*</span>7. 同行人员中是否有发热或咳嗽乏力等症状？</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spacing"></div>
+      <div class="form-group2">
+        <div class="form-group" id="grp_13">
+          <div class="field-label"><span class="req">*</span>知情同意：</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio">
+              <div class="label2">
+                根据《中华人民共和国传染病防治法》和《江苏省人民代表大会常务委员会关于依法防控新型冠状病毒感染肺炎疫情切实保障人民群众生命健康安全的决定》等有关法律规定，请您如实填报各项信息。瞒报信息可能造成您的不便，甚至可能承担相关法律责任，敬请配合！<br>“苏康码”的申报信息有效期为<span
+                  class="update-fday-span">14</span>天，请您于<span
+                  class="update-fday-span">14</span>天后按提示更新相关信息，否则将影响正常使用！<br>本系统实行对你填报信息真实校验，登录本系统即为授权。<br><a
+                  class="sjly2"
+                  href="http://www.jszwfw.gov.cn/jmopen/webapp/html5/sjly/index.html">数据来源:全国一体化政务服务平台、个人申报信息和江苏省公共管理机构。</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="grp_14">
+          <div class="field-label"><span class="req"></span></div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio2"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label2">本人知情同意</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="getcode">激活领码</div>
+    <p class="cutfield">应新型冠状病毒感染的肺炎疫情防控需要，所有来苏返苏人员需进行健康状况主动申报，请如实填报，否则将承担相应后果，感谢您的理解和配合！
+  </form>
+  <form class="hide" id="children">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button>
+      <div class="icons"></div>
+    </div>
+    <div class="form-groups">
+      <div class="form-group2">
+        <div class="form-group" id="childrengrp_10">
+          <div class="field-label"><span class="req">*</span>新增填报人姓名：</div><input type="text" class="form-control"
+            placeholder="请输入" id="childrenName" maxlength="30">
+        </div>
+        <div class="form-group" id="childrengrp_11">
+          <div class="field-label"><span class="req">*</span>新增填报人身份证号：</div><input type="text" class="form-control"
+            placeholder="请输入" id="childrenCardid" maxlength="18">
+        </div>
+        <div class="form-group hide child-pin-show" id="childrengrp_13" style="border: 0px;">
+          <div class="field-label"><span class="req">*</span>手机号校验：</div><input type="text"
+            style="border: 1px solid #ced4da;" class="form-control" id="childPhone" placeholder="请输入手机号" maxlength="11"
+            required=""><br>
+          <div class="input-group"><input type="text" style="border: 1px solid #ced4da;" class="form-control"
+              placeholder="请输入验证码" id="childPin" maxlength="6" required="">
+            <div class="input-group-append"><button type="button" class="btn btn-link" id="getChildPin"
+                style="width: 105px;">获得验证码</button></div>
+          </div>
+        </div>
+        <div class="form-group" id="childrengrp_12">
+          <div class="field-label"><span class="req">*</span>新增填报人与本人关系？</div><input type="text" class="hide"
+            id="relationValue">
+          <div id="relationSelect">请选择</div>
+        </div>
+      </div>
+      <div class="spacing"></div>
+      <div class="form-group2">
+        <div class="form-group" id="childrengrp_1">
+          <div class="field-label"><span class="req">*</span>1. 您是从哪里来江苏的？<p style="color: red;">(已在江苏居住7天以上请选择现居住地)
+          </div><input type="text" class="hide" id="childrenarrivalLocation"> <input type="text" class="hide"
+            id="childrenarrivalLocationCode">
+          <div id="childtrigger2">请选择</div>
+        </div>
+        <div class="form-group" id="childrengrp_2">
+          <div class="field-label"><span class="req">*</span>2. 到江苏后居住地区(选择到乡镇/街道):</div>
+          <div id="childtrigger3">请选择</div><input type="text" class="hide" id="childrencurrentLocation"> <input
+            type="text" class="hide" id="childrencurrentLocationCode">
+        </div>
+        <div class="form-group" id="childrengrp_3">
+          <div class="field-label"><span class="req">*</span>3. 到达江苏后详细地址(具体到门牌号码)：</div><input type="text"
+            class="form-control" placeholder="请输入" id="childrencurrentAddress" maxlength="40">
+        </div>
+        <div class="form-group" id="childrengrp_6">
+          <div class="field-label"><span class="req">*</span>4. 7天内是否接触过发热咳嗽的人员？</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="childrengrp_7">
+          <div class="field-label"><span class="req">*</span>5. 是否有发热、干咳、乏力、鼻塞流涕、咽痛、嗅觉/味觉减退、结膜炎、肌痛、腹泻等症状？</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="childrenGetCode">激活领码</div>
+    <p class="cutfield">应新型冠状病毒感染的肺炎疫情防控需要，所有来苏返苏人员需进行健康状况主动申报，请如实填报，否则将承担相应后果，感谢您的理解和配合！
+  </form>
+  <form class="hide" id="add">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button>
+      <div class="icons"></div>
+      <div id="toptitle">
+        <h1 class="h1title">每日分0点-12点，12-24点<br>两个时间段报备两次，请如实填写！</h1>
+      </div>
+    </div>
+    <div class="form-groups">
+      <div class="form-group2">
+        <div class="form-group" id="addgrp_1">
+          <div class="field-label"><span class="req">*</span>体温是否超过<span id="degree">37.3</span>℃</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="addgrp_2">
+          <div class="field-label"><span class="req">*</span>是否入境未满28天</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="addgrp_3">
+          <div class="field-label"><span class="req">*</span>是否有7天内国内中高风险地区旅居史</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="addgrp_4">
+          <div class="field-label"><span class="req">*</span>是否有江苏需管控地区旅居史</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="addgrp_5">
+          <div class="field-label"><span class="req">*</span>是否为江苏常住或暂住人口</div>
+          <div class="ui-controlgroup">
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="1"
+                  href="javascript:;"></a></span>
+              <div class="label">是</div>
+            </div>
+            <div class="ui-radio"><span class="jqradiowrapper"><a class="jqradio" value="0"
+                  href="javascript:;"></a></span>
+              <div class="label">否</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="addgrp_6">
+          <div class="field-label">本人联系号码</div>
+          <div class="ui-controlgroup"><input type="text" class="form-control" placeholder="请输入手机号" id="addTelnum"
+              maxlength="11"></div>
+        </div>
+      </div>
+      <div id="addSave">保存</div>
+    </div>
+    <p class="sjly"><a
+        href="http://www.jszwfw.gov.cn/jmopen/webapp/html5/sjly/index.html">数据来源:全国一体化政务服务平台、个人申报信息和江苏省公共管理机构。</a>
+  </form>
+  <form class="hide" id="codes">
+    <div class="pic">
+      <div class="icons">
+        <div class="icon" onclick="navigateHome();"></div>
+        <div onclick="navigateHome();">苏康码<span id="codecolor"></span></div>
+        <div class="tel" id="code-name"></div>
+      </div>
+      <div class="code-name">
+        <div id="code-tel"></div>
+        <div id="code-id"></div>
+      </div>
+    </div>
+    <div class="gxts-layout">
+      <div>
+        <p class="gxts">若您有近7天中高风险地区旅居史(含境外)请及时信息更新和风险报备。
+      </div>
+    </div>
+    <div class="code-layout">
+      <div class="shadow-layout">
+        <p class="text-center" id="now-time">
+        <div id="ymjz">
+          <div class="codeimg"></div>
+          <div id="output" aria-label="" role="img" style="cursor: pointer;"></div>
+        </div>
+        <div class="uncityData">
+          <div class="tips">
+            <p class="green" id="codes-text">
+          </div>
+          <p id="remainDays">
+          <p id="rjmj">
+          <p id="jjgl">
+        </div>
+        <div class="cityData hide">
+          <p class="red">如需使用苏康码相关功能，请 <span id="cityDataSubmit">更新信息</span>
+        </div>
+      </div>
+    </div>
+    <div class="slider-layout">
+      <div class="stop-center" id="slider-sz">
+        <div class="slider-left">
+          <div class="hs-list">
+            <div class="shadow-layout">
+              <div id="hs-list" class="border-bottom"></div>
+              <p class="hs-tip">数据来源：江苏省卫生健康委员会，反映近30天内最近一次核酸检测情况，数据在不断汇聚和完善中。
+            </div>
+            <div class="hsym-shadow-layout">
+              <div class="slider-btn" id="hsjcJSBtn">
+                <div class="hs-detail"></div>核酸检测所有信息
+              </div>
+            </div>
+            <div class="hsym-shadow-layout hs-goback">
+              <div class="slider-btn">
+                <div class="hsym-back"></div>返回主页面
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-center">
+          <div class="hsym-refresh">
+            <div></div>更新
+          </div>
+          <div class="hsym-layout uncityData">
+            <div class="hs-layout">
+              <div class="shadow-layout-hsym" id="hs-layout">
+                <div class="hsym-title">核酸(省内)</div>
+                <div class="hsym-contont" id="hs-content">
+                  <div class="no-hsym">暂未查询到数据</div>
+                </div>
+                <div class="hsym-footer">
+                  <div class="turn-right-icon"></div><span id="hs-footer">右滑刷新</span>
+                </div>
+              </div>
+            </div>
+            <div class="ym-layout">
+              <div class="shadow-layout-hsym" id="ym-layout">
+                <div class="hsym-title">新冠疫苗</div>
+                <div class="hsym-contont" id="ym-content">
+                  <div class="no-hsym">暂未查询到数据</div>
+                </div>
+                <div class="hsym-footer"><span id="ym-footer">左滑刷新</span>
+                  <div class="turn-left-icon"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="xingcheng uncityData">
+            <div class="shadow-layout" id="xingchengBtn">
+              <div class="xingcheng-layout">
+                <div class="xingcheng-pic"></div>
+                <div>通信大数据行程卡</div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-layout uncityData">
+            <div class="shadow-layout">
+              <div class="fxbb">
+                <div class="fxsb-layout border-right" id="goAdd">
+                  <div class="bottoms-pic addhea"></div>
+                  <div class="fxsb-center">
+                    <p class="fxsb-right-top">风险报备
+                  </div>
+                </div>
+                <div class="fxsb-layout" id="reSubmit">
+                  <div class="bottoms-pic updata"></div>
+                  <div class="fxsb-center">
+                    <p class="fxsb-right-top">信息更新
+                  </div>
+                </div>
+              </div>
+              <div class="bottoms-btns">
+                <div id="addChildBtn">
+                  <div class="bottoms-pic addchild"></div>
+                  <p>家庭成员
+                </div>
+                <div id="hsjcBtn">
+                  <div class="bottoms-pic kangti"></div>
+                  <p>核酸/抗体<br>检测查询(全国)
+                </div>
+                <div id="xgymqgBtn">
+                  <div class="bottoms-pic yimiao"></div>
+                  <p>新冠疫苗<br>接种查询(全国)
+                </div>
+                <div id="queryChinaBtn">
+                  <div class="bottoms-pic guo"></div>
+                  <p>国家政务服务<br>平台健康码
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="sjly"><a
+              href="http://www.jszwfw.gov.cn/jmopen/webapp/html5/sjly/index.html">数据来源:全国一体化政务服务平台、个人申报信息和江苏省公共管理机构。</a>
+          <div class="jsm-footer">
+            <p class="code-footer" id="czsm" style="color: #007bff;">操作说明
+            <p class="code-footer">本服务由江苏省疾病预防控制中心提供
+            <p class="code-footer">--- 服务热线：12345 ---
+          </div>
+        </div>
+        <div class="slider-right">
+          <div class="ym-list">
+            <div class="shadow-layout">
+              <div class="xgym-modal"></div>
+              <p class="hs-tip">数据来源：江苏省预防接种综合服务管理信息系统，仅可查询江苏省内的新冠疫苗接种信息。
+            </div>
+            <div class="hsym-shadow-layout ym-goback">
+              <div class="slider-btn">
+                <div class="hsym-back"></div>返回主页面
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <form class="hide" id="addHit">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button>
+      <div class="icons"></div>
+    </div>
+    <div class="panel-group" id="accordion"></div>
+  </form>
+  <form class="hide" id="fillInfo">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button>
+      <div class="icons"></div>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <div class="field-label">填报人姓名：</div>
+        <h6 class="text-right" id="fillinfo-username"></h6>
+      </div>
+      <div class="form-group">
+        <div class="field-label">身份证号:</div>
+        <h6 class="text-right" id="fillinfo-userid"></h6>
+      </div>
+      <div class="form-group" id="fill-parent-grp">
+        <div class="field-label">手机号码：</div>
+        <h6 class="text-right" id="fillinfo-phone"></h6>
+      </div>
+      <div class="form-group hide" id="fill-child-grp">
+        <div class="field-label">新增填报人与本人关系？</div>
+        <h6 class="text-right" id="fillinfo-relation"></h6>
+      </div>
+      <div class="form-group">
+        <div class="field-label">1. 7天内您是从哪里来江苏的？</div>
+        <h6 class="text-right" id="fillinfo-arrivalLocation"></h6>
+      </div>
+      <div class="form-group">
+        <div class="field-label">2. 到江苏后居住地区:</div>
+        <h6 class="text-right" id="fillinfo-currentLocation"></h6>
+      </div>
+      <div class="form-group">
+        <div class="field-label">3. 到达江苏后详细地址：</div>
+        <h6 class="text-right" id="fillinfo-currentAddress"></h6>
+      </div>
+      <div class="form-group">
+        <div class="field-label">4. 7天内是否接触过发热咳嗽的人员？</div>
+        <h6 class="text-right" id="fillinfo-r3data"></h6>
+      </div>
+      <div class="form-group">
+        <div class="field-label">5. 是否有发热、干咳、乏力、鼻塞流涕、咽痛、嗅觉/味觉减退、结膜炎、肌痛、腹泻等症状？</div>
+        <h6 class="text-right" id="fillinfo-r4data"></h6>
+      </div>
+      <div class="form-group">
+        <div class="field-label">6. 是否同行人员无手机号，如儿童、老人、海外归国人员？</div>
+        <h6 class="text-right" id="fillinfo-r6data"></h6>
+      </div>
+      <div class="form-group hide" id="fillinfo-r7dataGrp">
+        <div class="field-label">7. 同行人员中是否有发热或咳嗽乏力等症状？</div>
+        <h6 class="text-right" id="fillinfo-r7data"></h6>
+      </div>
+    </div>
+  </form>
+  <form class="hide" id="xgymqg">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button>
+      <div class="icons"></div>
+      <div class="code-name">
+        <div id="xgymqg-name"></div>
+        <div id="xgymqg-time"></div>
+      </div>
+    </div>
+    <p style="padding:16px;margin: 0;">新冠疫苗接种查询(全国)
+    <div class="modal-body" style="background-color: white;" id="xgymqg-body"></div>
+  </form>
+  <form class="hide" id="cncodes">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button>
+      <div class="icons"></div>
+      <div class="code-name">
+        <div id="cncode-name">黄书伟</div>
+        <div id="cnnow-time"></div>
+      </div>
+    </div>
+    <div class="code-layout">
+      <div id="cn-code"></div>
+      <div class="gjzw hide"></div>
+      <div id="cn-layout"></div>
+      <p class="mb-0">数据来源:国家政务服务平台
+    </div>
+  </form>
+  <form class="hide" id="hsjc">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button>
+      <div class="icons"></div>
+      <div class="code-name">
+        <div id="hscj-name"></div>
+        <div id="hscj-time"></div>
+      </div>
+    </div>
+    <p>抗体、核酸检测信息
+    <div class="modal-body">
+      <div class="form-group">
+        <div class="field-label">是否做核酸检测：</div>
+        <h6 class="text-right" id="hs"></h6>
+      </div>
+      <div class="form-group hs-data hide">
+        <div class="field-label">检测结果：</div>
+        <h6 class="text-right" id="hsjcjg"></h6>
+      </div>
+      <div class="form-group hs-data hide">
+        <div class="field-label">检测机构：</div>
+        <h6 class="text-right" id="hsjcjgmc"></h6>
+      </div>
+      <div class="form-group hs-data hide">
+        <div class="field-label">检测时间：</div>
+        <h6 class="text-right" id="hsjcsj"></h6>
+      </div>
+      <div class="form-group border-top">
+        <div class="field-label">是否做抗体检测:</div>
+        <h6 class="text-right" id="kt"></h6>
+      </div>
+      <div class="form-group kt-data hide">
+        <div class="field-label">检测结果：</div>
+        <h6 class="text-right" id="ktjcjg"></h6>
+      </div>
+      <div class="form-group kt-data hide">
+        <div class="field-label">检测机构：</div>
+        <h6 class="text-right" id="ktjcjgmc"></h6>
+      </div>
+      <div class="form-group kt-data hide">
+        <div class="field-label">检测时间：</div>
+        <h6 class="text-right" id="ktjcsj"></h6>
+      </div>
+      <p class="hs-tip">数据来源：国家卫生健康委员会，反映7天内核酸及抗体检测情况，数据在不断汇聚和完善中。
+    </div>
+  </form>
+  <form class="hide" id="xgym">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button>
+      <div class="icons"></div>
+      <div class="code-name">
+        <div id="xgym-name"></div>
+        <div id="xgym-time"></div>
+      </div>
+    </div>
+    <p>新冠疫苗接种信息（江苏省）
+    <div class="modal-body">
+      <div class="xgym-modal"></div>
+      <p class="hs-tip">数据来源：江苏省预防接种综合服务管理信息系统，仅可查询江苏省内的新冠疫苗接种信息。
+    </div>
+  </form>
+  <form class="hide" id="hsjcjs">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button></div><iframe frameborder="0"
+      height="100%" width="100%" scrolling="yes" src=""></iframe>
+  </form>
+  <form class="hide" id="xingcheng">
+    <div class="pic"><button type="button" class="btn btn-outline-secondary">返回</button></div><iframe frameborder="0"
+      height="100%" width="100%" scrolling="yes" src=""></iframe>
+  </form>
+</div>
+<div class="modal fade" id="myModal1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">家庭成员管理</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: #777;">(一张附属卡只能被一张主卡绑定)
+        <div id="famliyAddBtn" style="display: none;">
+          <div class="famliy-add"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">确认填写信息</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>新增填报人姓名：</div>
+          <h6 class="text-right" id="childrengrp_1Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>新增身份证号:</div>
+          <h6 class="text-right" id="childrengrp_2Text"></h6>
+        </div>
+        <div class="form-group hide child-pin-show">
+          <div class="field-label"><span class="req">*</span>手机号校验</div>
+          <h6 class="text-right"><span id="childrengrp_13Text1"></span> <span style="color: #ced4da;">/</span> <span
+              id="childrengrp_13Text2"></span></h6>
+        </div>
+        <div class="form-group" id="child-fill">
+          <div class="field-label"><span class="req">*</span>新增填报人与本人关系？</div>
+          <h6 class="text-right" id="childrengrp_3Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>1. 7天内您是从哪里来江苏的？</div>
+          <h6 class="text-right" id="childrengrp_4Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>2. 到江苏后居住地区:</div>
+          <h6 class="text-right" id="childrengrp_5Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>3. 到达江苏后详细地址：</div>
+          <h6 class="text-right" id="childrengrp_6Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>4. 7天内是否接触过发热咳嗽的人员？</div>
+          <h6 class="text-right" id="childrengrp_9Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>5. 是否有发热、干咳、乏力、鼻塞流涕、咽痛、嗅觉/味觉减退、结膜炎、肌痛、腹泻等症状？</div>
+          <h6 class="text-right" id="childrengrp_10Text"></h6>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" id="saveFamilyMember">确定</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal3">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">确认填写信息</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>填报人姓名：</div>
+          <h6 class="text-right" id="grp_10Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>身份证号:</div>
+          <h6 class="text-right" id="grp_11Text"></h6>
+        </div>
+        <div class="form-group" id="parent-fill">
+          <div class="field-label"><span class="req">*</span>手机号码：</div>
+          <h6 class="text-right" id="grp_12Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>1. 7天内您是从哪里来江苏的？</div>
+          <h6 class="text-right" id="grp_1Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>2. 到江苏后居住地区:</div>
+          <h6 class="text-right" id="grp_2Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>3. 到达江苏后详细地址：</div>
+          <h6 class="text-right" id="grp_3Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>4. 7天内是否接触过发热咳嗽的人员？</div>
+          <h6 class="text-right" id="grp_6Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>5. 是否有发热、干咳、乏力、鼻塞流涕、咽痛、嗅觉/味觉减退、结膜炎、肌痛、腹泻等症状？</div>
+          <h6 class="text-right" id="grp_7Text"></h6>
+        </div>
+        <div class="form-group" id="grp_8Group">
+          <div class="field-label"><span class="req">*</span>6. 是否同行人员无手机号，如儿童、老人、海外归国人员？</div>
+          <h6 class="text-right" id="grp_8Text"></h6>
+        </div>
+        <div class="form-group hide" id="grp_9Group">
+          <div class="field-label"><span class="req">*</span>7. 同行人员中是否有发热或咳嗽乏力等症状？</div>
+          <h6 class="text-right" id="grp_9Text"></h6>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" id="fillSubmit">确定</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal4">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="commitTip">
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" id="queryInfoBtn">查看</button> <button
+          type="button" class="btn btn-primary" id="reSubmitConf">更新</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal5">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="commitDayTip">
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" id="reDatHis">查看</button> <button
+          type="button" class="btn btn-primary disabled" id="reDaySubmit">报备</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal6">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">确认填写信息</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>体温是否超过37.3℃</div>
+          <h6 class="text-right" id="addgrp_1Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>是否入境未满28天</div>
+          <h6 class="text-right" id="addgrp_2Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>是否有7天内国内中高风险地区旅居史</div>
+          <h6 class="text-right" id="addgrp_3Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>是否有江苏需管控地区旅居史</div>
+          <h6 class="text-right" id="addgrp_4Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label"><span class="req">*</span>是否为江苏常住或暂住人口</div>
+          <h6 class="text-right" id="addgrp_5Text"></h6>
+        </div>
+        <div class="form-group">
+          <div class="field-label">本人联系号码</div>
+          <h6 class="text-right" id="addgrp_6Text"></h6>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" id="addSubmit">确定</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal7">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">公告</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;近期发现部分人员利用苏康码"增加家庭成员"功能恶意绑定附卡行为，此行为已涉嫌违反相关法律关于个人隐私信息保护的规定。望用户在使用此功能时，确保已获得所绑定人员同意，否则<span
+            class="text-danger">将有可能被追究法律责任，并被列入"苏康码"使用黑名单</span>，特此公告！
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" id="warning-confirm">确定</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal8">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">请填写验证码</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+        <p>
+      </div>
+      <div class="modal-body">
+        <p style="color: #777;">验证码已发送至 <span id="xcmphone"></span>
+        <div class="xcyyzminputs"><input class="code" type="number" oninput="if(value.length>6)value=value.slice(0,6)"
+            placeholder="------"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal9" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">更新手机号</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+        <p>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" id="grp_12"><input type="text" class="form-control" id="newPhone" placeholder="请输入新手机号"
+            maxlength="11" required><br>
+          <div class="input-group mb-3"><input type="text" class="form-control" placeholder="请输入验证码" id="newPin"
+              maxlength="6" required>
+            <div class="input-group-append"><button type="button" class="btn btn-link" id="getNewPin"
+                style="width: 105px;">获得验证码</button></div>
+          </div>
+          <hr>
+          <div class="form-check"><input class="form-check-input" type="checkbox" value="1" id="newPhoneCheck"> <label
+              class="form-check-label" for="newPhoneCheck">慎重提示：请如实更新，自觉遵守疫情防控政策，否则造成的后果由本人承担！</label></div>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" id="checkPin"
+          disabled="disabled">确定</button> <button type="button" class="btn btn-outline-dark"
+          id="cancelEditPhone">取消</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal10" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">提示</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+        <p>
+      </div>
+      <div class="modal-body" id="tipModal"></div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">确定</button></div>
+    </div>
+  </div>
+</div>
+<script src="./plug/jquery/jquery.min.js"></script>
+<script src="./plug/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+<script src="./plug/mobileSelect/mobileSelect.js"></script>
+<script src="./plug/layer/layer.js"></script>
+<script src="./plug/jquery.qrcode.min.js"></script>
+<script src="./plug/aes.js"></script>
+<script src="./static/all1651809278.min.js"></script>
+<script src="./dist/skm1665467361.min.js"></script>
+
+<style>
+  .cover-view {
+    position: fixed;
+    max-height: 50vh;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 12.4999px;
+    background-color: #575be0;
+    border-top-left-radius: 12.4999px;
+    border-top-right-radius: 12.4999px;
+    font-size: 16.125px;
+    color: #fff;
+    transition: max-height ease .3s;
+    -moz-transition: max-height ease .3s;
+    -webkit-transition: max-height ease .3s;
+    -o-transition: max-height ease .3s
+  }
+
+  .name {
+    transition: opacity ease .3s;
+    -moz-transition: opacity ease .3s;
+    -webkit-transition: opacity ease .3s;
+    -o-transition: opacity ease .3s;
+    margin-bottom: 5px
+  }
+
+  .success {
+    color: #79e05b;
+    margin-bottom: 5px
+  }
+
+  .popup-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 !important;
+    margin-top: 7px
+  }
+
+  .move-line {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 12px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    font-size: 0;
+    color: #333;
+    text-align: center;
+    font-weight: 400
+  }
+
+  .btn_desc {
+    font-size: 14.25px
+  }
+
+  .move-line:first-child {
+    margin-right: 20px
+  }
+
+  .move-line img {
+    width: 20.625px;
+    height: 20.625px;
+    margin-right: 6px
+  }
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top: 0;
+    border-bottom-color: #fff;
+    transition: transform .3s;
+    -moz-transition: transform .3s;
+    -webkit-transition: transform .3s;
+    -o-transition: transform .3s
+  }
+
+  .down {
+    transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg)
+  }
+
+  .toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+</style>
+<div class="cover-view" id="cover" style="display:none;">
+  <div class="toggle" id="toggle">
+    <div class="triangle down" id="triangle" onclick="$('#cover').hide();"></div>
+  </div>
+  <div class="success" id="register">登记成功</div>
+  <div id="name" class="name"></div>
+  <div id="address" class="address"></div>
+  <div class="popup-card">
+    <div class="move-line" onclick="navigateToTripCard();"><img
+        src="data:image/png;base64,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">
+      <div class="btn_desc">大数据行程卡</div>
+    </div>
+    <div class="move-line"><img
+        src="data:image/png;base64,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">
+      <div class="btn_desc">来访登记</div>
+    </div>
+  </div>
+</div>
+<script>
+  initServiceWorker("skm");
+</script>

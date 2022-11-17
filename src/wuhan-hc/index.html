@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<title>湖北健康码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#338FF1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/QRlogo.png">
+<link rel="apple-touch-icon" sizes="676x676" href="./static/QRlogo.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/g-icon.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+
+<view>
+  <view class="weui-navigation-bar">
+    <view class="weui-navigation-bar__placeholder"></view>
+    <view class="weui-navigation-bar__inner" style="color: white;background: #338FF1;">
+      <view class="weui-navigation-bar__left">
+        <view bind:tap="backto" slot="left" style="width: 5.333vw;height: 9.333vw;display: flex;align-items: center;" onclick="history.back();">
+          <image src="./static/arrow-left.png" style="width: 2.667vw;height: 4.667vw;"></image>
+        </view>
+      </view>
+      <view class="weui-navigation-bar__center">
+        <text>湖北健康码</text>
+      </view>
+      <view class="weui-navigation-bar__right">
+
+      </view>
+    </view>
+  </view>
+
+  <div class="capsule" onclick="navigateHome();">
+    <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="14" r="9.5"/>
+      <circle cx="54" cy="14" r="6"/>
+      <circle cx="10" cy="14" r="6"/>
+    </svg>
+    <div class="splitter"></div>
+    <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="9"/>
+      <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
+    </svg>
+  </div>
+
+  <view class="rep-wrap">
+    <view class="code-info">
+      <view class="code-img-bg"></view>
+      <view class="code-img">
+        <swiper>
+          <swiper-item>
+            <view class="swiper-content">
+              <view class="user_info">
+                <view class="flex row_label">
+                  <view class="col-lt">姓名</view>
+                  <view class="flexItem col-rt">身份证号</view>
+                </view>
+                <view class="flex row_content">
+                  <view class="col-lt">
+                    <text id="name"></text>
+                  </view>
+                  <view class="flexItem col-rt" id="idcard"></view>
+                </view>
+              </view>
+              <view class="content_box">
+                <view class="top-wrap wrap03"></view>
+                <view class="bolang wrap03"></view>
+                <view class="bottom-wrap wrap03"></view>
+                <view class="origin-wrap wrap03"></view>
+                <view style="background-color: white; border-radius: 2.133vw 2.133vw 0 0;">
+                  <view class="update-tips-content">
+                    <view id="datetime"></view>
+                    <view style="font-size: 6.4vw;color:#338FF1" id="second"></view>
+                  </view>
+                  <view class="showTips""
+                    style=" background-color: white;padding-top: 4vw;position: relative;">
+                    <view class="img-fix">
+                      <image class="xcc" src="./static/xczc0302.png" style="display: none;">
+                      </image>
+                      <image class="img-fix-bg" src="./static/health-border2.png">
+                      </image>
+                      <img style="width: 53.333vw; height: 53.333vw;"
+                        src="data:image/png;base64,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">
+                      <img style="width: 10.933vw; height: 13.333vw; position: absolute;"
+                        src="./static/health-logo2.png">
+                    </view>
+                    <view class="ym-style"> 已接种3针新冠疫苗 </view>
+                  </view>
+                </view>
+                <view class="tips-box">
+                  <view class="is-test" onclick="toggleSampled();">
+                    <view class="font-style">
+                      <view>核酸</view>
+                      <view class="style01">已采样</view>
+                    </view>
+                    <view style="margin-top: 0.667vw;" id="sample-date"></view>
+                  </view>
+                  <view class="code-manage" onclick="toggleSampled();">
+                    <view ariaLabel="健康上报" ariaRole="button" bind:tap="reReportTo" class="code-manage-item">
+                      <image src="./static/edit.png"></image>
+                      <view> 健康上报 </view>
+                    </view>
+                    <view ariaLabel="健康码管理" ariaRole="button" bind:tap="handleNavigateTo" class="code-manage-item">
+                      <image src="./static/health-code-management.png">
+                      </image>
+                      <view> 健康码管理 </view>
+                    </view>
+                    <view ariaLabel="客服" ariaRole="button" bind:tap="onTapFeedback" class="code-manage-item">
+                      <image src="./static/customerService.png"></image>
+                      <view>客服</view>
+                    </view>
+                  </view>
+                  <view ariaLabel="查询我的行程卡" ariaRole="button" class="xc-mini">
+                    <view bind:tap="toXC" class="xc-mini-wrap"
+                      onclick="navigateToTripCard();">
+                      <image src="./static/jkmxck.png"></image>
+                      <view>查询我的行程卡</view>
+                      <g-icon style="margin-left: auto; color: #ccc; font-size: 3.733vw;" type="arrow-right"></g-icon>
+                    </view>
+                  </view>
+                  <view class="va-nu">
+                    <view bind:tap="jumpHistory" class="nu item" data-index="{{index}}" data-type="nucleicAcid"
+                      style="background-image: url(./static/jkm48.png);background-size:43.733vw 30.667vw;background-repeat:no-repeat">
+                      <view class="item-title">
+                        <image ariaLabel="刷新" src="./static/jkmright02.png">
+                        </image>
+                        <view style="color: white; font-weight: 300;">
+                          核酸检测</view>
+                        <g-icon style="color: white; font-size: 3.2vw;" type="arrow-right"></g-icon>
+                      </view>
+                      <view class="result" style="color:white"> 24小时阴性
+                      </view>
+                      <view class="other-info">
+                        <view class="time active" id="sample-time" data-traceback-hours="18" data-traceback-range="6"></view>
+                      </view>
+                    </view>
+                    <view bind:tap="jumpFh" class="va item"
+                      style="background-image:url('./static/jkmlfhxxsb.png');background-size:43.733vw 30.667vw;background-repeat:no-repeat;">
+                      <view class="fh-font">
+                        <view>来返汉</view>
+                        <view>信息申报</view>
+                      </view>
+                    </view>
+                  </view>
+                  <view class="xchy">
+                    <view class="no-hy">
+                      <view>通信行程卡</view>
+                      <view ariaLabel="点击核验" ariaRole="button" bindtap="sendCode" class="button"
+                        onclick="toggleStamp();">点击核验</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+      <view class="services">
+        <view class="tabs">
+          <view class="tabs__header tabs__header-border tab-header-class" id="tab-header"
+            style="position: relative; border-radius: 3.2vw;">
+            <view class="tabs__item__wrap">
+              <view class="tabs__item tabs__item--active">
+                <view class="tabs__item-inline">信息登记</view>
+              </view>
+            </view>
+            <view class="tabs__item__wrap">
+              <view class="tabs__item">
+                <view class="tabs__item-inline">服务导航</view>
+              </view>
+            </view>
+            <view class="tabs__item__wrap">
+              <view class="tabs__item">
+                <view class="tabs__item-inline">便捷查询</view>
+              </view>
+            </view>
+            <view class="tabs__slider"></view>
+          </view>
+          <view class="tabs__content">
+            <view style="width:89.333vw; top: 0;" class="tab-pane">
+              <view class="sList">
+                <view class="sList-item">
+                  <view class="sList-img">
+                    <image src="./static/jkmymjz.png"></image>
+                  </view>
+                  <view class="sList-txt"> 疫苗接种 </view>
+                </view>
+                <view class="sList-item">
+                  <view class="sList-img">
+                    <image src="./static/declare.png"></image>
+                  </view>
+                  <view class="sList-txt"> 外地来（返）汉人员信息申报 </view>
+                </view>
+                <view class="sList-item">
+                  <view class="sList-img">
+                    <image src="./static/healthReport.png"></image>
+                  </view>
+                  <view class="sList-txt"> 健康上报 </view>
+                </view>
+                <view class="sList-item">
+                  <view class="sList-img">
+                    <image src="./static/kyzc.png"></image>
+                  </view>
+                  <view class="sList-txt"> 抗原检测上报 </view>
+                </view>
+                <view class="sList-item">
+                  <view class="sList-img">
+                    <image src="./static/lmyjjjkzc.png"></image>
+                  </view>
+                  <view class="sList-txt"> 居家健康监测 </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="g-footer component-class">
+    <view class="g-footer__content">
+      <view class="g-footer__content__text">
+        <view class="phone">
+          <image class="phone_icon" src="./static/phone.png"></image>
+          服务热线：12345
+        </view>
+        <view class="supportor_text">
+          <text class="supportor_text_lt"></text>
+          <text>本服务由湖北省新冠肺炎防控指挥部提供</text>
+          <text class="supportor_text_rt"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<script>
+  addStorageField("_name", "#name", "名字", "习近平", presetFilters.lastcharonly);
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", presetFilters.idcard(0, 4));
+
+  setDynamicTime("#datetime", 0, 17);
+  setDynamicTime("#second", 17, 19);
+  
+  setStaticTime("#sample-time", 0, 16);
+  setStaticTime("#sample-date", 0, 10, 1);
+
+  let showing_stamp = false;
+
+  function toggleStamp() {
+    showing_stamp = !showing_stamp;
+    document.querySelector(".xcc").style.display = showing_stamp ? "block" : "none";
+  }
+
+  let showing_sampled = true;
+
+  function toggleSampled() {
+    showing_sampled = !showing_sampled;
+    if (showing_sampled)
+      document.querySelector(".code-manage").classList.remove("active");
+    else
+      document.querySelector(".code-manage").classList.add("active");
+    document.querySelector(".is-test").style.display = showing_sampled ? "flex" : "none";
+  }
+
+  initServiceWorker("wuhan-hc");
+</script>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<title>扫一扫</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: "PingFang SC", sans-serif;
+  }
+  #scan {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    background: radial-gradient(circle, rgba(93,200,148,1) 0%, rgba(0,0,0,0) 50%);
+  }
+  #scan-parent {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 30%;
+    transform: scale(1, 0.2);
+    overflow: hidden;
+    animation: scan 2s linear infinite, opacity 1s ease-out infinite alternate;
+    z-index: 30;
+  }
+  @keyframes scan {
+    from {
+      bottom: 40%;
+    }
+    to {
+      bottom: -20%;
+    }
+  }
+  @keyframes opacity {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  #mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .2);
+    z-index: 10;
+  }
+  #scan-widgets > * {
+    z-index: 20;
+  }
+  #close-button {
+    position: fixed;
+    top: 36px;
+    top: calc(36px + env(safe-area-inset-top, 0));
+    left: 30px;
+    height: 26px;
+    width: 26px;
+    border-radius: 100px;
+    background-color: #fff;
+    color: rgba(0, 0, 0, .6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #album-button {
+    position: fixed;
+    right: 30px;
+    bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, .87);
+    font-size: 14px;
+  }
+  #album-button > div {
+    height: 48px;
+    width: 48px;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, .4);
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  video {
+    position: fixed;
+    top: 0;
+  }
+  #info {
+    background-color: rgba(255, 255, 255, .7);
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    padding: 50px 20px 0 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #info > span {
+    color: rgba(0, 0, 0, .6);
+  }
+  #info b {
+    color: rgba(0, 0, 0, 1);
+  }
+  #tap-to-continue {
+    color: rgba(0, 0, 0, 1);
+    font-style: italic;
+    animation: opacity 1.5s ease-out infinite alternate-reverse;
+  }
+  #transition {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: -10%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #transition > img {
+    width: 15vw;
+    height: 15vw;
+    border-radius: 20vw;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  #transition > span {
+    font-weight: bold;
+    font-size: 4vw;
+  }
+  #nav {
+    position: fixed;
+    z-index: 50;
+  }
+  iframe {
+    position: fixed;
+    border: 0;
+    z-index: 40;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 100%;
+    transition: left .6s ease-out;
+  }
+  #skip-scan {
+    position: fixed;
+    bottom: 24px;
+    height: 28px;
+    width: fit-content;
+    padding: 6px 24px;
+    border-radius: 100px;
+    color: #777;
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #skip-scan:hover {
+    color: #fff;
+    background-color: #777;
+  }
+</style>
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<audio style="display: none;" src="./static/1.wav"></audio>
+<div id="info">
+  <h2>本人信息扫码登记</h2>
+  <br>
+  <span>“扫描” 时将使用摄像头</span>
+  <span>获取到的所有信息均在本地处理</span>
+  <br>
+  <span>“扫描” 开始后</span>
+  <span><b>轻触屏幕</b> 将会 <b>播放“绿码，核酸一天”提示音</b></span>
+  <span>并显示北京健康宝页面</span>
+  <br><br>
+  <p id="tap-to-continue">轻触屏幕继续...</p>
+  <br><br>
+  <div id="skip-scan">跳过扫描</div>
+</div>
+<div class="weui-navigation-bar" id="nav">
+  <div class="weui-navigation-bar__placeholder"></div>
+  <div class="weui-navigation-bar__inner" style="color: black; background: white;">
+    <div class="weui-navigation-bar__left">
+      <div class="weui-navigation-bar__buttons" onclick="history.back();">
+        <div class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></div>
+      </div>
+    </div>
+    <div class="weui-navigation-bar__center">
+      <text>北京健康宝</text>
+    </div>
+    <div class="weui-navigation-bar__right">
+
+    </div>
+  </div>
+  <div class="capsule" onclick="navigateHome();">
+    <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="14" r="9.5"/>
+      <circle cx="54" cy="14" r="6"/>
+      <circle cx="10" cy="14" r="6"/>
+    </svg>
+    <div class="splitter"></div>
+    <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="9"/>
+      <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
+    </svg>
+  </div>
+</div>
+<div id="scan-content" style="display: none;">
+  <video width="auto" height="100%" autoplay muted playsinline></video>
+  <div id="mask"></div>
+  <div id="scan-parent">
+    <div id="scan"></div>
+  </div>
+  <div id="scan-widgets">
+    <div id="close-button" onclick="window.location.reload();">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 0 24 24" width="14px" fill="rgba(0, 0, 0, .6)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+    </div>
+    <div id="album-button">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="rgba(255, 255, 255, .87)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z"/></svg>
+      </div>
+      <span>相册</span>
+    </div>
+  </div>
+</div>
+<iframe src="./checkin.html"></iframe>
+<script>
+  document.getElementById("skip-scan").addEventListener("click", (e) => {
+    e.stopPropagation();
+    window.location.href = "./checkin.html";
+  });
+  const video = document.querySelector("video");
+  document.getElementById("info").addEventListener("click", () => {
+    document.getElementById("nav").style.display = "none";
+    if (!navigator.mediaDevices) {
+      alert("无法使用摄像头。请确保源码部署在 https 环境下。");
+    } else {
+      navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+          facingMode: "environment",
+        }
+      })
+      .then((stream) => {
+        video.srcObject = stream;
+        video.onloadedmetadata = () => {
+          video.play();
+        };
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+    document.getElementById("info").remove();
+    document.getElementById("scan-content").style.display = "block";
+  });
+  document.getElementById("scan-content").addEventListener("click", () => {
+    const audio = document.querySelector("audio");
+    audio.play();
+    document.getElementById("scan-content").remove();
+    document.querySelector("iframe").style.display = "block";
+    document.querySelector("iframe").style.left = "0";
+    document.querySelector("iframe").onload = () => {
+      window.location.href = document.querySelector("iframe").contentWindow.location.pathname;
+    };
+    video.srcObject.getTracks().forEach(function(track) {
+      track.stop();
+    });
+  });
+
+  initServiceWorker("jkb");
+</script>
+<!--
+  {
+    "success": [
+      {
+        "title_cn": "提示音1",
+        "title_en": "",
+        "value": "1",
+        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/1.m4a"
+      },
+      {
+        "title_cn": "提示音2",
+        "title_en": "",
+        "value": "2",
+        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/2.m4a"
+      },
+      {
+        "title_cn": "提示音3",
+        "title_en": "",
+        "value": "3",
+        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/3.m4a"
+      },
+      {
+        "title_cn": "提示音4",
+        "title_en": "",
+        "value": "4",
+        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/4.m4a"
+      }
+    ],
+    "fail": [
+      {
+        "title_cn": "失败提示音0",
+        "title_en": "",
+        "value": "0",
+        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/0.m4a"
+      }
+    ]
+  }
+-->

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<title>健康码模拟</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FCFCFC">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/jpeg" href="common/logo.jpg">
+<link rel="apple-touch-icon" sizes="512x512" href="common/logo.jpg">
+<link rel="stylesheet" href="app.css">
+<script src="app.js"></script>
+<div class="header">
+  <div class="page-title-container">
+    <img class="page-title-icon" src="common/icons/qr_code.svg">
+    <span class="page-title"></span>
+  </div>
+  <div class="sw-status">
+  </div>
+</div>
+<div id="pwa-install-help" class="app-help">
+  <p>添加至主屏幕后，网页将可以全屏显示。</p>
+  <p>在 iOS Safari 中，先点击下方分享按钮，再点击“添加至主屏幕”。</p>
+  <p>注意：若正在使用全面屏 iOS 设备，在部分带有白色背景导航栏的页面中，可能会出现设备状态栏文字变白“消失”的情况。此时可以
+    <span style="text-decoration: underline;" onclick="document.querySelector('meta[name=apple-mobile-web-app-status-bar-style]').content = 'default'; alert('状态栏模式已切换，请点击分享菜单中的“添加至主屏幕”安装。');">点击这里切换状态栏样式</span>
+  后再安装。此后，所有页面的状态栏颜色将会正确显示，但网页背景无法再延伸至状态栏。</p>
+  <p>在 Android Chrome 中，先点击右上角菜单按钮，再点击“添加至主屏幕”。</p>
+  <p>在 Android Firefox 中，先点击右上角菜单按钮，再点击“安装”。</p>
+</div>
+<div id="pwa-usage-help" class="app-help">
+  <p>置顶项目和访问过的项目将被自动预加载，以在离线时使用。</p>
+  <p>若当前并非以 https 访问，部分功能可能无法使用。</p>
+  <p>若正在使用全面屏 iOS 设备，在部分带有白色背景导航栏的页面中，可能会出现设备状态栏文字变白“消失”的情况。此时请在浏览器中重新打开页面，点击页面右上角的“添加至主屏幕”，并按照指引安装。</p>
+</div>
+<div class="apps-list">
+  <p style="text-align: center">
+    如果页面无法加载，请换用较新版本的浏览器，并开启 Javascript 功能。
+  </p>
+</div>
+<footer>
+  <div class="links-list">
+    <div
+      class="link-wrapper"
+      onclick='window.location.href="https://codeberg.org/ilovexjp/health-code-simulator"'>
+      <img src="common/codeberg-logo.svg" /> <span>@ilovexjp</span>
+    </div>
+    <div
+      class="link-wrapper"
+      onclick='window.location.href="https://t.me/gh_ilovexjp"'>
+      <img src="common/telegram-logo.svg" /> <span>@gh_ilovexjp</span>
+    </div>
+  </div>
+  
+  <div class="links-list links-list-help">
+    <div class="link-wrapper" id="sw-help-text" style="display: none;">
+      标有
+      <img src="common/icons/download_done.svg">
+      后项目可离线使用
+    </div>
+  </div>
+
+  <div class="links-list links-list-help">
+    <div class="link-wrapper">
+      <a href="https://www.reddit.com/r/ILoveHealthCode/">Reddit</a>
+    </div>
+    <div class="link-wrapper">
+      <a href="https://t.me/s/gh_ilovexjp/23">捐赠</a>
+    </div>
+    <div class="link-wrapper">
+      <a id="clear-local-data">清除本地数据</a>
+    </div>
+  </div>
+
+  <div class="links-list links-list-help">
+    <div class="link-wrapper">
+      <span id="last-update" onclick="updateServiceWorker(this);">上次更新：2022-11-17<span id="last-update-version"></span></span>
+    </div>
+  </div>
+</footer>
+<script>
+  render();
+</script>

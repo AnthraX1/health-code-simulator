@@ -1,0 +1,16 @@
+{
+  "short_name": "随申码",
+  "name": "随申码",
+  "icons": [
+    {
+      "src": "static/ssbapp-logo.png",
+      "type": "image/png",
+      "sizes": "492x492"
+    }
+  ],
+  "id": "ilovexjp-ssm-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "随申码模拟"
+}

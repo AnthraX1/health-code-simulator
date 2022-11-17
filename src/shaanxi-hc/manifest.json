@@ -1,0 +1,16 @@
+{
+  "short_name": "一码通",
+  "name": "陕西一码通",
+  "icons": [
+    {
+      "src": "./static/myCode/greenLogo.png",
+      "type": "image/png",
+      "sizes": "145x144"
+    }
+  ],
+  "id": "ilovexjp-shaanxi-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "陕西一码通模拟"
+}

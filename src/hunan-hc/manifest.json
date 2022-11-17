@@ -1,0 +1,16 @@
+{
+  "short_name": "湖南居民健康卡",
+  "name": "湖南居民健康卡",
+  "icons": [
+    {
+      "src": "static/logo-b18dcf7bf55c412ec04989061d0512ad.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    }
+  ],
+  "id": "ilovexjp-hunan-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "湖南居民健康卡模拟"
+}

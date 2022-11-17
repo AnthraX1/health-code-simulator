@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<title>河南省疫情防控场所码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#EDEDED">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="apple-touch-icon" sizes="676x676" href="./static/logo.png">
+<link href="checkin.css" rel="stylesheet">
+<link href="../common/nav.css" rel="stylesheet">
+<script src="../common/base.js"></script>
+
+<div id="app" class="app-container">
+  <div class="weui-navigation-bar browser">
+    <div class="weui-navigation-bar__placeholder"></div>
+    <div class="weui-navigation-bar__inner">
+      <div class="weui-navigation-bar__left">
+        <div class="weui-navigation-bar__buttons" onclick="history.back();">
+          <div class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></div>
+        </div>
+      </div>
+      <div class="weui-navigation-bar__center">
+        <text>河南省疫情防控场所码</text>
+      </div>
+    </div>
+  </div>
+  <div class="flex-box">
+    <div class="flex-header">
+      <div class="container">
+        <div class="mainBox">
+          <div class="mainBox-top green"></div>
+          <div class="mainBox-bottom green"></div>
+        </div>
+        <div class="cartoon">
+          <div
+            style="
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              margin: 0px auto;
+            ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 750 528"
+              width="750"
+              height="528"
+              preserveAspectRatio="xMidYMid meet"
+              style="
+                width: 100%;
+                height: 100%;
+                transform: translate3d(0px, 0px, 0px);
+                content-visibility: visible;
+              ">
+              <defs>
+                <clipPath id="__lottie_element_2">
+                  <rect width="750" height="528" x="0" y="0"></rect>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#__lottie_element_2)">
+                <g
+                  style="animation: 3s infinite linear wave1"
+                  opacity="1"
+                  style="display: block">
+                  <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                    <path
+                      fill="rgb(244,244,244)"
+                      fill-opacity="0.15"
+                      d=" M-1075.875,112 C-1185.8819580078125,110.45099639892578 -1491.875,252 -1491.875,252 C-1491.875,252 -1305.875,362 -1305.875,362 C-1305.875,362 -359.875,374 -359.875,374 C-359.875,374 -119.875,264 -119.875,264 C-119.875,264 -119.875,116 -279.875,118 C-407.864990234375,119.5999984741211 -530.875,195 -699.875,198 C-863.8610229492188,200.91099548339844 -933.875,114 -1075.875,112z M-280.875,112 C-390.8819885253906,110.45099639892578 -696.875,252 -696.875,252 C-696.875,252 -510.875,362 -510.875,362 C-510.875,362 435.125,374 435.125,374 C435.125,374 675.125,264 675.125,264 C675.125,264 675.125,116 515.125,118 C387.135009765625,119.5999984741211 264.125,195 95.125,198 C-68.86100006103516,200.91099548339844 -138.875,114 -280.875,112z"></path>
+                  </g>
+                </g>
+                <g
+                  style="animation: 3s infinite linear wave2"
+                  opacity="1"
+                  style="display: block">
+                  <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                    <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                      <path
+                        fill="rgb(244,244,244)"
+                        fill-opacity="0.12"
+                        d=" M-1050.43798828125,124 C-1160.4449462890625,122.45099639892578 -1364.43798828125,228 -1364.43798828125,228 C-1364.43798828125,228 -1194.43798828125,354 -1194.43798828125,354 C-1194.43798828125,354 -136.43800354003906,330 -136.43800354003906,330 C-136.43800354003906,330 37.0620002746582,273 37.0620002746582,273 C37.0620002746582,273 -212.4250030517578,124 -372.43701171875,124 C-482,124 -558,195 -716.43798828125,200 C-826.0189819335938,203.45799255371094 -908.43798828125,126 -1050.43798828125,124z M-1729.43798828125,124 C-1839.4449462890625,122.45099639892578 -2043.43798828125,228 -2043.43798828125,228 C-2043.43798828125,228 -1873.43798828125,354 -1873.43798828125,354 C-1873.43798828125,354 -815.43798828125,330 -815.43798828125,330 C-815.43798828125,330 -641.93798828125,273 -641.93798828125,273 C-641.93798828125,273 -891.426025390625,124 -1051.43798828125,124 C-1161,124 -1237,195 -1395.43798828125,200 C-1505.01904296875,203.45799255371094 -1587.43798828125,126 -1729.43798828125,124z"></path>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="area" id="place"></div>
+        <div class="querylist-card">
+          <div class="list">
+            <div class="list-date" id="date"></div>
+            <div class="list-time">
+              <div class="time">
+                <ul class="numbers hoursFirst">
+                  <li class="liItem">0</li>
+                  <li class="liItem">1</li>
+                  <li class="liItem">2</li>
+                  <li class="liItem">3</li>
+                  <li class="liItem">4</li>
+                  <li class="liItem">5</li>
+                  <li class="liItem">6</li>
+                  <li class="liItem">7</li>
+                  <li class="liItem">8</li>
+                  <li class="liItem">9</li>
+                </ul><!--
+                --><ul class="numbers hoursLast">
+                  <li>0</li>
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li>9</li>
+                </ul><!--
+                --><span class="icon">:</span><!--
+                --><ul class="numbers minutesFirst">
+                  <li>0</li>
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li>9</li>
+                </ul><!--
+                --><ul class="numbers minutesLast">
+                  <li>0</li>
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li>9</li>
+                </ul><!--
+                --><span class="icon">:</span><!--
+                --><ul class="numbers secondsFirst">
+                  <li>0</li>
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li>9</li>
+                </ul><!--
+                --><ul class="numbers secondsLast">
+                  <li>0</li>
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li>9</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-content">
+      <div class="base-wrapper">
+        <div class="travalBox">
+          <div class="travalBox-top">
+            <div class="name" id="masked-name" data-group="masked"></div>
+            <div class="name" id="name" data-group="unmasked"></div>
+            <div class="card">
+              <span id="masked-idcard" data-group="masked"></span>
+              <span id="idcard" data-group="unmasked"></span>
+              <img src="data:image/png;base64,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"
+                class="eyeIcon" data-group="masked" onclick="toggleMask(false);">
+              <img src="data:image/png;base64,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" class="eyeIcon" data-group="unmasked" onclick="toggleMask(true);">
+            </div>
+          </div>
+          <div class="travalBox-bottom">
+            <!---->
+            <div class="travalBox-left">
+              <div class="top-info"><span>核酸检测结果</span></div>
+              <div class="yin">
+                <div class="hour">24</div>
+                <div class="result">
+                  <div class="result-top">小时内</div>
+                  <div class="result-bottom">阴性</div>
+                </div>
+              </div>
+            </div>
+            <div class="travalBox-right">
+              <div class="common-label">疫苗接种</div>
+              <div><div class="span-blue">已接种 3 针剂</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="message">
+          <div class="message-left">
+            <div class="label">最近核酸检测</div>
+            <div class="bgsj2" onclick="this.innerHTML = this.innerHTML == '检测时间' ? '采样时间' : '检测时间';">采样时间</div>
+            <div class="desc"><span id="month"></span>月<span id="day"></span>日<span class="bgsj" id="time"></span></div>
+          </div>
+          <div class="message-right">
+            <div class="label label2">距到期还剩</div>
+            <div class="desc">
+              <span>
+                <span class="blue-hour" id="hours-left"></span>小时 
+                <span class="blue-hour" id="minutes-left">24</span>分 
+              </span>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <!---->
+      <div class="button-group">
+        <button onclick="navigateToTripCard();"
+          class="van-button van-button--primary van-button--large van-button--plain van-button--round">
+          <div class="van-button__content">
+            <span class="van-button__text">查看行程卡</span>
+          </div>
+        </button>
+      </div>
+      <div class="trave-wrapper">
+        <div
+          data-v-1f61d2dc=""
+          class="bottom-card-wrapper"
+          allinfo="[object Object]">
+          <div data-v-1f61d2dc="" class="btnsItem">
+            <div data-v-1f61d2dc="" class="item">
+              <img
+                data-v-1f61d2dc=""
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAABeCAMAAAByzjhiAAAAflBMVEUAAAAR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwR0cwl1DvEAAAAKXRSTlMAYNBwwDAkQBiwIPAPTvygO9odC6kr6btam2gTjoV8XTMH9ePItpRIYzOF2YYAAAISSURBVGje7drbjqJAFIXh1aANKiBHz9raHmbW+7/gdFdAYJqiKmhdOFPf3U7Mb4IxbELhm7fLJxL5/oial9CJm/NtOZJYrkNA8EfslQco+Z8kZ/59XLLXZSo+daaCkwHCSoyrcgoSKpx9ADmVdoDwJqa3clpTaQJkVIuCjv42oloGnxrCjn5IDT6m1LDp6G+oYYp3anA7+q7t277t277t277t2/5r9lNq+Ojor6ghxZYajh39MTVsgQWVEnT04VBpobdHhp19L9K7rjv1r1sVxRij9Fv1BQcIocMeFw93E5Jz3B2vEaWikYdKGnsSsY+m0P3VmrNiLFEEsKzHFbljSl4ApxnNmZ2Q0qTUeD+LaE6UAWFCU5IQlvW4QH6by2T3R33eiHLRMsZd3rq/x7d5ZR2i6fTmCh6+HNgvcu/B1n6yitiwR61eeQLgY+h+dWZT5KM2Yskfvh9mbIs7+8P324BtXmdfcz8f3Nd8vvjP+jlLWzP96Xwi7GGkX3uhfvzc/o8/fvrsvsumOZ7dRzgZVa4uIKzc2qYY2pdz2HQw3GdmuO+/Wj8x1o+9Lzsa68/4zfb/nX4xFjJD/bzavk5G+nWwqMbh75d7++O+fkoN4fB+RrVoO7yPK5XWeKCfLqiQBO3zFd39RNLH1GGvpd86H/Lp/70/vEP2GLSAEK7lx1Runux8y2YxE6qrt/9xhS5j/AE5+m++jR+RigAAAABJRU5ErkJggg=="
+                class="img" />
+              <div data-v-1f61d2dc="" class="text">核酸检测码</div>
+            </div>
+          </div>
+          <div data-v-1f61d2dc="" class="btnsItem">
+            <div data-v-1f61d2dc="" class="item">
+              <img
+                data-v-1f61d2dc=""
+                src="data:image/png;base64,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"
+                class="img" />
+              <div data-v-1f61d2dc="" class="text">来豫报备</div>
+            </div>
+          </div>
+          <div data-v-1f61d2dc="" class="btnsItem">
+            <div data-v-1f61d2dc="" class="item">
+              <img
+                data-v-1f61d2dc=""
+                src="data:image/png;base64,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"
+                class="img" />
+              <div data-v-1f61d2dc="" class="text">采样点查询</div>
+            </div>
+          </div>
+          <div data-v-1f61d2dc="" class="btnsItem">
+            <div data-v-1f61d2dc="" class="item page-jump-wrapper">
+              <img
+                data-v-1f61d2dc=""
+                src="data:image/png;base64,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"
+                class="img" />
+              <div data-v-1f61d2dc="" class="text">乘车码</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  window.addEventListener("resize", adjustFontSize);
+  function adjustFontSize() {
+    document.documentElement.style.fontSize = 
+        Math.min(540, document.documentElement.getBoundingClientRect().width) / 10 + "px";
+  }
+  adjustFontSize();
+
+  function getFirstDigit(e) {
+    return parseInt(e / 10);
+  }
+  function getLastDigit(e) {
+    return e % 10;
+  }
+  function move() {
+    function e(e, t) {
+      var a = document.getElementsByClassName(e)[0];
+      (e = (getComputedStyle(a, !1).height.replace("px", "") / 10).toFixed(
+        2
+      )),
+        (t = getFirstDigit(t));
+      a.style.top = -t * e + "px";
+    }
+    var t = (s = new Date()).getSeconds(),
+      a = s.getMinutes(),
+      i = s.getHours(),
+      s = function (e, t) {
+        var a = document.getElementsByClassName(e)[0];
+        (e = (
+          getComputedStyle(a, !1).height.replace("px", "") / 10
+        ).toFixed(2)),
+          (t = getLastDigit(t));
+        a.style.top = -t * e + "px";
+      };
+    e("hoursFirst", i),
+    s("hoursLast", i),
+    e("minutesFirst", a),
+    s("minutesLast", a),
+    e("secondsFirst", t),
+    s("secondsLast", t);
+  }
+  move();
+  window.setInterval(move, 500);
+
+  setStaticTime("#date", 0, 10, 0, 0, (s) => s.replace("-", "年").replace("-", "月") + "日");
+  setStaticTime("#month", 5, 7);
+  setStaticTime("#day", 8, 10);
+
+  let traceback_hours = 6 + 10 * Math.random();
+  setStaticTime("#time", 11, 16, traceback_hours);
+  // document.querySelector("#hours-left").innerHTML = Math.floor(48 - traceback_hours);
+  // document.querySelector("#minutes-left").innerHTML = Math.ceil(((48 - traceback_hours) - Math.floor(48 - traceback_hours)) * 60);
+
+  addStorageField("_name", "#name", "名字", "习近平");
+  addStorageField("_name", "#masked-name", "名字", "习近平", presetFilters.name);
+  addStorageField("_place", "#place", "场所地点", "四通桥");
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019");
+  addStorageField("_idcard", "#masked-idcard", "身份证号", "110101195306153019", presetFilters.idcard(6, 4, 10));
+  
+  document.querySelectorAll("[data-group=unmasked]").forEach((e) => { e.style.display = "none"; })
+
+  function toggleMask(t) {
+    document.querySelectorAll("[data-group=masked]").forEach((e) => { e.style.display = t ? "block" : "none"; })
+    document.querySelectorAll("[data-group=unmasked]").forEach((e) => { e.style.display = t ? "none" : "block"; })
+  }
+  
+  initServiceWorker("henan-hc");
+</script>

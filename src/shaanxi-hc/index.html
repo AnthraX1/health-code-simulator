@@ -1,0 +1,138 @@
+<html>
+
+<head>
+  <title>陕西电子识别码</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport"
+    content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+  <meta name="theme-color" content="#0bae81">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/png" href="./static/myCode/greenLogo.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" sizes="145x144" href="./static/myCode/greenLogo.png">
+  <link rel="stylesheet" href="../common/nav.css">
+  <link rel="stylesheet" type="text/css" href="./static/css/main-menu.css">
+  <link rel="stylesheet" type="text/css" href="./static/css/index.css">
+  <link rel="stylesheet" type="text/css" href="./static/css/u-image.css">
+  <link rel="stylesheet" type="text/css" href="./static/css/app.css">
+  <link rel="stylesheet" type="text/css" href="./static/css/qrcode.css">
+  <script src="../common/base.js"></script>
+</head>
+
+<body>
+  <view class="weui-navigation-bar dark">
+    <view class="weui-navigation-bar__placeholder"></view>
+    <view class="weui-navigation-bar__inner" style="background:#0bae81">
+      <view class="weui-navigation-bar__left">
+        <view class="weui-navigation-bar__buttons" onclick="history.back()">
+          <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view>
+        </view>
+      </view>
+      <view class="weui-navigation-bar__center"><text>陕西电子识别码</text></view>
+      <view class="weui-navigation-bar__right"></view>
+    </view>
+    <view class="capsule" onclick="navigateHome()"><svg class="capsule-menu-icon" viewBox="0 0 64 28"
+        xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="14" r="9.5"></circle>
+        <circle cx="54" cy="14" r="6"></circle>
+        <circle cx="10" cy="14" r="6"></circle>
+      </svg>
+      <view class="splitter"></view><svg class="capsule-exit-icon" viewBox="0 0 60 60"
+        xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="9"></circle>
+        <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"></circle>
+      </svg>
+    </view>
+  </view>
+  <view class="page-view data-v-f5d03344">
+    <view class="top-bg data-v-f5d03344"></view>
+    <view class="magin-top-68 data-v-f5d03344">
+      <view class="qrCoed-box data-v-f5d03344">
+        <view id="_name" class="person-name data-v-f5d03344"></view>
+        <view class="person-idCard data-v-f5d03344">证件号码：<text id="_idcard"></text></view>
+        <view class="code-content data-v-f5d03344" onclick="window.location.href='checkin.html';">
+          <qr-code bind:__l="__l" class="data-v-f5d03344 vue-ref">
+            <view class="tki-qrcode" style="display:table-cell;">
+              <view class="qrcode"
+                style="width: calc(4400vw/75);height: calc(4400vw/75);background-size:100%;background-position:center;background-repeat:no-repeat;object-fit:contain; display:table-cell; vertical-align:middle; text-align:center;">
+                <view src="./static/myCode/greenLogo.png"
+                  style="width:42px;height:42px; border-radius:5px; background-color:#fff; margin:auto; vertical-align:middle; text-align:center; object-fit:contain; display:flex;">
+                  <image src="./static/myCode/greenLogo.png" style="width:36px;height:36px; margin:auto; "></image>
+                </view>
+
+              </view>
+            </view>
+          </qr-code>
+        </view>
+        <view class="code-name data-v-f5d03344"
+          style="display:flex;align-items:flex-end;justify-content:center;color:#00CA75;">绿码</view>
+
+        <view class="data-v-f5d03344">
+          <text class="code-time data-v-f5d03344"></text><text class="code-second data-v-f5d03344"></text>
+        </view>
+      </view>
+      <view bind:__l="__l" class="data-v-f5d03344"
+        style="background-color:transparent;height: calc(200vw/75);margin-top:0px;margin-bottom:0px"></view>
+      <main-menu bind:__l="__l" bind:openMenu="__e" class="data-v-f5d03344">
+        <view class="data-v-28f9046c">
+          <view class="main-menu data-v-28f9046c">
+            <view style="padding-top:12px; cursor: pointer;" class="main-menu-item data-v-28f9046c u-col-4">
+              <view style="transition-duration:1000ms;transition-timing-function:ease-out"
+                class="u-transition data-v-8e60ec6e vue-ref u-fade-enter-to u-fade-enter-active">
+                <view style="width:50px;height:50px;border-radius:0px;overflow:visible;background-color:transparent"
+                  class="u-image data-v-042b391e">
+                  <image src="./static/index/hsjccx.png" mode="aspectFill"
+                    style="border-radius:0px;width:50px;height:50px;" role="img" class="u-image__image data-v-042b391e">
+                  </image>
+                </view>
+              </view>
+              <view style="padding-top:0px" class="main-menu-item-text u-line-2 data-v-28f9046c">核酸检测查询
+              </view>
+            </view>
+            <view style="padding-top:12px; cursor: pointer;" class="main-menu-item data-v-28f9046c u-col-4">
+              <view style="transition-duration:1000ms;transition-timing-function:ease-out"
+                class="u-transition data-v-8e60ec6e vue-ref u-fade-enter-to u-fade-enter-active">
+                <view style="width:50px;height:50px;border-radius:0px;overflow:visible;background-color:transparent"
+                  class="u-image data-v-042b391e">
+                  <image src="./static/index/ymjzcx.png" mode="aspectFill"
+                    style="border-radius:0px;width:50px;height:50px;" role="img" class="u-image__image data-v-042b391e">
+                  </image>
+                </view>
+              </view>
+              <view style="padding-top:0px" class="main-menu-item-text u-line-2 data-v-28f9046c">疫苗接种查询
+              </view>
+            </view>
+            <view style="padding-top:12px" class="main-menu-item data-v-28f9046c u-col-4"
+              onclick="navigateToTripCard()">
+              <view style="transition-duration:1000ms;transition-timing-function:ease-out"
+                class="u-transition data-v-8e60ec6e vue-ref u-fade-enter-to u-fade-enter-active">
+                <view style="width:50px;height:50px;border-radius:0px;overflow:visible;background-color:transparent"
+                  class="u-image data-v-042b391e">
+                  <image src="./static/index/txxck.png" mode="aspectFill"
+                    style="border-radius:0px;width:50px;height:50px;" role="img" class="u-image__image data-v-042b391e">
+                  </image>
+                </view>
+              </view>
+              <view style="padding-top:0px" class="main-menu-item-text u-line-2 data-v-28f9046c">通信行程卡
+              </view>
+            </view>
+          </view>
+        </view>
+      </main-menu>
+      <view bind:__l="__l" class="data-v-f5d03344"
+        style="background-color:transparent;height:calc(400vw/75);margin-top:0px;margin-bottom:0px"></view>
+      <view class="copyright-text data-v-f5d03344">陕西省应对新冠疫情工作领导小组办公室</view>
+      <view class="copyright-text data-v-f5d03344">陕西省政务大数据服务中心技术支持</view>
+    </view>
+  </view>
+  </view>
+  <script>
+    setDynamicTime('.code-time', 0, 17, (s) => s.replaceAll("-", "."));
+    setDynamicTime('.code-second', 17, 19);
+    addStorageField('_name', '#_name', '名字', '习近平', presetFilters.name);
+    addStorageField('_idcard', '#_idcard', '身份证号', '110101195306153019', presetFilters.idcard(1, 2));
+    initServiceWorker('shaanxi-hc');
+  </script>
+</body>
+
+</html>

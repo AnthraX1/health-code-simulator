@@ -1,0 +1,16 @@
+{
+  "short_name": "行程卡",
+  "name": "通信大数据行程卡",
+  "icons": [
+    {
+      "src": "static/img_arrow@2x.png",
+      "type": "image/png",
+      "sizes": "360x360"
+    }
+  ],
+  "id": "ilovexjp-trip-card",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "通信大数据行程卡模拟"
+}

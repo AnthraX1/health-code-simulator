@@ -1,0 +1,390 @@
+body {
+  background: #f7f7f7;
+  font-size: 4.267vw;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  font-family: "PingFang SC", sans-serif;
+}
+
+.container {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+view {
+  display: block;
+  box-sizing: border-box;
+}
+
+.user.data-v-57280228 {
+  background-image: url("./static/bgc.png");
+  background-size: 100% 100%;
+  color: #fff;
+  display: flex;
+  height: 40vw;
+  justify-content: space-between;
+  padding: 4.8vw 7.733vw;
+  position: relative;
+}
+
+.user .name-item.data-v-57280228 {
+  color: #bbd7f9;
+  font-size: 4vw;
+  margin-bottom: 1.333vw;
+}
+
+.user .name.data-v-57280228 {
+  width: 26%;
+}
+
+.user .idcard.data-v-57280228 {
+  flex: 1;
+}
+
+.user .code.data-v-57280228 {
+  left: 50%;
+  position: absolute;
+  top: 52%;
+  transform: translate(-50%);
+  width: 85%;
+}
+
+.user .code .canvas-content.data-v-57280228 {
+  background-color: #fff;
+  position: relative;
+}
+
+.user .code .canvas-content .qrcode-img-border.data-v-57280228 {
+  height: 54.667vw;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 54.667vw;
+}
+
+.user .code .canvas-content .qrcode-img-stamp.data-v-57280228 {
+  bottom: -38%;
+  height: 31.2vw;
+  position: absolute;
+  right: -6%;
+  width: 32vw;
+}
+
+.user .code .canvas-content .canvas-img.data-v-57280228 {
+  display: block;
+  height: 48vw;
+  margin: 0 auto;
+  width: 48vw;
+}
+
+.user .code .canvas-content .icon-qrcode.data-v-57280228 {
+  height: 48vw;
+  margin: 0 auto;
+  width: 48vw;
+}
+
+.user .code .tiem.data-v-57280228 {
+  background-color: #fff;
+  border-radius: 2.133vw 2.133vw 0 0;
+  color: #000;
+  font-size: 5.067vw;
+  font-weight: 500;
+  height: 16vw;
+  line-height: 13.333vw;
+  text-align: center;
+}
+
+.user .code .tiem .time-second.data-v-57280228 {
+  color: #5493e9;
+  font-size: 5.6vw;
+}
+
+.user .code .sampling.data-v-57280228 {
+  align-items: center;
+  background-color: #fff;
+  color: #5cb666;
+  display: flex;
+  flex-direction: column;
+  font-size: 4vw;
+}
+
+.user .code .sampling .label.data-v-57280228 {
+  font-size: 4.8vw;
+  margin-left: 1.067vw;
+}
+
+.user .code .travelcard.data-v-57280228 {
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 0.133vw solid #f2f2f2;
+  border-top: 0.133vw solid #f2f2f2;
+  color: #343434;
+  display: flex;
+  font-size: 3.733vw;
+  height: 10.667vw;
+  justify-content: space-between;
+  padding: 0 4vw;
+}
+
+.user .code .travelcard .travelcard-box.data-v-57280228 {
+  align-items: center;
+  display: flex;
+  flex: 1;
+}
+
+.user .code .travelcard .travelcard-box .travelcard-text.data-v-57280228 {
+  font-weight: 600;
+  margin-left: 2.667vw;
+}
+
+.user .code .travelcard .travelcard-box .travelcard-card.data-v-57280228 {
+  height: 4.4vw;
+  width: 5.6vw;
+}
+
+.user .code .travelcard .travelcard-right.data-v-57280228 {
+  height: 3.2vw;
+  width: 2vw;
+}
+
+.user .code .state.data-v-57280228 {
+  border-radius: 0 0 2.133vw 2.133vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.667vw 0 4vw;
+}
+
+.user .code .state .twenty-four-bgc.data-v-57280228 {
+  background-image: url("./static/24.png");
+  background-size: 100% 100%;
+}
+
+.user .code .state .forty-eight-bgc.data-v-57280228 {
+  background-image: url("https://oss.yuntongcloud.com/img/48.png");
+  background-size: 100% 100%;
+}
+
+.user .code .state .seventy-two-bgc.data-v-57280228 {
+  background-image: url("https://oss.yuntongcloud.com/img/72.png");
+  background-size: 100% 100%;
+}
+
+.user .code .state .five-days-bgc.data-v-57280228 {
+  background-image: url("https://oss.yuntongcloud.com/img/5day.png");
+  background-size: 100% 100%;
+}
+
+.user .code .state .yang-bgc.data-v-57280228 {
+  background-image: url("https://oss.yuntongcloud.com/img/red.png");
+  background-size: 100% 100%;
+}
+
+.user .code .state .yin-bgc.data-v-57280228 {
+  background-color: #fff;
+}
+
+.user .code .state .nucleic.data-v-57280228,
+.user .code .state .vaccines.data-v-57280228 {
+  background-color: #fff;
+  border-radius: 1.333vw;
+  color: #a7a8a5;
+  display: flex;
+  flex-direction: column;
+  font-size: 3.733vw;
+  justify-content: space-between;
+  padding: 1.867vw;
+  text-align: center;
+  width: 48%;
+}
+
+.user .code .state .nucleic .title.data-v-57280228,
+.user .code .state .vaccines .title.data-v-57280228 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.user .code .state .nucleic .title .lable.data-v-57280228,
+.user .code .state .vaccines .title .lable.data-v-57280228 {
+  font-size: 4vw;
+  margin: 0 0.8vw;
+}
+
+.user .code .state .nucleic .title .icon-img.data-v-57280228,
+.user .code .state .vaccines .title .icon-img.data-v-57280228 {
+  height: 3.733vw;
+  width: 3.733vw;
+}
+
+.user .code .state .nucleic .stateDetails.data-v-57280228,
+.user .code .state .vaccines .stateDetails.data-v-57280228 {
+  display: flex;
+  flex-direction: column;
+}
+
+.user .code .state .nucleic .stateDetails .details.data-v-57280228,
+.user .code .state .vaccines .stateDetails .details.data-v-57280228 {
+  font-size: 6.4vw;
+}
+
+.user .code .state .nucleic .lately.data-v-57280228,
+.user .code .state .vaccines .lately.data-v-57280228 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.user .code .state .nucleic .lately .date.data-v-57280228,
+.user .code .state .vaccines .lately .date.data-v-57280228 {
+  color: #fff;
+  font-size: 8vw;
+  margin-right: 1.333vw;
+}
+
+.user .code .state .nucleic .lately .day.data-v-57280228,
+.user .code .state .vaccines .lately .day.data-v-57280228 {
+  color: #fff;
+  font-size: 3.2vw;
+  margin-top: 4vw;
+}
+
+.user .code .state .nucleic .lately .text.data-v-57280228,
+.user .code .state .vaccines .lately .text.data-v-57280228 {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 3.2vw;
+  line-height: 1.2;
+}
+
+.user .code .state .nucleic .item.data-v-57280228,
+.user .code .state .vaccines .item.data-v-57280228 {
+  color: #5a87e3;
+  font-size: 8vw;
+}
+
+.user .code .state .nucleic .item-date.data-v-57280228,
+.user .code .state .vaccines .item-date.data-v-57280228 {
+  color: #a7a8a5;
+  font-size: 2.933vw;
+}
+
+.user .code .trip.data-v-57280228 {
+  background-color: #fff;
+  border-radius: 2.133vw;
+  color: #000;
+  padding: 1.333vw 4.267vw;
+}
+
+.user .code .trip .trip-centent.data-v-57280228 {
+  align-items: center;
+  display: flex;
+  height: 8vw;
+  justify-content: space-between;
+}
+
+.user .code .more.data-v-57280228 {
+  background-color: #fff;
+  border-radius: 2.133vw;
+  color: #343434;
+  display: flex;
+  font-size: 3.733vw;
+  padding: 2.667vw 5.333vw;
+}
+
+.user .code .more .more-item.data-v-57280228 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 27%;
+}
+
+.user .code .more .more-item .more-item-img.data-v-57280228 {
+  height: 11.467vw;
+  margin-bottom: 1.333vw;
+  width: 11.467vw;
+}
+
+.user .code .copyright.data-v-57280228 {
+  background-color: #f7f7f7;
+  bottom: 2.667vw;
+  color: #cad3dd;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  padding: 2.667vw 0;
+  position: fixed;
+  text-align: center;
+  transform: translate(-50%, 0);
+  width: 100%;
+}
+
+.user .code .copyright .copyright-phone.data-v-57280228 {
+  align-items: center;
+  color: #b3b3b4;
+  display: flex;
+  font-size: 4vw;
+  font-weight: 600;
+  justify-content: center;
+}
+
+.user .code .copyright .copyright-phone .copyright-image.data-v-57280228 {
+  height: 4vw;
+  margin-right: 2.133vw;
+  width: 4vw;
+}
+
+.user .code .copyright .copyright-text.data-v-57280228 {
+  color: #b3b3b4;
+  font-size: 2.933vw;
+}
+
+.user .code .copyright .copyright-help.data-v-57280228 {
+  align-items: center;
+  color: #3897f8;
+  display: flex;
+  justify-content: center;
+}
+
+.user .code .copyright .copyright-help .help-text.data-v-57280228 {
+  text-decoration: underline;
+}
+
+.user .code .copyright .copyright-help .help-img.data-v-57280228 {
+  height: 4vw;
+  margin-right: 1.333vw;
+  width: 4vw;
+}
+
+.slot-content .u-centent.data-v-57280228 {
+  padding: 4vw;
+}
+
+.slot-content .u-centent .header.data-v-57280228 {
+  background-color: #f3f3f5;
+  color: #666;
+  font-size: 3.733vw;
+  height: 9.333vw;
+  line-height: 9.333vw;
+  text-align: center;
+}
+
+.slot-content .u-centent .form .verification-code.data-v-57280228 {
+  background-color: #fff;
+}
+
+.slot-content .u-centent .tick.data-v-57280228 {
+  display: flex;
+  height: 19.2vw;
+  padding-top: 4.267vw;
+  vertical-align: top;
+}
+
+.slot-content .u-centent .tick text.data-v-57280228 {
+  color: #aaa;
+  font-size: 4vw;
+  padding-top: 0.8vw;
+}

@@ -1,0 +1,16 @@
+{
+  "short_name": "粤康码",
+  "name": "粤康码",
+  "icons": [
+    {
+      "src": "static/yss.jpeg",
+      "type": "image/jpeg",
+      "sizes": "246x246"
+    }
+  ],
+  "id": "ilovexjp-ykm-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "粤康码模拟"
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>行程卡</title>
+    <g id="行程卡" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" opacity="0.100000001" fill-rule="nonzero" x="0" y="0" width="40" height="40"></rect>
+        <circle id="椭圆形" stroke="#3888FF" stroke-width="3" cx="20" cy="20" r="14"></circle>
+        <line x1="20" y1="14" x2="20" y2="27" id="路径-3" stroke="#3888FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></line>
+        <polyline id="路径-4" stroke="#3888FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="27 20 20 13 13 20"></polyline>
+    </g>
+</svg>

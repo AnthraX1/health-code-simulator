@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<title>福建健康码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/jkm_logo.png">
+<link rel="apple-touch-icon" sizes="360x360" href="./static/jkm_logo.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+<view class="weui-navigation-bar">
+  <view class="weui-navigation-bar__placeholder"></view>
+  <view class="weui-navigation-bar__inner nav" style="color: black;">
+    <view class="weui-navigation-bar__left">
+    </view>
+    <view class="weui-navigation-bar__center" style="font-weight: normal;">
+      <text>福建健康码</text>
+    </view>
+    <view class="weui-navigation-bar__right">
+    </view>
+  </view>
+  <div class="capsule" onclick="navigateHome();">
+    <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="14" r="9.5" />
+      <circle cx="54" cy="14" r="6" />
+      <circle cx="10" cy="14" r="6" />
+    </svg>
+    <div class="splitter"></div>
+    <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="9" />
+      <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+    </svg>
+  </div>
+</view>
+<view backgroundColor="#EEF0F5" class="type-fj-jkm:Page" style="position: absolute; top: 0;">
+  <image alt="[图片]" class="type-gsd-h5-react:Image" id="id221" mode="widthFix" slot="content" src="./static/bg2@2x.png"
+    style="width: 100%; height: 61.333vw; margin-top: 0vw; margin-left: 0vw; position: static; left: 0vw; top: 0vw;">
+  </image>
+  <view class="type-gsd-h5-react:Container" id="id69" slot="content" style="position: relative;">
+    <view class="type-gsd-h5-react:Container" id="id57"
+      style="width: 100%; margin-top: 0vw; padding-right: 5.333vw; padding-bottom: 1.333vw; padding-left: 5.333vw; display: none; z-index: 99; text-align: left; background: rgb(255, 255, 255); position: fixed; top: 0vw; ">
+      <text class="type-gsd-h5-react:Text" id="id58"
+        style="color: #1D1F24; font-size: 4.533vw; line-height: 6.933vw; text-align: center; font-family: PingFangSC-Medium; letter-spacing: 0vw;">福建健康码</text>
+    </view>
+    <view class="type-gsd-h5-react:Container" id="id68" style="margin-top: -30.667vw;">
+      <view class="type-gsd-h5-react:Container" id="id6"
+        style="margin: 0vw 4.8vw; display: flex; align-items: center; flex-direction: column; border-radius: 5.333vw; background: rgb(255, 255, 255); position: relative; overflow: hidden; box-shadow: 0vw 0.533vw 6.4vw 0vw rgba(25,24,71,0.12); filter: blur(2);">
+        <view class="type-gsd-h5-react:Container" id="id24"
+          style="width: 100%; height: 19.467vw; padding-right: 5.867vw; padding-left: 6.4vw; display: flex; align-items: center; flex-direction: row; border-bottom-right-radius: 4vw; border-bottom-left-radius: 4vw; background: rgb(255, 255, 255); position: relative;">
+          <view class="type-gsd-h5-react:Container" id="id27"
+            style="display: flex; justify-content: space-between; flex: 1;">
+            <view class="type-gsd-h5-react:Container" style="display: flex; flex-direction: column; flex: auto;"
+              id="masked-info-container">
+              <view class="type-gsd-h5-react:Container" style="display: flex; align-items: center;">
+                <image alt="[图片]" bindtap="onuuid_e0931441$tap" class="type-gsd-h5-react:Image" id="uuid_e0931441"
+                  mode="scaleToFill" src="./static/close.png" onclick="toggleInfoMask(false);"
+                  style="width: 5.333vw; height: 5.333vw; margin-right: 1.6vw; display: block;"></image>
+                <text class="type-gsd-h5-react:Text" id="masked-name"
+                  style="color: rgb(29, 31, 36); font-size: 6.4vw; line-height: 8.933vw; font-family: PingFangSC-Medium; letter-spacing: 0vw; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; word-break: break-all;"></text>
+              </view>
+              <text class="type-gsd-h5-react:Text" id="masked-idcard"
+                style="margin-top: 0.667vw; color: rgb(98, 102, 122); font-size: 4.267vw; line-height: 5.067vw; font-weight: 700; font-family: PingFangSC-Regular; letter-spacing: 0vw;"></text>
+            </view>
+            <view class="type-gsd-h5-react:Container" style="display: none; flex-direction: column; flex: auto;"
+              id="info-container">
+              <view class="type-gsd-h5-react:Container" style="display: flex; align-items: center;">
+                <image alt="[图片]" bindtap="onuuid_e0931441$tap" class="type-gsd-h5-react:Image" id="uuid_e0931441"
+                  mode="scaleToFill" src="./static/open.png" onclick="toggleInfoMask(true);"
+                  style="width: 5.333vw; height: 5.333vw; margin-right: 1.6vw; display: block;"></image>
+                <text class="type-gsd-h5-react:Text" id="name"
+                  style="color: rgb(29, 31, 36); font-size: 6.4vw; line-height: 8.933vw; font-family: PingFangSC-Medium; letter-spacing: 0vw; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; word-break: break-all;"></text>
+              </view>
+              <text class="type-gsd-h5-react:Text" id="idcard"
+                style="margin-top: 0.667vw; color: rgb(98, 102, 122); font-size: 4.267vw; line-height: 5.067vw; font-weight: 700; font-family: PingFangSC-Regular; letter-spacing: 0vw;"></text>
+            </view>
+            <view bindtap="onid30$tap" class="type-gsd-h5-react:Container" id="id30"
+              style="display: flex; justify-content: flex-end; align-items: center; flex: none;">
+              <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_1940d160" mode="scaleToFill"
+                src="./static/family-btn@2x.png" style="width: 5.333vw; height: 5.333vw;"></image>
+              <text class="type-gsd-h5-react:Text" id="id31"
+                style="padding-left: 1.067vw; color: #3858E6; font-size: 4.267vw; line-height: 7.467vw; text-align: right; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">亲友亮码</text>
+            </view>
+          </view>
+          <view class="type-gsd-h5-react:Container" id="id35"
+            style="width: 4vw; height: 4vw; display: none; border-style: none; border-radius: 50%; background: #3858E6; position: absolute; left: -2vw; top: 19.067vw;">
+          </view>
+          <view class="type-gsd-h5-react:Container" id="id36"
+            style="width: 4vw; height: 4vw; display: none; border-radius: 50%; background: #3858E6; position: absolute; right: -2vw; top: 19.067vw;">
+          </view>
+        </view>
+        <view bindchangePhoto="onid25$changePhoto" bindgoFirstReport="onid25$goFirstReport"
+          bindgoReportAfter14days="onid25$goReportAfter14days" bindgoVerify="onid25$goVerify"
+          bindgoVisitedRegion="onid25$goVisitedRegion" bindmanualRefresh="onid25$manualRefresh"
+          bindpreviewOfflineCode="onid25$previewOfflineCode" bindshowReason="onid25$showReason"
+          bindtoUploadPhoto="onid25$toUploadPhoto" class="type-gsd-h5-react:Container" id="id25"
+          style="width: 80vw; height: 0.267vw; display: block; border-bottom: 0.133vw dashed #939AA0;"></view>
+        <view class="type-gsd-h5-react:Container" id="id38"
+          style="width: 100%; height: auto; border-bottom-right-radius: 5.333vw; border-bottom-left-radius: 5.333vw; overflow: hidden;">
+          <view class="type-gsd-h5-react:Container" id="id39"
+            style="width: 100%; display: inline-block; position: relative;">
+            <!-- Begin StandardHealthCodeWrapper -->
+            <view class="wa-comp-fj-jkm-StandardHealthCodeWrapper type-gsd-h5-react:Container" id="id2">
+              <view class="type-gsd-h5-react:Container" id="id32">
+                <view class="type-gsd-h5-react:Container" id="id11" style="padding-top: 5.333vw;">
+                  <view class="wa-comp-fj-jkm-StandardHealthBaseCodeWrapper type-gsd-h5-react:Container" id="id4"
+                    style="display: block;;">
+                    <view class="type-gsd-h5-react:Container" id="id20" style="text-align: center;">
+                      <view class="type-gsd-h5-react:Container" id="id24">
+                        <view class="type-gsd-h5-react:Container" id="id52"
+                          style="margin-bottom: 5.333vw; display: inline-block; color: rgb(29, 31, 36); font-size: 6.4vw; line-height: 7.733vw; font-weight: bold;"
+                          title="日期、时间">
+                          <text class="type-gsd-h5-react:Text" id="date" style="padding-right: 3.067vw;"></text>
+                          <text class="type-gsd-h5-react:Text" id="time" style="padding-left: 3.067vw;"></text>
+                        </view>
+                        <view class="type-gsd-h5-react:Container" id="id29"
+                          style="position: relative; height: var(--imgwidth);">
+                          <view class="wa-comp-standard-city-code-BaseQrcode type-gsd-h5-react:Container" id="id1"
+                            style="width: auto; margin: 0vw; display: inline-block; position: static; height: 26.667vw; z-index: 5; position: relative; transform: translateZ(1px);"
+                            title="qrcode">
+                            <view class="type-gsd-h5-react:Container" id="id13"
+                              style="height: var(--imgwidth); width: var(--imgwidth);">
+                              <view class="type-gsd-h5-react:Container" id="id6"
+                                style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center;">
+                                <image alt="[图片]" binderror="onid14$error" bindload="onid14$load"
+                                  class="type-gsd-h5-react:Image" id="id14" mode="scaleToFill"
+                                  src="data:image/png;base64,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"
+                                  style="width: 100%; height: 100%;"></image>
+                                <image alt="[图片]" class="type-gsd-h5-react:Image" id="id5" mode="scaleToFill"
+                                  src="./static/logo21@2x.png"
+                                  style="width: 25%; height: 25%; z-index: 2; position: absolute;"></image>
+                              </view>
+                            </view>
+                          </view>
+
+                          <view class="type-gsd-h5-react:Container" id="uuid_c0cf3c00"
+                            style="display: flex; justify-content: center; align-items: center; flex-direction: row; position: absolute; left: 0vw; right: 0vw; top: -4.267vw; bottom: -4.267vw;"
+                            title="跑边">
+                            <view class="horse_run_con type-gsd-h5-react:Container" id="uuid_4e457a41"
+                              style="display: flex; justify-content: center; align-items: center; flex-direction: row; position: relative; box-sizing: border-box; width: calc(var(--imgwidth) + 16px); height: calc(var(--imgwidth) + 16px);">
+                              <view class="type-gsd-h5-react:Container" id="uuid_770fc067"
+                                style="width: calc(var(--imgwidth) + 16px); height: calc(var(--imgwidth) + 16px); padding: 1.067vw; z-index: 0; border-radius: 1.333vw; background: linear-gradient(115deg, rgba(255, 180, 0, 0.5), rgb(255, 180, 0), rgba(247, 135, 52, 0.8)); position: absolute; left: 0vw; top: 0vw; box-sizing: border-box; overflow: hidden;">
+                                <view class="type-gsd-h5-react:Container" id="uuid_5ed69025"
+                                  style="z-index: 2; border-radius: 1.067vw; background: rgb(255, 255, 255); position: absolute; left: 1.067vw; right: 1.067vw; top: 1.067vw; bottom: 1.067vw; transform: translateZ(1px);">
+                                </view>
+                                <view class="type-gsd-h5-react:Container" id="uuid_18d91490"
+                                  style="width: 200%; height: 100%; z-index: 1; background: linear-gradient(115deg, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.01), rgb(255, 255, 0), rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.01)); background-size: 50% 100% !important; position: absolute; left: 0vw; top: 0vw; animation: start-pen-frames 0.75s linear infinite;">
+                                </view>
+                              </view>
+                            </view>
+                          </view>
+                          <view class="side-tabs type-gsd-h5-react:Container" id="uuid_e4323b55" title="切换人像按钮"
+                            style="transform: translate(calc(var(--imgwidth) / 2 + 14px), -50%)">
+                            <view bindtap="onuuid_7cb54472$tap" class="tabs-item type-gsd-h5-react:Container"
+                              id="uuid_7cb54472" style="background: url(./static/TAB_UP_OFF.svg);">
+                              <image alt="[图片]" class="tabs-icon type-gsd-h5-react:Image" id="uuid_0fe30019"
+                                mode="scaleToFill" src="./static/QR_ON.svg">
+                              </image>
+                              <text class="tabs-label type-gsd-h5-react:Text" id="uuid_dd617492">亮码</text>
+                            </view>
+                            <view bindtap="onuuid_5fcf6006$tap" class="tabs-item type-gsd-h5-react:Container"
+                              id="uuid_5fcf6006" style="background: url(./static/TAB_DOWN_ON.svg);">
+                              <image alt="[图片]" class="tabs-icon type-gsd-h5-react:Image" id="uuid_a9108235"
+                                mode="scaleToFill" src="./static/CAM_OFF.svg">
+                              </image>
+                              <text class="tabs-label type-gsd-h5-react:Text" id="uuid_242b1819">人像</text>
+                            </view>
+                          </view>
+                        </view>
+                        <view class="type-gsd-h5-react:Container" id="id30"
+                          style="margin-top: 4.533vw; display: flex; justify-content: center; align-items: center; line-height: 4.8vw;"
+                         >
+                          <!-- <slot name="descSlot"></slot> -->
+                          <view bindtap="onuuid_2eec5308$tap" class="type-gsd-h5-react:Container" id="uuid_2eec5308"
+                            slot="descSlot"
+                            style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
+                            <text class="type-gsd-h5-react:Text" id="id44"
+                              style="padding-right: 0vw; padding-left: 0vw; font-size: 5.333vw; line-height: 7.467vw; font-weight: bolder;color: #2BA566;">绿码</text>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!-- End StandardHealthCodeWrapper -->
+          </view>
+          <view class="primary-button-con type-gsd-h5-react:Container" id="id40"
+            style="padding-top: 4.267vw; padding-bottom: 4.8vw; display: flex; align-items: center; flex-direction: column; border-style: none;"
+           >
+            <view class="wa-comp-fj-jkm-Button type-gsd-h5-react:Container type-fj-jkm:Button" id="uuid_99e59a32"
+              style="width: 58.667vw; height: 13.067vw;" onclick="window.location.href = 'checkin.html';">
+              <view class="btn-bg1 type-gsd-h5-react:Container" id="uuid_cb220d96"
+                style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; border: 0.267vw solid rgb(58, 94, 255); border-radius: 8.533vw; position: relative; box-shadow: 1.067vw 1.6vw 4.267vw 0 rgba(44,71,190,0.30), inset -0.8vw -0.8vw 1.067vw 0 rgba(44,71,190,0.60); filter: blur(0);">
+                <view class="type-gsd-h5-react:Container" id="uuid_44fe7c67" style="z-index: 3; position: relative;">
+                  <text class="type-gsd-h5-react:Text" id="uuid_e98aca79" slot="textSlot"
+                    style="color: rgb(255, 255, 255); font-size: 5.333vw; line-height: 9.6vw; font-weight: 600;">扫一扫</text>
+                </view>
+                <view class="high-light type-gsd-h5-react:Container" id="uuid_c6960684"></view>
+              </view>
+            </view>
+          </view>
+          <view class="type-gsd-h5-react:Container" id="uuid_823e2a87"
+            style="display: flex; align-items: center; flex-direction: column; border-style: none; position: relative;"
+           >
+            <view class="type-gsd-h5-react:Container" id="uuid_f4b50588"
+              style="width: 78.667vw; height: 0.267vw; border-bottom: 0.133vw dashed rgb(147, 154, 160);"></view>
+            <view bindtap="onuuid_194f0622$tap"
+              class="wa-comp-fj-jkm-TravelCard type-gsd-h5-react:Container" id="uuid_194f0622"
+              style="width: 100%; height: 22.667vw; padding-right: 4.267vw; padding-left: 5.333vw; display: flex; justify-content: space-between; align-items: center; flex-direction: row; border-bottom-right-radius: 5.333vw; border-bottom-left-radius: 5.333vw; background: rgb(255, 255, 255); position: relative; overflow: hidden;">
+              <view class="type-gsd-h5-react:Container" id="uuid_beb0e836"
+                style="width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 1; position: relative;"
+                onclick="navigateToTripCard();">
+                <view class="type-gsd-h5-react:Container" id="uuid_259dfd84">
+                  <view class="type-gsd-h5-react:Container" id="uuid_8ba24d83"
+                    style="display: flex; align-items: center; color: rgb(82, 86, 102); font-size: 5.333vw; line-height: 6.4vw; font-weight: bolder;">
+                    <text class="type-gsd-h5-react:Text" id="uuid_b0d7cc24" style="font-size: 20px;">点击查询行程卡</text>
+                    <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_f0850377" mode="scaleToFill"
+                      src="./static/icon-arrow-right@2x.png"
+                      style="width: 4.267vw; height: 4.267vw; margin-left: 0.533vw;"></image>
+                  </view>
+                  <view class="type-gsd-h5-react:Container" id="uuid_280c0677" style="margin-top: 1.333vw;">
+                    <text class="type-gsd-h5-react:Text" id="uuid_e574bb50"
+                      style="color: rgb(82, 86, 102); font-size: 4.267vw; font-weight: 400; font-family: PingFangSC-Regular; letter-spacing: 0vw;">查询本人在疫情期间7天内到访地信息</text>
+                  </view>
+                </view>
+              </view>
+              <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_f5ea9424" mode="scaleToFill"
+                src="./static/travel-card@2x.png"
+                style="width: 21.733vw; height: 19.333vw; position: absolute; right: 0vw; bottom: 0vw;"></image>
+            </view>
+
+            <view class="triangle-right type-gsd-h5-react:Container" id="uuid_c6be1741"
+              style="height: 3.467vw; position: absolute; left: 0vw; top: -1.733vw;"></view>
+            <view class="triangle-left type-gsd-h5-react:Container" id="uuid_cec63a89"
+              style="position: absolute; right: 0vw; top: -1.733vw;"></view>
+          </view>
+          <view class="type-gsd-h5-react:Container" id="uuid_e7a4e889" style="display: none; border-style: none;"
+           >
+            <view class="type-gsd-h5-react:Container" id="uuid_62f24a90"
+              style="width: 81.867vw; height: 0.133vw; display: none; border-bottom: 0.133vw dashed rgb(147, 154, 160);">
+            </view>
+            <view bindtap="onuuid_8e2bb990$tap" class="type-gsd-h5-react:Container" id="uuid_8e2bb990"
+              style="width: auto; height: 10.667vw; margin-top: 4.4vw; padding: 0vw 4vw; display: flex; justify-content: center; align-items: center; flex-direction: row; border-radius: 5.333vw; background: rgb(235, 237, 243);">
+              <image alt="[图片]" class="type-gsd-h5-react:Image" id="uuid_98428890" mode="scaleToFill"
+                src="./static/family_health_code@2x.png"
+                style="width: 3.733vw; height: 3.733vw; display: inline-block;"></image>
+              <text class="type-gsd-h5-react:Text" id="uuid_ec6bad90"
+                style="margin-right: 4.4vw; margin-left: 2.667vw; display: inline-block; color: rgb(92, 94, 102); font-size: 4.267vw; text-align: center; align-items: center; font-family: PingFangSC-Medium; letter-spacing: 0vw;">亲友健康码</text>
+              <view class="type-WeApps_STD_COMP:Icon" id="uuid_4169f290" style="color: #919EAB; font-size: 1.6vw;"
+                type="arrow-right"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="type-gsd-h5-react:Container" id="uuid_6eefe919" style="padding-right: 4.8vw; padding-left: 4.8vw;">
+        <view
+          class="wa-comp-fj-jkm-NucleicAcidTestAndVaccination nucleic-vaccination-con type-gsd-h5-react:Container type-WeApps_STD_COMP:Icon"
+          id="uuid_99915118"
+          style="width: 100%; display: flex; justify-content: space-between; align-items: center; flex-direction: row;">
+          <view bindtap="onuuid_5c181a64$tap" class="nucleic-vaccination-item type-gsd-h5-react:Container"
+            id="uuid_5c181a64" style="width: 43.6vw; height: 27.733vw; padding: 0vw; position: relative;">
+            <image alt="[图片]" class="status-icon type-gsd-h5-react:Image" id="uuid_0bbbf666" mode="aspectFit"
+              src="./static/nucleic-24h.png" style="width: 100%; height: 100%; display: block; line-height: 0vw;">
+            </image>
+            <view class="type-gsd-h5-react:Container" id="uuid_61e66366"
+              style="width: 100%; height: 100%; padding-right: 2.667vw; padding-left: 5.333vw; position: absolute; left: 0vw; top: 0vw;">
+              <text class="type-gsd-h5-react:Text" id="uuid_ae58c966"
+                style="height: 50%; display: flex; align-items: center; color: rgb(39, 40, 46); font-size: 5.6vw; font-weight: 600;">阴性</text>
+              <text class="type-gsd-h5-react:Text" id="uuid_b55b1166"
+                style="height: 50%; padding-right: 9.6vw; display: flex; align-items: center; color: rgb(82, 86, 102); font-size: 4.267vw; font-weight: 400;">核酸检测</text>
+            </view>
+          </view>
+          <view bindtap="onuuid_326c8e85$tap" class="nucleic-vaccination-item type-gsd-h5-react:Container"
+            id="uuid_326c8e85" style="width: 43.6vw; height: 27.733vw; padding: 0vw; position: relative;">
+            <image alt="[图片]" class="status-icon type-gsd-h5-react:Image" id="uuid_2774dd30" mode="aspectFit"
+              src="./static/vaccination-done.png" style="width: 100%; height: 100%; display: block; line-height: 0vw;">
+            </image>
+            <view class="type-gsd-h5-react:Container" id="uuid_e739c467"
+              style="width: 100%; height: 100%; padding-right: 2.667vw; padding-left: 5.333vw; position: absolute; left: 0vw; top: 0vw;">
+              <text class="type-gsd-h5-react:Text" id="uuid_4cf39b59"
+                style="height: 50%; display: flex; align-items: center; color: rgb(39, 40, 46); font-size: 5.6vw; font-weight: 600;">已打加强针</text>
+              <text class="type-gsd-h5-react:Text" id="uuid_0cc0d346"
+                style="height: 50%; padding-right: 9.6vw; display: flex; align-items: center; color: rgb(82, 86, 102); font-size: 4.267vw; font-weight: 400;">疫苗接种</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="service-con type-gsd-h5-react:Container" id="id9"
+        style="width: 89.333vw; margin: 4.8vw auto 0vw; padding: 1.333vw 4.8vw; display: block; border-radius: 5.333vw; background: rgb(255, 255, 255); box-shadow: 0vw 3.2vw 8.533vw 0vw rgba(0,13,69,0.10); filter: blur(32);">
+
+        <view bindtap="onid15$tap" class="service-item type-gsd-h5-react:Container" id="id15-0"
+          style="height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+          <image alt="[图片]" class="type-gsd-h5-react:Image" id="id47-0" mode="scaleToFill" src="./static/menu-phone.png"
+            style="width: 9.067vw; height: 9.067vw; flex-shrink: 0;"></image>
+          <text class="type-gsd-h5-react:Text" id="id11-0"
+            style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 5.867vw; text-align: left; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">有异常要打电话</text>
+          <button class="button--none type-gsd-h5-react:Button" formType="button" id="id80-0"
+            style="width: 100%; height: 21.333vw; display: none; opacity: 1; border: 0vw none rgba(0, 0, 0, 0); background: transparent; position: relative;"></button>
+        </view>
+        <view bindtap="onid15$tap" class="service-item type-gsd-h5-react:Container" id="id15-1"
+          style="height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+          <image alt="[图片]" class="type-gsd-h5-react:Image" id="id47-1" mode="scaleToFill"
+            src="./static/menu-grxxsz.png" style="width: 9.067vw; height: 9.067vw; flex-shrink: 0;"></image>
+          <text class="type-gsd-h5-react:Text" id="id11-1"
+            style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 5.867vw; text-align: left; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">个人信息设置</text>
+          <button class="button--none type-gsd-h5-react:Button" formType="button" id="id80-1"
+            style="width: 100%; height: 21.333vw; display: none; opacity: 1; border: 0vw none rgba(0, 0, 0, 0); background: transparent; position: relative;"></button>
+        </view>
+        <view bindtap="onid15$tap" class="service-item type-gsd-h5-react:Container" id="id15-2"
+          style="height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+          <image alt="[图片]" class="type-gsd-h5-react:Image" id="id47-2" mode="scaleToFill"
+            src="./static/menu-grjkxxbb.png" style="width: 9.067vw; height: 9.067vw; flex-shrink: 0;"></image>
+          <text class="type-gsd-h5-react:Text" id="id11-2"
+            style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 5.867vw; text-align: left; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">个人健康信息报备</text>
+          <button class="button--none type-gsd-h5-react:Button" formType="button" id="id80-2"
+            style="width: 100%; height: 21.333vw; display: none; opacity: 1; border: 0vw none rgba(0, 0, 0, 0); background: transparent; position: relative;"></button>
+        </view>
+        <view bindtap="onid15$tap" class="service-item type-gsd-h5-react:Container" id="id15-3"
+          style="height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+          <image alt="[图片]" class="type-gsd-h5-react:Image" id="id47-3" mode="scaleToFill"
+            src="./static/menu-gljtcyjkm.png" style="width: 9.067vw; height: 9.067vw; flex-shrink: 0;"></image>
+          <text class="type-gsd-h5-react:Text" id="id11-3"
+            style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 5.867vw; text-align: left; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">添加和删除亲友健康码</text>
+          <button class="button--none type-gsd-h5-react:Button" formType="button" id="id80-3"
+            style="width: 100%; height: 21.333vw; display: none; opacity: 1; border: 0vw none rgba(0, 0, 0, 0); background: transparent; position: relative;"></button>
+        </view>
+        <view bindtap="onid15$tap" class="service-item type-gsd-h5-react:Container" id="id15-4"
+          style="height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+          <image alt="[图片]" class="type-gsd-h5-react:Image" id="id47-4" mode="scaleToFill" src="./static/menu-yw.png"
+            style="width: 9.067vw; height: 9.067vw; flex-shrink: 0;"></image>
+          <text class="type-gsd-h5-react:Text" id="id11-4"
+            style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 5.867vw; text-align: left; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">有疑问想得到回答</text>
+          <button class="button--none type-gsd-h5-react:Button" formType="button" id="id80-4"
+            style="width: 100%; height: 21.333vw; display: none; opacity: 1; border: 0vw none rgba(0, 0, 0, 0); background: transparent; position: relative;"></button>
+        </view>
+        <view bindtap="onid15$tap" class="service-item type-gsd-h5-react:Container" id="id15-5"
+          style="height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+          <image alt="[图片]" class="type-gsd-h5-react:Image" id="id47-5" mode="scaleToFill"
+            src="./static/menu-bcjkm2.png" style="width: 9.067vw; height: 9.067vw; flex-shrink: 0;"></image>
+          <text class="type-gsd-h5-react:Text" id="id11-5"
+            style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 5.867vw; text-align: left; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">下载福码爱心卡</text>
+          <button class="button--none type-gsd-h5-react:Button" formType="button" id="id80-5"
+            style="width: 100%; height: 21.333vw; display: none; opacity: 1; border: 0vw none rgba(0, 0, 0, 0); background: transparent; position: relative;"></button>
+        </view>
+        <view bindtap="onid15$tap" class="service-item type-gsd-h5-react:Container" id="id15-6"
+          style="height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+          <image alt="[图片]" class="type-gsd-h5-react:Image" id="id47-6" mode="scaleToFill" src="./static/menu-slztm.png"
+            style="width: 9.067vw; height: 9.067vw; flex-shrink: 0;"></image>
+          <text class="type-gsd-h5-react:Text" id="id11-6"
+            style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 5.867vw; text-align: left; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">管理张贴码</text>
+          <button class="button--none type-gsd-h5-react:Button" formType="button" id="id80-6"
+            style="width: 100%; height: 21.333vw; display: none; opacity: 1; border: 0vw none rgba(0, 0, 0, 0); background: transparent; position: relative;"></button>
+        </view>
+      </view>
+      <view class="type-gsd-h5-react:Container" id="id12"
+        style="width: 88.933vw; margin: 4.8vw auto; display: flex; align-items: flex-start; flex-direction: column; border-radius: 5.333vw; background: rgb(255, 255, 255); box-shadow: 0vw 3.2vw 8.533vw 0vw rgba(0,13,69,0.10); filter: blur(32);"
+       >
+        <text class="type-gsd-h5-react:Text" id="id48"
+          style="margin-top: 4vw; margin-left: 4.8vw; display: none; color: rgb(29, 31, 36); font-size: 5.6vw; line-height: 6.4vw; font-family: PingFangSC-Medium; letter-spacing: 0vw;">热门服务</text>
+        <view class="service-con type-gsd-h5-react:Container" id="id52"
+          style="width: 100%; padding: 1.333vw 5.333vw; display: flex; justify-content: flex-start; align-items: center; flex-flow: column wrap;">
+          <view bindtap="onid49$tap" class="service-item type-gsd-h5-react:Container" id="id49-iid49"
+            style="width: 100%; height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+            <image alt="[图片]" class="type-gsd-h5-react:Image" id="id50-iid49" mode="scaleToFill"
+              src="./static/menu-hsjcdt.png" style="width: 9.067vw; height: 9.067vw;"></image>
+            <text class="type-gsd-h5-react:Text" id="id51-iid49"
+              style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 8.267vw; text-align: center; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">核酸检测地图</text>
+            <text class="type-gsd-h5-react:Text" id="id53-iid49"
+              style="margin-top: -0.667vw; color: rgb(29, 31, 36); font-size: 3.733vw; line-height: 5.333vw; text-align: center; font-family: PingFangSC-Regular; letter-spacing: 0vw;"></text>
+          </view>
+          <view bindtap="onid49$tap" class="service-item type-gsd-h5-react:Container" id="id49-iid49"
+            style="width: 100%; height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+            <image alt="[图片]" class="type-gsd-h5-react:Image" id="id50-iid49" mode="scaleToFill"
+              src="./static/menu-ymjzyy.png" style="width: 9.067vw; height: 9.067vw;"></image>
+            <text class="type-gsd-h5-react:Text" id="id51-iid49"
+              style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 8.267vw; text-align: center; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">疫苗接种预约</text>
+            <text class="type-gsd-h5-react:Text" id="id53-iid49"
+              style="margin-top: -0.667vw; color: rgb(29, 31, 36); font-size: 3.733vw; line-height: 5.333vw; text-align: center; font-family: PingFangSC-Regular; letter-spacing: 0vw;"></text>
+          </view>
+          <view bindtap="onid49$tap" class="service-item type-gsd-h5-react:Container" id="id49-iid49"
+            style="width: 100%; height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+            <image alt="[图片]" class="type-gsd-h5-react:Image" id="id50-iid49" mode="scaleToFill"
+              src="./static/menu-ymjzdt.png" style="width: 9.067vw; height: 9.067vw;"></image>
+            <text class="type-gsd-h5-react:Text" id="id51-iid49"
+              style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 8.267vw; text-align: center; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">疫苗接种地图</text>
+            <text class="type-gsd-h5-react:Text" id="id53-iid49"
+              style="margin-top: -0.667vw; color: rgb(29, 31, 36); font-size: 3.733vw; line-height: 5.333vw; text-align: center; font-family: PingFangSC-Regular; letter-spacing: 0vw;"></text>
+          </view>
+          <view bindtap="onid49$tap" class="service-item type-gsd-h5-react:Container" id="id49-iid49"
+            style="width: 100%; height: 21.333vw; display: flex; justify-content: flex-start; align-items: center; flex-direction: row;">
+            <image alt="[图片]" class="type-gsd-h5-react:Image" id="id50-iid49" mode="scaleToFill"
+              src="./static/menu-yldzpz.png" style="width: 9.067vw; height: 9.067vw;"></image>
+            <text class="type-gsd-h5-react:Text" id="id51-iid49"
+              style="padding-left: 4.267vw; color: #1D1F24; font-size: 5.867vw; line-height: 8.267vw; text-align: center; font-weight: bolder; font-family: PingFangSC-Regular; letter-spacing: 0vw;">医保电子凭证</text>
+            <text class="type-gsd-h5-react:Text" id="id53-iid49"
+              style="margin-top: -0.667vw; color: rgb(29, 31, 36); font-size: 3.733vw; line-height: 5.333vw; text-align: center; font-family: PingFangSC-Regular; letter-spacing: 0vw;"></text>
+          </view>
+        </view>
+      </view>
+      <view bindtap="onid67$tap" class="type-gsd-h5-react:Container" id="id67"
+        style="margin-top: 12.8vw; padding-bottom: 0.133vw; text-align: left;">
+        <view class="type-gsd-h5-react:Container" id="id75"
+          style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
+          <text class="type-gsd-h5-react:Text" id="id76"
+            style="color: #27282E; font-size: 4.8vw; line-height: 6.667vw; text-align: center; font-family: PingFangSC-Medium; letter-spacing: 0vw;">信息说明</text>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_ca767008"
+          style="padding-top: 2.933vw; padding-right: 4.8vw; padding-left: 4.8vw; display: flex; justify-content: flex-start; align-items: flex-start; flex-direction: row; color: rgb(98, 102, 122); font-size: 4.267vw; line-height: 5.6vw;">
+          <text class="type-gsd-h5-react:Text" id="uuid_607e9298"
+            style="margin-right: 0.8vw; flex-shrink: 0;">数据来源：</text>
+          <text class="type-gsd-h5-react:Text" id="uuid_107ad663" style="flex: 1;">全国一体化政务服务平台和福建省相关部门</text>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_f0035914"
+          style="padding-top: 2.933vw; padding-right: 4.8vw; padding-left: 4.8vw; display: flex; justify-content: flex-start; align-items: flex-start; flex-flow: row nowrap; color: #62667A; font-size: 4.267vw; line-height: 6.667vw;">
+          <text class="type-gsd-h5-react:Text" id="uuid_e9c2e716"
+            style="margin-right: 0.8vw; flex-shrink: 0;">注意事项：</text>
+          <text class="type-gsd-h5-react:Text" id="uuid_e9f04c16" style="display: inline;">使用健康码时不要离开本页面且需本人操作确认</text>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_c30fe270"
+          style="padding: 2.933vw 4.8vw 7.467vw; display: flex; justify-content: flex-start; align-items: flex-start; flex-flow: row nowrap; color: #62667A; font-size: 4.267vw; line-height: 6.667vw;">
+          <text class="type-gsd-h5-react:Text" id="uuid_0cce6471"
+            style="margin-right: 0.8vw; flex-shrink: 0;">使用范围：</text>
+          <text class="type-gsd-h5-react:Text" id="uuid_27c73a71"
+            style="display: inline;">依托全国一体化政务服务平台，实现跨省（区、市）数据共享和互通互认</text>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_0c6ff114"
+          style="padding-right: 4.8vw; padding-left: 4.8vw; display: flex; justify-content: flex-start; align-items: flex-start; flex-direction: row; color: #62667A; font-size: 4.267vw;">
+          <text class="type-gsd-h5-react:Text" id="uuid_5c1d2714"
+            style="margin-right: 0.8vw; color: rgb(98, 102, 122); flex-shrink: 0;">客服电话：</text>
+          <text class="type-gsd-h5-react:Text" id="uuid_ff814e14"
+            style="display: block; color: rgb(98, 102, 122); text-align: left; opacity: 1; flex: 1;">400-666-1331（7x24小时）</text>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_369cb454"
+          style="margin-bottom: 14.933vw; padding-top: 1.6vw; padding-right: 4.8vw; padding-left: 4.8vw; display: flex; justify-content: flex-start; align-items: flex-start; flex-direction: column; font-size: 4.267vw;">
+          <view class="type-gsd-h5-react:Container" id="uuid_78c90b57" style="display: flex;">
+            <text class="type-gsd-h5-react:Text" id="uuid_c5d49457"
+              style="margin-right: 0.8vw; color: rgb(98, 102, 122); flex-shrink: 0;">主办机构：</text>
+            <text class="type-gsd-h5-react:Text" id="uuid_97aa0157" style="color: rgb(98, 102, 122);">福建省数字办 卫健委
+              医保局</text>
+          </view>
+          <view class="type-gsd-h5-react:Container" id="uuid_800f8c57" style="padding-top: 1.6vw; display: flex;">
+            <text class="type-gsd-h5-react:Text" id="uuid_9a950a57"
+              style="margin-right: 0.8vw; display: block; color: rgb(98, 102, 122); text-align: left; opacity: 1; flex: 1; flex-shrink: 0;">承办机构：</text>
+            <text class="type-gsd-h5-react:Text" id="uuid_0583c357"
+              style="color: rgb(98, 102, 122);">福建省大数据集团有限公司</text>
+          </view>
+        </view>
+        <view class="type-gsd-h5-react:Container" id="uuid_c4c2af14"
+          style="margin-bottom: 14.933vw; padding-top: 1.6vw; padding-right: 4.8vw; padding-left: 4.8vw; display: none; font-size: 4.267vw;">
+          <view class="type-gsd-h5-react:Container" id="uuid_7f442742" style="width: 16.667vw; display: none;">
+            <text class="type-gsd-h5-react:Text" id="uuid_c699aa15"
+              style="color: rgb(98, 102, 122); font-size: 4.267vw; flex-shrink: 0;">承办机构：</text>
+            <text class="type-gsd-h5-react:Text" id="uuid_83c13280"
+              style="width: 16.667vw; color: rgb(98, 102, 122); font-size: 4.267vw;">承办机构：</text>
+          </view>
+          <view class="type-gsd-h5-react:Container" id="uuid_40f8f972" style="display: none;">
+            <text class="type-gsd-h5-react:Text" id="uuid_b5b37914"
+              style="display: block; color: rgb(98, 102, 122); font-size: 3.2vw; text-align: left; opacity: 1; flex: 1;">本应用由福建省数字办
+              卫健委 医保局主办</text>
+            <text class="type-gsd-h5-react:Text" id="uuid_39b5ae36"
+              style="color: rgb(98, 102, 122); font-size: 4.267vw;">福建省大数据集团有限公司承办</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<script>
+  setDynamicTime("#date", 0, 10);
+  setDynamicTime("#time", 11, 19);
+  addStorageField("_name", "#masked-name", "名字", "习近平", presetFilters.name_keepfirstname);
+  addStorageField("_name", "#name", "名字", "习近平");
+  addStorageField("_idcard", "#masked-idcard", "身份证号", "110101195306153019", presetFilters.idcard());
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019");
+
+  function toggleInfoMask(b) {
+    document.getElementById("info-container").style.display = b ? "none" : "flex";
+    document.getElementById("masked-info-container").style.display = b ? "flex" : "none";
+  }
+
+  const nav_scroll = () => {
+    window.addEventListener('scroll', () => {
+      const percentage = Math.max(0, Math.min(window.pageYOffset / document.documentElement.clientHeight / 0.18, 1));
+      document.querySelector(".nav").style.backgroundColor = `rgba(255, 255, 255, ${percentage})`;
+      const color = 255 - Math.ceil(percentage * 255);
+      // document.querySelector(".nav").style.color = `rgb(${color}, ${color}, ${color})`;
+      document.querySelector(".nav > img") && (document.querySelector(".nav > img").style.filter = `brightness(${(1 - percentage).toFixed(1)})`);
+    });
+  };
+
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setTimeout(nav_scroll, 1);
+  } else {
+    document.addEventListener("DOMContentLoaded", nav_scroll);
+  }
+
+  initServiceWorker("fujian-hc");
+</script>

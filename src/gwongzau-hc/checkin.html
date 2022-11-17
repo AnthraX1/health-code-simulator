@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<title>通行登记</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+  content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#4293F4">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="140x140" href="./static/logo.png">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="stylesheet" href="./common/base.css">
+<link rel="stylesheet" href="./common/cell.css">
+<link rel="stylesheet" href="../common/g-icon.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+<style>
+  body {
+    margin: 0;
+    font-family: "PingFang SC", sans-serif;
+    box-sizing: border-box;
+  }
+
+  .check-point-id {
+    font-family: "PingFang SC", sans-serif;
+  }
+
+  view {
+    display: block;
+    box-sizing: border-box;
+  }
+</style>
+<div class="capsule dark" onclick="navigateHome();">
+  <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5" />
+    <circle cx="54" cy="14" r="6" />
+    <circle cx="10" cy="14" r="6" />
+  </svg>
+  <div class="splitter"></div>
+  <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9" />
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+  </svg>
+</div>
+<div class="is-bg-blue">
+  <div class="roll-warp roll-warp-before">
+    <div class="weui-navigation-bar dark">
+      <div class="weui-navigation-bar__placeholder"></div>
+      <div class="weui-navigation-bar__inner">
+        <div class="weui-navigation-bar__left">
+          <div class="weui-navigation-bar__buttons" onclick="navigateHome();">
+            <img class="goBackArrow" src="./static/goBackArrow.png" onclick="navigateHome();">
+          </div>
+        </div>
+        <div class="weui-navigation-bar__center">
+          <span style="font-weight: normal;">通行登记</span>
+        </div>
+        <div class="weui-navigation-bar__right">
+
+        </div>
+      </div>
+      <div class="capsule" onclick="navigateHome();">
+        <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="14" r="9.5" />
+          <circle cx="54" cy="14" r="6" />
+          <circle cx="10" cy="14" r="6" />
+        </svg>
+        <div class="splitter"></div>
+        <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="9" />
+          <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="rep-wrap">
+    <div class="sk-card-box__wrapper">
+      <div>
+        <div class="sk-card-box ">
+          <div class="sk-card-box__head is-green ">
+            <span class="sk-card-box__title">通行凭证</span>
+          </div>
+          <div class="sk-card-box__content">
+            <div class="sk-card-box__first">
+              <div bind:tap="handleCommonProblem" class="relative-problem">常见问题
+              </div>
+              <div class="card-content-info">
+                <div class="sk-card-box__info">
+                  <div class="sk-card-box__info-name" id="_name"></div>
+                </div>
+                <div class="sk-card-box__address" id="_place"></div>
+                <div class="check-point-id">
+                  ID：<span id="_place_id"></span></div>
+                <div class="code-scanning-type" id="_place_type"></div>
+                <span class="sk-card-box__time">登记时间: <span id="_time"></span></span>
+              </div>
+              <div class="sk-card-base__code">
+                <img class="sk-card-base__code-pic"
+                  src="data:image/png;base64,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">
+                <img class="health-code-cover-image" src="./static/health-code2.gif">
+
+              </div>
+              <div class="health-status" style="color: #2AB492">
+                绿码
+              </div>
+              <div class="code-tip">
+                最新上报时间：<span id="last-report"></span>
+              </div>
+              <div class="risk-map">
+              </div>
+              <div class="cro-left-bottom is-bg-blue"></div>
+              <div class="cro-right-bottom is-bg-blue"></div>
+              <div class="cro-line-bottom"></div>
+            </div>
+            <div class="sk-card-box__last">
+              <div class="cro-left-top is-bg-blue"></div>
+              <div class="cro-right-top is-bg-blue"></div>
+              <div class="nucleic-vaccine-warp">
+                <div class="nucleic-left">
+                  <div bind:tap="handleToNucleic" class="nucleic-content"
+                    style="background: linear-gradient(180deg, #008BFF 0%, #003CD0 100%)">
+                    <div class="content-border have-nucleic zh-CN white-content">
+                      <div class="content-title">
+                        <div>核酸检测结果</div>
+                        <div class="g-icon" type="arrow-right" style="font-size: 13px; color:#fff"></div>
+                      </div>
+
+                      <div class="nucleic-hour">
+                        <div class="time">24</div>
+                        <span class="hour">小时阴性</span>
+                      </div>
+                      <div class="content-date" id="covid-test-time"></div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="vaccine-right">
+                  <div bind:tap="handleToVaccination" class="vaccine-content">
+                    <div class="content-border zh-CN">
+                      <div class="content-title">
+                        <div>疫苗接种信息</div>
+                        <div class="g-icon" type="arrow-right" style="font-size: 13px; color:#999"></div>
+                      </div>
+                      <span class="content cn-content">您已完成新冠疫苗加强接种</span>
+                      <div class="content-date" id="vaccination-date"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="matter-warp">
+        <view class="cell component-class">
+          <view class="cell__wrap" onclick="navigateToTripCard();">
+            <view class="cell__content">
+              <view class="cell__content__header">
+                <view class="cell__content__prepend prepend-class">
+                  <view class="prepend-item" slot="prepend">
+                    <image src="./static/travel-card.png"></image>
+                  </view>
+                </view>
+                <view class="cell__content__wrap">
+                  <view class="cell__content__label"></view>
+                  <view>
+                    <view class="matter-content" slot="content">通信大数据行程卡</view>
+                  </view>
+                </view>
+              </view>
+              <view class="cell__content__footer cell--no-access">
+                <view class="cell__content__append cell--no-access">
+                  <view slot="append">
+                    <view class="g-icon" type="arrow-right" style="font-size: 4vw; color: #C7C7CC;"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="cell component-class">
+          <view class="cell__wrap">
+            <view class="cell__content">
+              <view class="cell__content__header">
+                <view class="cell__content__prepend prepend-class">
+                  <view class="prepend-item" slot="prepend">
+                    <image mode="aspectFit" src="./static/icon-Travel-card.png"></image>
+                  </view>
+                </view>
+                <view class="cell__content__wrap">
+                  <view class="cell__content__label"></view>
+                  <view>
+                    <view class="matter-content" slot="content">
+                      <!-- <view class="high-risk-tips matter-red" style="color: #F4AB21;" wx:elif="{{TravelVerificaValue==2}}">
+                        <view>{{languageH.HighRisk14Days}}</view>
+                        <view bind:tap="handleToTravelCard" class="details-btn red-btn">
+                          {{languageH.ViewDetails}}
+                        </view>
+                      </view>
+                      <view class="high-risk-tips" style="color: #000;" wx:elif="{{TravelVerificaValue==3}}">
+                        <view class="matter-label">无行程记录</view>
+                      </view> -->
+                      <section id="not-checked">
+                        <view class="high-risk-tips">
+                          <view class="matter-label">防疫行程卡</view>
+                          <view style="color: #999999; font-size: 3.2vw;">当前未核验</view>
+                        </view>
+                      </section>
+                      <section id="checked" style="display: none;">
+                        <view class="high-risk-tips" style="color: #2AB492;">
+                          您7天内未曾到访中高风险地区所在的城市
+                        </view>
+                        <view class="matter-tips">注：本服务由通信大数据行程卡核验</view>
+                      </section>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="cell__content__footer cell--no-access">
+                <view class="cell__content__append cell--no-access">
+                  <view slot="append">
+                    <view class="details-btn blue-btn" onclick="toggleChecked();" id="check-button">
+                      点击核验
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="cell component-class">
+          <view class="cell__wrap">
+            <view class="cell__content">
+              <view class="cell__content__header">
+                <view class="cell__content__prepend prepend-class">
+                  <view class="prepend-item" slot="prepend">
+                    <image src="./static/icon-health-nucleic-acid.png">
+                    </image>
+                  </view>
+                </view>
+                <view class="cell__content__wrap">
+                  <view class="cell__content__label"></view>
+                  <view>
+                    <view class="matter-content" slot="content">粤核酸</view>
+                  </view>
+                </view>
+              </view>
+              <view class="cell__content__footer cell--no-access">
+                <view class="cell__content__append cell--no-access">
+                  <view slot="append">
+                    <view class="g-icon" type="arrow-right" style="font-size: 4vw; color: #C7C7CC;"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </div>
+      <div class="copyright">
+        <div>广州市新冠肺炎防控指挥办</div>
+        <div>腾讯公司/腾讯云提供技术支持</div>
+        <div>服务热线：12345</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  setStaticTime("#covid-test-time", 0, 16, 10, 10);
+  setStaticTime("#_time", 0, 19);
+
+  addStorageField("_name", "#_name", "名字", "习近平", presetFilters.name_preferfirstname);
+  addStorageField("_place", "#_place", "场所名称", "广州市政府大院");
+  addStorageField("_place_id", "#_place_id", "场所ID", "1000311672");
+  addStorageField("_place_type", "#_place_type", "场所类型", "政府机构");
+  addStorageField("_vaccine_date", "#vaccination-date", "疫苗接种完成日期", "2021-06-26");
+  addStorageField("_last_report_date", "#last-report", "最新上报时间", "2020/04/26");
+
+  function toggleChecked() {
+    document.getElementById("check-button").style.display = "none";
+    document.getElementById("not-checked").style.display = "none";
+    document.getElementById("checked").style.display = "block";
+  }
+
+  initServiceWorker("ykm");
+</script>

@@ -1,0 +1,107 @@
+<html lang="en">
+
+<head>
+  <title>核酸检测</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+  <meta name="theme-color" content="#448bfb">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link href="css/chunk-vendors.e42493a3.css" rel="stylesheet">
+  <link href="css/app.5e428cca.css" rel="stylesheet">
+  <script src="../common/base.js"></script>
+  <style>
+    .btn {
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      padding: 0 14px;
+      z-index: 20;
+      border: 1px solid #fff;
+      border-radius: 13px;
+      color: #fff;
+      display: inline-block;
+      font-weight: 400;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none;
+      background-color: transparent;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="top: 0; left: 0; width: 100%; height: env(safe-area-inset-top, 0); background-color: #448bfb;"></div>
+  <div id="app" style="position: relative;">
+    <button type="button" class="btn" onclick="window.location.href = './index.html';">返回</button>
+    <div data-v-52870d82="" class="container1">
+      <div data-v-52870d82="" class="container">
+        <div data-v-52870d82="" id="load" class="van-loading van-loading--spinner" style="display: none;"><span
+            data-v-52870d82="" class="van-loading__spinner van-loading__spinner--spinner"
+            style="color: rgb(25, 137, 250); width: 44px; height: 44px;"><i data-v-52870d82=""></i><i
+              data-v-52870d82=""></i><i data-v-52870d82=""></i><i data-v-52870d82=""></i><i data-v-52870d82=""></i><i
+              data-v-52870d82=""></i><i data-v-52870d82=""></i><i data-v-52870d82=""></i><i data-v-52870d82=""></i><i
+              data-v-52870d82=""></i><i data-v-52870d82=""></i><i data-v-52870d82=""></i></span></div>
+        <div data-v-52870d82="">
+          <div data-v-52870d82="" class="header">
+            <div data-v-52870d82="" class="content">
+              <div data-v-52870d82="" class="person-info"><span data-v-52870d82="">核酸检测结果</span></div>
+              <div data-v-52870d82="" class="list"><span data-v-52870d82="">身份证号:</span><span
+                  data-v-52870d82="" id="idcard"></span></div>
+            </div>
+          </div>
+          <div data-v-52870d82="" class="list-container">
+            <div data-v-52870d82="" class="list-container-item1">
+              <div data-v-52870d82="" class="bg">江苏省卫生健康委员会</div>
+              <div data-v-52870d82="" id="hours"><img data-v-52870d82="" src="./src/hours.dc948a63.png"></div>
+              <div data-v-52870d82=""><span data-v-52870d82="">姓名:</span><span data-v-52870d82="" class="name"></span></div>
+              <div data-v-52870d82=""><span data-v-52870d82="">采样点:</span><span data-v-52870d82="" class="sample-spot"></span></div>
+              <div data-v-52870d82=""><span data-v-52870d82="">检测时间:</span><span data-v-52870d82="" class="_test_datetime" data-traceback-hours="10" data-traceback-range="4" id="red"></span>
+              </div>
+              <div data-v-52870d82=""><span data-v-52870d82="">检测结果:</span><span data-v-52870d82=""
+                  style="font-weight: bold; color: rgb(0, 201, 2);">阴性</span></div>
+            </div>
+            <div data-v-52870d82="" class="list-container-item1">
+               <div data-v-52870d82="" class="bg">江苏省卫生健康委员会</div>
+               <div data-v-52870d82="" id="hours"><img data-v-52870d82="" src="./src/hours.dc948a63.png"></div>
+               <div data-v-52870d82=""><span data-v-52870d82="">姓名:</span><span data-v-52870d82="" class="name"></span></div>
+               <div data-v-52870d82=""><span data-v-52870d82="">采样点:</span><span data-v-52870d82="" class="sample-spot"></span></div>
+               <div data-v-52870d82=""><span data-v-52870d82="">检测时间:</span><span data-v-52870d82="" class="_test_datetime" data-traceback-hours="38" data-traceback-range="4" id="red"></span>
+               </div>
+               <div data-v-52870d82=""><span data-v-52870d82="">检测结果:</span><span data-v-52870d82=""
+                   style="font-weight: bold; color: rgb(0, 201, 2);">阴性</span></div>
+             </div>
+            <div data-v-52870d82="" class="show-more more" onclick="document.querySelector('.extra-data').style.display = 'block'; document.querySelector('.show-more').style.display = 'none';"><span data-v-52870d82="">↓更多数据</span></div>
+            <div class="extra-data" style="display: none;">
+              <div data-v-52870d82="" class="more" onclick="document.querySelector('.extra-data').style.display = 'none'; document.querySelector('.show-more').style.display = 'block';"><span data-v-52870d82="">↑收起</span></div>
+            </div>
+            <!---->
+          </div>
+        </div>
+        <div data-v-52870d82="" class="explain">
+          <p data-v-52870d82="">数据来源：江苏省卫生健康委员会，反映近30天内核酸检测情况，数据在不断汇聚和完善中。</p>
+        </div><br data-v-52870d82="">
+        <div data-v-52870d82="" class="footer">
+          <div data-v-52870d82=""><span data-v-52870d82="">技术支持：江苏省卫生健康信息中心</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", presetFilters.idcard(6, 4));
+    addStorageField("_name", ".name", "名字", "习近平");
+    addStorageField("_sample_spot", ".sample-spot", "采样点", "南京鼓楼医院采样点");
+
+    setStaticTime("._test_datetime");
+    
+    initServiceWorker("skm");
+    
+    if (window.location.hash == "#fromindex") {
+      document.querySelector(".btn").style.display = "none";
+    }
+  </script>
+</body>
+
+</html>
