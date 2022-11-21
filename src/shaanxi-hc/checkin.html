@@ -20,24 +20,24 @@
 </head>
 
 <body>
-  <view class="weui-navigation-bar dark">
-    <view class="weui-navigation-bar__placeholder"></view>
-    <view class="weui-navigation-bar__inner" style="background:#0bae81">
-      <view class="weui-navigation-bar__left">
-        <view class="weui-navigation-bar__buttons" onclick="history.back()">
-          <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view>
+  <view class="navbar navbar--wechat navbar--wechat-alternative">
+    <view class="navbar__placeholder"></view>
+    <view class="navbar__inner" style="background:#0bae81">
+      <view class="navbar__left">
+        <view class="navbar__buttons" onclick="history.back()">
+          <view class="navbar__button-goback"></view>
         </view>
       </view>
-      <view class="weui-navigation-bar__center"><text>陕西电子识别码</text></view>
-      <view class="weui-navigation-bar__right"></view>
+      <view class="navbar__center"><text>陕西电子识别码</text></view>
+      <view class="navbar__right"></view>
     </view>
-    <view class="capsule" onclick="navigateHome()"><svg class="capsule-menu-icon" viewBox="0 0 64 28"
+    <view class="capsule capsule--wechat capsule--alternative" onclick="navigateHome()"><svg class="capsule__menu-icon" viewBox="0 0 64 28"
         xmlns="http://www.w3.org/2000/svg">
         <circle cx="32" cy="14" r="9.5"></circle>
         <circle cx="54" cy="14" r="6"></circle>
         <circle cx="10" cy="14" r="6"></circle>
       </svg>
-      <view class="splitter"></view><svg class="capsule-exit-icon" viewBox="0 0 60 60"
+      <view class="capsule__splitter"></view><svg class="capsule__exit-icon" viewBox="0 0 60 60"
         xmlns="http://www.w3.org/2000/svg">
         <circle cx="30" cy="30" r="9"></circle>
         <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"></circle>
@@ -174,7 +174,6 @@
       text.innerHTML = 24;
     }
     function toggleScan(text) {
-      text.innerHTML == '已' ? document.getElementsByClassName("testStyle")[0].setAttribute('style', 'display:none;') : document.getElementsByClassName("testStyle")[0].removeAttribute('style');
       text.innerHTML = text.innerHTML == '已' ? '未' : '已';
     }
     function dateFilter(text) {
@@ -183,7 +182,7 @@
 
     setStaticTime("#testtime", 5, 19, 4, 8, dateFilter);
     setStaticTime('#time');
-    addStorageField('_name', '#_name', '名字', '习近平', presetFilters.name);
+    addStorageField('_name', '#_name', '名字', '习近平', presetFilters.name_preferfirstname);
     addStorageField('_idcard', '#_idcard', '身份证号', '110101195306153019', presetFilters.idcard(1, 2));
     addStorageField('_place', '#_place', '地点名称', '下北泽');
     addStorageField('_place_type', '#_place_type', '地点类型', '住所');

@@ -145,24 +145,24 @@
 <script src="../common/base.js"></script>
 <div id="app">
   <div class="page-green___2ThI9" style="padding-top: 88px;">
-    <div class="alipay-nav dark">
-      <!-- <div class="weui-navigation-bar__placeholder"></div> -->
-      <div class="alipay-nav-title">
-        豫康码
-      </div>
-      <div class="capsule" onclick="navigateHome();">
-        <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="14" r="6" />
-          <circle cx="54" cy="14" r="6" />
-          <circle cx="10" cy="14" r="6" />
-        </svg>
-        <div class="splitter"></div>
-        <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-          <!-- <circle cx="30" cy="30" r="9" /> -->
-          <line x1="20" y1="20" x2="40" y2="40" stroke-width="6" />
-          <line x1="40" y1="20" x2="20" y2="40" stroke-width="6" />
-          <circle cx="30" cy="30" r="26" stroke-width="6" fill="transparent" />
-        </svg>
+    <div class="navbar navbar--alipay-alternative" style="display: fixed;">
+      <div class="navbar__inner">
+        <div class="navbar__title">
+          豫康码
+        </div>
+        <div class="capsule capsule--alipay capsule--alternative" onclick="navigateHome();">
+          <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="14" r="6" />
+            <circle cx="54" cy="14" r="6" />
+            <circle cx="10" cy="14" r="6" />
+          </svg>
+          <div class="capsule__splitter"></div>
+          <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <line x1="21" y1="21" x2="39" y2="39" stroke-width="5" />
+            <line x1="39" y1="21" x2="21" y2="39" stroke-width="5" />
+            <circle cx="30" cy="30" r="24" stroke-width="5" fill="transparent" />
+          </svg>
+        </div>
       </div>
     </div>
     <div class="main-container___1b3g8">
@@ -378,12 +378,17 @@
     window.addEventListener('scroll', () => {
       const scroll_percentage = window.pageYOffset / document.documentElement.clientHeight;
       if (scroll_percentage > 0.25) {
-        document.querySelector(".alipay-nav").classList.remove("dark");
+        document.querySelector(".navbar").classList.remove("navbar--alipay-alternative");
+        document.querySelector(".navbar").classList.add("navbar--alipay");
+        document.querySelector(".capsule").classList.remove("capsule--alternative");
       } else if (scroll_percentage < 0.18) {
-        document.querySelector(".alipay-nav").classList.add("dark");
+        document.querySelector(".navbar").classList.add("navbar--alipay-alternative");
+        document.querySelector(".navbar").classList.remove("navbar--alipay");
+        document.querySelector(".capsule").classList.add("capsule--alternative");
       }
     });
   };
+
   if (document.readyState === "complete" || document.readyState === "interactive") {
     setTimeout(nav_scroll, 1);
   } else {

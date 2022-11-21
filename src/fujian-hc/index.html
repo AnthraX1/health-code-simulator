@@ -10,25 +10,25 @@
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="../common/nav.css">
 <script src="../common/base.js"></script>
-<view class="weui-navigation-bar">
-  <view class="weui-navigation-bar__placeholder"></view>
-  <view class="weui-navigation-bar__inner nav" style="color: black;">
-    <view class="weui-navigation-bar__left">
+<view class="navbar navbar--wechat">
+  <view class="navbar__placeholder"></view>
+  <view class="navbar__inner nav" style="color: black;">
+    <view class="navbar__left">
     </view>
-    <view class="weui-navigation-bar__center" style="font-weight: normal;">
+    <view class="navbar__center" style="font-weight: normal;">
       <text>福建健康码</text>
     </view>
-    <view class="weui-navigation-bar__right">
+    <view class="navbar__right">
     </view>
   </view>
-  <div class="capsule" onclick="navigateHome();">
-    <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+  <div class="capsule capsule--wechat" onclick="navigateHome();">
+    <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
       <circle cx="32" cy="14" r="9.5" />
       <circle cx="54" cy="14" r="6" />
       <circle cx="10" cy="14" r="6" />
     </svg>
-    <div class="splitter"></div>
-    <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <div class="capsule__splitter"></div>
+    <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
       <circle cx="30" cy="30" r="9" />
       <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
     </svg>
@@ -471,7 +471,7 @@
 <script>
   setDynamicTime("#date", 0, 10);
   setDynamicTime("#time", 11, 19);
-  addStorageField("_name", "#masked-name", "名字", "习近平", presetFilters.name_keepfirstname);
+  addStorageField("_name", "#masked-name", "名字", "习近平", presetFilters.name_preferfirstname);
   addStorageField("_name", "#name", "名字", "习近平");
   addStorageField("_idcard", "#masked-idcard", "身份证号", "110101195306153019", presetFilters.idcard());
   addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019");

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<title>重庆市“场所码”</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport"
+  content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#368CF5">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="apple-touch-icon" sizes="64x64" href="./static/logo.png">
+<link rel="stylesheet" href="checkin.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+
+<div class="capsule capsule--wechat" onclick="navigateHome();">
+  <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5" />
+    <circle cx="54" cy="14" r="6" />
+    <circle cx="10" cy="14" r="6" />
+  </svg>
+  <div class="capsule__splitter"></div>
+  <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9" />
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+  </svg>
+</div>
+
+<view class="code-box" style="height: 100vh;">
+  <view class="code-warp" style="height: 100%;">
+    <view class="titleBar" style="position: relative; z-index: 10;">
+      <div class="navbar navbar--wechat-alternative">
+        <div class="navbar__placeholder"></div>
+        <div class="navbar__inner">
+          <div class="navbar__left">
+            <div class="navbar__buttons">
+              <div class="navbar__button-goback" onclick="history.back();"></div>
+            </div>
+          </div>
+          <div class="navbar__center">
+            <span>重庆市“场所码”</span>
+          </div>
+          <div class="navbar__right"></div>
+        </div>
+      </div>
+    </view>
+    <view class="code-center">
+      <view class="code-info">
+        <view class="codePlaceInfo">
+          <view class="codePlaceName"></view>
+          <view class="codePlaceArea"></view>
+          <view class="codePlaceDetails"></view>
+        </view>
+        <view class="line-image">
+          <image src="./static/line-result.png"></image>
+        </view>
+        <view></view>
+        <view class="code-success" style="padding-bottom: 26.667vw;">
+          <view class="title">扫码结果</view>
+          <view class="desc"></view>
+          <view class="code-type">
+            <view class="code-image">
+              <image src="./static/lvma-icon.svg">
+              </image>
+            </view>
+            <view class="code-text greenCollor">
+              绿码
+            </view>
+          </view>
+          <view class="sacn-info" style="margin-top: 8vw;">
+            <view class="sac-info-title">扫码用户信息</view>
+            <view class="messageBox">
+              <view class="messageList">
+                <view class="messageLeft">姓名</view>
+                <view class="messageIcon">
+                  <span id="masked-name"></span>
+                  <span id="name"></span>
+                  <image class="toggle-mask-button" src="./static/password-btn.svg" data-for="name"></image>
+                </view>
+              </view>
+              <view class="messageList">
+                <view class="messageLeft">手机号码</view>
+                <view class="messageIcon">
+                  <span id="masked-phone"></span>
+                  <span id="phone"></span>
+                  <image class="toggle-mask-button" src="./static/password-btn.svg" data-for="phone"></image>
+                </view>
+              </view>
+              <view class="messageList">
+                <view class="messageLeft">证件号码</view>
+                <view class="messageIcon">
+                  <span id="masked-idcard"></span>
+                  <span id="idcard"></span>
+                  <image class="toggle-mask-button" src="./static/password-btn.svg" data-for="idcard"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view onclick="window.location.href = 'detail.html';" class="nucleic_48">
+            <view class="nucleic_48_icon1"></view>
+            <view class="nucleic_48_t1">24</view>
+            <view class="nucleic_48_t2">
+              <view>小时内</view>
+              <view>阴性</view>
+            </view>
+            <view class="nucleic_48_icon2"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="quickly-btn">
+      <view onclick="window.location.href = 'index.html';" class="btn-style" style="background-color: #2CBF86;">返回渝康码首页</view>
+      <view onclick="navigateToTripCard();" class="btn-style" style="background-color: #4293F4;">出示通信行程卡</view>
+    </view>
+  </view>
+  <!-- <custompopup id="lightcodecustompopup"></custompopup>
+  <intercqpopup id="interCQTips"></intercqpopup>
+  <cqnucleictips id="cqnucleictips"></cqnucleictips> -->
+</view>
+<script>
+  addStorageField("_place", ".codePlaceName", "场所名称", "朝天门");
+  addStorageField("_place_district", ".codePlaceArea", "场所行政区划", "重庆市/渝中区");
+  addStorageField("_place_address", ".codePlaceDetails", "场所详细地址", "朝千路1号重庆朝天门广场");
+
+  addStorageField("_name", "#masked-name", "名字", "习近平", presetFilters.lastcharonly);
+  addStorageField("_name", "#name", "名字", "习近平");
+  addStorageField("_phone", "#masked-phone", "手机号码", "13019890604", presetFilters.phone());
+  addStorageField("_phone", "#phone", "手机号码", "13019890604");
+  addStorageField("_idcard", "#masked-idcard", "身份证号", "110101195306153019", presetFilters.idcard(6, 4));
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019");
+
+  setStaticTime(".desc");
+
+  document.querySelectorAll(".toggle-mask-button").forEach((element) => {
+    element.setAttribute("data-show", "hide");
+    const masked_target = document.getElementById("masked-" + element.attributes["data-for"].value);
+    const target = document.getElementById(element.attributes["data-for"].value);
+    masked_target.style.display = "inline";
+    target.style.display = "none";
+    element.addEventListener("click", () => {
+      const show = element.attributes["data-show"].value == "show";
+      masked_target.style.display = show ? "inline" : "none";
+      target.style.display = show ? "none" : "inline";
+      element.attributes["data-show"].value = show ? "hide" : "show";
+      element.attributes["src"].value = show ? "./static/password-btn.svg" : "./static/password-btn2.svg"
+    });
+  });
+
+  initServiceWorker("chongqing-hc");
+</script>

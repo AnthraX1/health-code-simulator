@@ -1,0 +1,16 @@
+{
+  "short_name": "渝康码",
+  "name": "渝康码",
+  "icons": [
+    {
+      "src": "static/logo.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    }
+  ],
+  "id": "ilovexjp-chongqing-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "渝康码模拟"
+}

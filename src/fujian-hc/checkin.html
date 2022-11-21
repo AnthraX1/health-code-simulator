@@ -128,28 +128,28 @@
   <view class="type-gsd-h5-react:Container" id="uuid_5e746185" slot="content"
     style="background: linear-gradient(rgb(208, 233, 254) 0%, rgb(238, 240, 245) 520px);">
     <view class="type-gsd-h5-react:Container" id="uuid_3aefb917" style="padding: 5.333vw;">
-      <view class="weui-navigation-bar">
-        <view class="weui-navigation-bar__placeholder"></view>
-        <view class="weui-navigation-bar__inner" style="color: black;">
-          <view class="weui-navigation-bar__left">
-            <div class="weui-navigation-bar__buttons" onclick="history.back();">
-              <div class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></div>
+      <view class="navbar navbar--wechat">
+        <view class="navbar__placeholder"></view>
+        <view class="navbar__inner" style="color: black;">
+          <view class="navbar__left">
+            <div class="navbar__buttons" onclick="history.back();">
+              <div class="navbar__button-goback"></div>
             </div>
           </view>
-          <view class="weui-navigation-bar__center" style="font-weight: normal;">
+          <view class="navbar__center" style="font-weight: normal;">
             <text>张贴码</text>
           </view>
-          <view class="weui-navigation-bar__right">
+          <view class="navbar__right">
           </view>
         </view>
-        <div class="capsule dark" onclick="navigateHome();">
-          <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+        <div class="capsule capsule--wechat capsule--alternative" onclick="navigateHome();">
+          <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
             <circle cx="32" cy="14" r="9.5" />
             <circle cx="54" cy="14" r="6" />
             <circle cx="10" cy="14" r="6" />
           </svg>
-          <div class="splitter"></div>
-          <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <div class="capsule__splitter"></div>
+          <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
             <circle cx="30" cy="30" r="9" />
             <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
           </svg>
@@ -275,7 +275,7 @@
 <script>
   setStaticTime("#datetime");
 
-  addStorageField("_name", "#name", "名字", "习近平", presetFilters.name_keepfirstname);
+  addStorageField("_name", "#name", "名字", "习近平", presetFilters.name_preferfirstname);
   addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", presetFilters.idcard());
   addStorageField("_place", "#place", "场所名称", "四通桥");
   addStorageField("_place_address", "#place-address", "场所地址", "福建省福州市长安街64号");

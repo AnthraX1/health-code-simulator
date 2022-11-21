@@ -1,0 +1,393 @@
+view {
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: "PingFang SC", sans-serif;
+}
+
+/* .code-box,
+body {
+  overflow: hidden;
+} */
+
+.code-warp {
+  background: #238bff url("./static/resultBackground2.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.code-center {
+  position: relative;
+  width: 100vw;
+}
+
+.backgroundImage {
+  height: 42.267vw;
+  position: absolute;
+  width: 100vw;
+}
+
+.code-info {
+  height: 125.333vw;
+  left: 50%;
+  position: absolute;
+  top: 2.667vw;
+  transform: translateX(-50%);
+  width: 91.6vw;
+  z-index: 2;
+}
+
+.sacn-info {
+  margin-left: 6.4vw;
+  margin-right: 6.4vw;
+  padding-bottom: 8vw;
+}
+
+.sac-info-title {
+  color: #333;
+  font-size: 6.4vw;
+  font-weight: 500;
+  height: 6.4vw;
+  line-height: 6.4vw;
+  margin-bottom: 5.333vw;
+  text-align: left;
+}
+
+.messageBox {
+  width: 100%;
+}
+
+.messageList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3.733vw auto;
+}
+
+.messageLeft {
+  color: #7a7a7a;
+  flex: 0 0 24vw;
+}
+
+.messageIcon,
+.messageLeft {
+  font-size: 4.267vw;
+  line-height: 6.133vw;
+}
+
+.messageIcon {
+  flex: 1;
+  padding-left: 4vw;
+  text-align: right;
+}
+
+.messageIcon img {
+  height: 6.133vw;
+  margin-left: 3.733vw;
+  vertical-align: top;
+  width: 4.267vw;
+}
+
+.margin-right-one {
+  margin-right: 8vw;
+}
+
+.title {
+  color: #000;
+  font-size: 6.4vw;
+  line-height: 6.4vw;
+  padding: 5.333vw 0 2.133vw 6.4vw;
+  text-align: left;
+}
+
+.desc {
+  color: #7a7a7a;
+  font-size: 3.733vw;
+  font-weight: 400;
+  line-height: 4.267vw;
+  padding: 2.667vw 0 8.533vw 6.4vw;
+}
+
+.code-type {
+  width: 100%;
+}
+
+.code-image {
+  height: 38.4vw;
+  margin: 3.733vw auto 0;
+  width: 38.4vw;
+}
+
+.code-image img {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: scaleDraw;
+  animation-timing-function: ease-in-out;
+  display: block;
+  height: 32vw;
+  margin: 0 auto;
+  width: 32vw;
+}
+
+.code-text {
+  font-size: 6.4vw;
+  font-weight: 500;
+  height: 7.467vw;
+  line-height: 7.467vw;
+  padding-bottom: 10.133vw;
+  text-align: center;
+}
+
+.greenCollor {
+  color: #26a764;
+}
+
+.redCollor {
+  color: #f52012;
+}
+
+.yellowCollor {
+  color: #eeac12;
+}
+
+.is-indeterminacy {
+  color: #000;
+}
+
+@-webkit-keyframes scaleDraw {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes scaleDraw {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.1);
+  }
+}
+
+.code-fail {
+  background: #fff;
+  border-radius: 0 0 3.2vw 3.2vw;
+  margin-bottom: 8vw;
+}
+
+.code-fail-text {
+  color: #999;
+  font-size: 4.267vw;
+  margin-left: 6.667vw;
+  margin-right: 6.667vw;
+  margin-top: 8vw;
+  padding-bottom: 24vw;
+  text-align: center;
+}
+
+.codePlaceInfo {
+  background: #fff;
+  border-radius: 3.2vw 3.2vw 0 0;
+}
+
+.codePlaceName {
+  color: #333;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 6.4vw;
+  font-weight: 600;
+  line-height: 6.4vw;
+  padding: 6.933vw 0 0 6.4vw;
+}
+
+.codePlaceArea {
+  color: #333;
+  font-size: 4.267vw;
+  line-height: 4.267vw;
+  margin: 5.333vw 0 0 6.4vw;
+}
+
+.codePlaceDetails {
+  color: #7c8086;
+  font-size: 3.733vw;
+  line-height: 3.733vw;
+  padding: 1.867vw 0 5.067vw 6.4vw;
+}
+
+.line-image {
+  height: 4.267vw;
+  width: 91.6vw;
+}
+
+.line-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.code-success {
+  background: #fff;
+  border-radius: 0 0 3.2vw 3.2vw;
+  margin-bottom: 8vw;
+  position: relative;
+}
+
+.shensu {
+  background: #fff;
+  border: 0.133vw solid #ebebeb;
+  border-radius: 1.867vw;
+  color: #666;
+  margin: 2.667vw auto 8vw;
+  padding: 0.667vw 2.667vw;
+  text-align: center;
+  width: 18.667vw;
+}
+
+.paddingB {
+  padding-bottom: 0 !important;
+}
+
+.quickly-btn {
+  background-color: #fff;
+  bottom: 0;
+  box-shadow: 0 -6px 8px 0 rgba(142, 155, 170, .24);
+  box-sizing: border-box;
+  display: flex;
+  height: 26.667vw;
+  justify-content: space-between;
+  left: 0;
+  padding: 5.333vw 6.4vw 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.order-time-sty {
+  background: rgba(52, 120, 246, .1);
+  border-bottom-left-radius: 1.6vw;
+  color: #3478f6;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 3.2vw;
+  font-weight: 500;
+  height: 7.467vw;
+  line-height: 7.467vw;
+  margin-top: 1.333vw;
+  text-align: center;
+  width: 100%;
+}
+
+.quickly-btn .btn-style {
+  border-radius: 4px;
+  color: #fff;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  height: 12.8vw;
+  line-height: 12.8vw;
+  text-align: center;
+  width: 40.267vw;
+}
+
+.nucleic_48 {
+  align-items: center;
+  background: #edf7f2;
+  border-bottom-left-radius: 1.6vw;
+  border-top-left-radius: 1.6vw;
+  box-shadow: 0vw 1.6vw 4.267vw 0vw rgba(4, 43, 0, .24);
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 16vw;
+  padding: 2.667vw 2.667vw 2.667vw 4vw;
+  position: absolute;
+  right: 0;
+  top: 4.267vw;
+}
+
+.nucleic_48_icon1 {
+  background-image: url("./static/nucleic_in48_icon2.png");
+  height: 9.6vw;
+  left: -3.733vw;
+  position: absolute;
+  top: -3.733vw;
+  width: 9.6vw;
+}
+
+.nucleic_48_icon1,
+.nucleic_48_icon2 {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.nucleic_48_icon2 {
+  background-image: url("./static/nucleic_in48_icon1.png");
+  height: 3.733vw;
+  width: 3.733vw;
+}
+
+.nucleic_48_t1 {
+  color: #04992c;
+  font-family: DIN Alternate-Bold, DIN Alternate;
+  font-size: 12.8vw;
+  font-weight: 600;
+  height: 10.667vw;
+  line-height: 10.667vw;
+}
+
+.nucleic_48_t2 {
+  color: #04992c;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 3.733vw;
+  font-weight: 500;
+  height: 9.067vw;
+  line-height: 4.533vw;
+  margin: 0vw 1.333vw;
+}
+
+.nucleic_none {
+  background: #f6f6f6;
+  border-bottom-left-radius: 1.6vw;
+  border-top-left-radius: 1.6vw;
+  box-shadow: 0vw 1.6vw 4.267vw 0vw rgba(0, 0, 0, .24);
+  box-sizing: border-box;
+  padding-top: 2.667vw;
+  position: absolute;
+  right: 0;
+  top: 4.267vw;
+  width: 33.333vw;
+}
+
+.nucleic_none_t1 {
+  color: #7a7a7a;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 3.733vw;
+  font-weight: 500;
+  height: 5.333vw;
+  line-height: 5.333vw;
+  padding-left: 2.667vw;
+}

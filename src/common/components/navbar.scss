@@ -1,0 +1,189 @@
+.navbar {
+  $height: 44px;
+  $right: 25.333vw;
+  $navbar: &;
+  // .nav-bar--wechat .android {
+  //   --height: 48px;
+  //   --right: 29.6vw;
+  // }
+
+  line-height: normal;
+
+  *:not(.capsule, .capsule *) {
+    box-sizing: content-box;
+  }
+
+  padding: 0;
+
+  @mixin wechat {
+    overflow: hidden;
+    padding-top: env(safe-area-inset-top, 0);
+
+    #{$navbar}__inner {
+      align-items: center;
+      display: flex;
+      height: $height;
+      left: 0;
+      padding-right: $right;
+      padding-top: env(safe-area-inset-top, 0);
+      position: fixed;
+      top: 0;
+      width: calc(100% - #{$right});
+      z-index: 5001;
+      color: black;
+      font-family: sans-serif;
+
+      #{$navbar}__left {
+        -webkit-box-pack: center;
+        align-items: center;
+        display: flex;
+        padding-left: 16px;
+        position: relative;
+        width: $right;
+
+        #{$navbar}__button-goback {
+          background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='24' viewBox='0 0 12 24'%3E  %3Cpath fill-opacity='.9' fill-rule='evenodd' d='M10 19.438L8.955 20.5l-7.666-7.79a1.02 1.02 0 0 1 0-1.42L8.955 3.5 10 4.563 2.682 12 10 19.438z'/%3E%3C/svg%3E");
+          background-position: 50% 50%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          font-size: 12px;
+          height: 2em;
+          width: 1em;
+
+          &:hover {
+            opacity: .5;
+          }
+        }
+      }
+      
+      #{$navbar}__center {
+        -webkit-box-pack: center;
+        align-items: center;
+        display: flex;
+        flex: 1;
+        font-size: 17px;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        font-weight: bold;
+        max-width: calc(100vw - #{2 * $right});
+      
+        * {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      
+      #{$navbar}__right {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  &--wechat {
+    @include wechat;
+  }
+
+  &--wechat-alternative {
+    @include wechat;
+
+    #{$navbar}__inner {
+      color: white;
+
+      #{$navbar}__left {
+        #{$navbar}__button-goback {
+          background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='24' viewBox='0 0 12 24'%3E  %3Cpath fill-opacity='.9' fill-rule='evenodd' fill='white' d='M10 19.438L8.955 20.5l-7.666-7.79a1.02 1.02 0 0 1 0-1.42L8.955 3.5 10 4.563 2.682 12 10 19.438z'/%3E%3C/svg%3E");
+        }
+      }
+    }
+
+  }
+
+  &--wechat-browser {
+    @include wechat;
+
+    #{$navbar}__inner {
+      background-color: #ededed;
+
+      #{$navbar}__left {
+        padding-left: 15px;
+
+        #{$navbar}__button-goback {
+          background-image: url("data:image/svg+xml,<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'><path d='M12 10.586l5.657-5.657 1.414 1.414L13.414 12l5.657 5.657-1.414 1.414L12 13.414l-5.657 5.657-1.414-1.414L10.586 12 4.929 6.343 6.343 4.93 12 10.586z' fill-rule='evenodd'/></svg>");
+          height: 2em;
+          width: 2em;
+          opacity: 0.8;
+        }
+      }
+      
+      #{$navbar}__center {
+        font-weight: 500;
+        font-size: 16px;
+        opacity: .9;
+      }
+    }
+  }
+
+  #{&}--wechat-alternative#{&}--wechat-browser {
+    #{$navbar}__inner {
+      #{$navbar}__left {
+        #{$navbar}__button-goback {
+          background-image: url("data:image/svg+xml,<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'><path d='M12 10.586l5.657-5.657 1.414 1.414L13.414 12l5.657 5.657-1.414 1.414L12 13.414l-5.657 5.657-1.414-1.414L10.586 12 4.929 6.343 6.343 4.93 12 10.586z' fill-rule='evenodd' fill='white'/></svg>");
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @mixin alipay {
+    box-sizing: content-box;
+    width: 100%;
+    height: 44px;
+    top: 0;
+    padding-top: env(safe-area-inset-top, 0);
+    color: black;
+    z-index: 5000;
+
+    #{$navbar}__title {
+      font-size: 19px;
+      font-weight: bold;
+      margin-left: 16px;
+    }
+
+    #{$navbar}__inner {
+      width: 100%;
+      height: $height;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 5001;
+      display: flex;
+      padding-top: env(safe-area-inset-top, 0);
+      align-items: center;
+      font-family: sans-serif;
+      background-color: white;
+    }
+  }
+
+  &--alipay {
+    @include alipay;
+  }
+
+  &--alipay-alternative {
+    @include alipay;
+
+    #{$navbar}__inner {
+      color: white;
+      background-color: transparent;
+    }
+  }
+
+  &__placeholder {
+    background: #f8f8f8;
+    height: $height;
+    position: relative;
+    z-index: 50;
+    visibility: hidden;
+  }
+}

@@ -151,7 +151,18 @@ const apps = {
     help_text:
       "<p>点击地点名称、姓名、证件号可以修改对应信息；</p><p>点击核酸检测时间可以切换小时数；</p><p>点击“已采样”可以切换今日是否采样。</p>",
     menu: [{ title: "场所", icon: "place", link: "shaanxi-hc/checkin.html" }],
-  }
+  },
+  "chongqing-hc": {
+    title: "渝康码",
+    icon: "chongqing-hc/static/logo.png",
+    link: "chongqing-hc/index.html",
+    color: "#f5aa06",
+    help_text: "<p>点击地点名称、姓名、证件号可以修改对应信息；</p><p>点击二维码可以切换至重庆市“场所码”。</p>",
+    menu: [
+      { title: "场所", icon: "place", link: "chongqing-hc/checkin.html" },
+      { title: "核酸", icon: "vaccines", link: "chongqing-hc/detail.html" },
+    ]
+  },
 };
 
 function onIconFail(t) {

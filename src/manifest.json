@@ -3,7 +3,7 @@
   "name": "健康码",
   "icons": [
     {
-      "src": "common/logo.jpg",
+      "src": "common/images/logo.jpg",
       "type": "image/jpeg",
       "sizes": "512x512"
     }
