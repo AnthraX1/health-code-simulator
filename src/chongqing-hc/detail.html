@@ -3,8 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta name="viewport"
   content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
-<meta name="theme-color" content="#368CF5">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="./static/logo.png">
 <link rel="apple-touch-icon" sizes="64x64" href="./static/logo.png">
@@ -98,14 +98,15 @@
   </view>
   <view class="summary">
     <view class="stitle">服务说明:</view>
-    <view class="stext" wx:if="{{incomeType==='inside'}}">相关查询结果基于卫生健康部门数据库，数据由各检测机构提供，正在不断汇聚更新中。若有疑问，请咨询核酸检测机构。</view>
-    <view class="stext" wx:if="{{incomeType==='external'}}">相关查询结果由卫生健康部门数据库提供，若有疑问，请咨询核酸检测机构。</view>
+    <view class="stext">相关查询结果基于卫生健康部门数据库，数据由各检测机构提供，正在不断汇聚更新中。若有疑问，请咨询核酸检测机构。</view>
   </view>
 </view>
 <script>
-  addStorageField("_name", "#name", "名字", "习近平", presetFilters.lastnameonly);
+  addStorageField("_name", "#name", "名字", "习近平", function(n) {
+    return null == n ? "" : 2 == n.length ? "*" + n.substring(1, 2) : 3 == n.length ? n.substring(0, 1) + "*" + n.substring(2, 3) : n.length > 3 ? n.substring(0, 1) + "**" + n.substring(3, n.length) : void 0;
+  });
   addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", presetFilters.idcard(6, 4));
-  addStorageField("_phone", "#phone", "手机号码", "13019890604", presetFilters.phone());
+  addStorageField("_phone", "#phone", "手机号码", "13019890604", presetFilters.phone(3, 3));
 
   // addStorageField("_covid_test_id", "#covid-test-id", "检测报告编号", "000000000000");
   addStorageField("_covid_test_method", "#covid-test-method", "采样方式", "咽拭子");

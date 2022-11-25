@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<title>河北健康码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport"
+  content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="apple-touch-icon" sizes="460x460" href="./static/logo.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+
+<div class="capsule capsule--wechat" onclick="navigateHome();">
+  <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5" />
+    <circle cx="54" cy="14" r="6" />
+    <circle cx="10" cy="14" r="6" />
+  </svg>
+  <div class="capsule__splitter"></div>
+  <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9" />
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+  </svg>
+</div>
+
+<view class="hs-dialogs" style="display: none;">
+  <view class="hs-dialog-wrap">
+    <view class="hs-dialog-line hs-dialog-img">
+      <image src="./static/close.png" onclick="document.querySelector('.hs-dialogs').style.display = 'none';"></image>
+    </view>
+    <view class="hs-dialog-line">
+      <view class="hs-dialog-title">检测结果：</view>
+      <view class="hs-dialog-info">
+        <text class="hsjc-green">阴性</text>
+      </view>
+    </view>
+    <view class="hs-dialog-line">
+      <view class="hs-dialog-title">检测时间：</view>
+      <view class="hs-dialog-info covid-test-time"></view>
+    </view>
+    <view class="hs-dialog-line">
+      <view class="hs-dialog-title">检测机构：</view>
+      <view class="hs-dialog-info covid-test-institution"></view>
+    </view>
+  </view>
+</view>
+<view id="normal">
+  <view class="back-view show">
+    <image alt="" class="back-image" src="./static/banner.png"></image>
+  </view>
+  <view class=" data-overview-box" style="margin-top: 24vw;">
+    <view bindtap="goLink" class="notice">
+      <view class="tongzhitext">
+        <text class="tongzhi-text">省委优化营商环境专项巡视正在进行中，点此滚动内容即可查看专项巡视公告，感谢您的关注支持！近7日内涉疫风险群众须在河北健康码“涉疫风险自报”模块自主报告涉疫风险地区旅居情况，瞒报不报者，造成疫情传播后果的，追究法律责任！</text>
+        <!-- https://wyy-1253323744.file.myqcloud.com/hbjkm/gdt3.json -->
+      </view>
+    </view>
+  </view>
+  <view class="main-wrap">
+    <view class="main-wraps">
+      <view class="self-info">
+        <view class="self-left"> 您好，<span id="name"></span> </view>
+        <view class="self-right"> (身份证：<span id="idcard"></span>) </view>
+      </view>
+      <view class="code">
+        <view style="font-size:5.333vw;margin-bottom:0vw;width: 225px;text-align:center;font-family:Arial;" id="datetime"></view>
+        <image class="hgImg" src="./static/huangguan.png" style="width: 35px; height: 25px; margin-bottom: -7px;"></image>
+        <view class="canvasbox" wx:if="{{fxdjflag!=20&&hsDialog==0}}">
+          <image class="logo" src="./static/logo2.gif"></image>
+          <image class="bkImg" src="./static/biankuang3.png" style="width: 235px; height: 231px;"></image>
+          <!-- <image class="bkImg" src="https://wyy-1253323744.file.myqcloud.com/hbjkm/biankuang4.png" style="  width: 235px; height: 231px;"
+            wx:if="{{fxdjflag!=20&&!newflag&&severalvaccine&&severalvaccine.num>=4}}"></image> -->
+          <image binderror="imgError" class="codeImg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAooAAAKKCAIAAAA1Fu3bAAAUM0lEQVR4nO3c0W0jSXhGUdNQUnIEDkmOwCHJETgt+nVsGDWLqa39b7XOeRUoNrubvOiX7/X5/fUvz/Lf//6ff/zaf/uv//gbj+RX66Nav+/Ua3fsXIUdO5/o3DE3j2qt+V2Y8tN+Vc45d1TNO2fHv04fAADwf8kzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkfKz/PLUss9Zch7lxwWfH8z6vY/67Xrvjeft6z/tEa+v3nfrduPH76+kZAHLkGQBy5BkAcuQZAHLkGQBy5BkAcuQZAHLkGQBy5BkAcn6zGrY2tTuzo7mzc+Ne1VpzsWhtfVTNY576pkxpbk5NbYrtaP7GTmmeZ0/PAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkLO1GvY8O9sxU1s5N/7nHT9tZWnH1E7W1Hbbufe9cWPr3ELijef5Rp6eASBHngEgR54BIEeeASBHngEgR54BIEeeASBHngEgR54BIMdq2AWaq1I7R3Vu+au57nTuCq4137e5Zdbcq5r6ltkUK/D0DAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADlbq2E/bcNlag3need5arGouUc29b5T2087plalpvbXpn5zpl77vG/ZDk/PAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkPOb1bCprZwp59Zwdty4/vO8167d+L47fto1Wmvezze6ccnuHE/PAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkPPxvN2ZHVN7RudM7Uade+3a1PbTlOb396dte01p7txNnefmNdrh6RkAcuQZAHLkGQBy5BkAcuQZAHLkGQBy5BkAcuQZAHLkGQByXp/fX4s/21H663bOxo3neW3nKpzbFZpaK7vxCq5NrUqdc+6omt+Fc6aOufkt2/m8np4BIEeeASBHngEgR54BIEeeASBHngEgR54BIEeeASBHngEgZ2s1bEdzhWdHc3Vo7aft+9hv+tXzzsbUt3uH70Lf1K+3p2cAyJFnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyJFnAMiRZwDIeb3f70P/+tzSys5mzbnXTpk65qmVtOZ9tWPqnnzet6z5ic75aed57XlX39MzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5BxcDVs7t8MytZO1Y2qP7HlrR67Rr5rbbTum7ti15p7gWvO7v2Nqj+wcT88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQ8/r8/lr8+cbFouet4eyYWtFqXsEb75zmTtY5U3uCzTt27acdVXNr8tz7enoGgBx5BoAceQaAHHkGgBx5BoAceQaAHHkGgBx5BoAceQaAnNf7/f7jF08treyY2vZ63lZO09Ti2I7mLtiNq3/NFa21qfO885+nnNt9m7I+Zk/PAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkPP6/P764xdb/vpVc1WqeVRNzf2mc6YW1qa2rpq/Gzua+2vNqz9l5xN5egaAHHkGgBx5BoAceQaAHHkGgBx5BoAceQaAHHkGgBx5BoCcrdWwHTfuzjQ3enY871ztuPEK7pj6lu2YuuvWmqtwO37a73PzV8XTMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOS83u/3H7/43P7LzvtOLTSd26xpfqIdU/tNP+1MNtesftoxT/3WTe1z7Wj+Tk5dX0/PAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkPOx/vO5zZqd/9zcyplapFo7d8xTV39Kcynp3PuuTV3BG3ffpnbQpr6hzd23tebum6dnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyHl9fn8d+tfn9n1uXKU558btp3ObROfOxlpzR6m5v7Z241WY+g42t65+2ic6x9MzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5Lze7/cfv/jcvs+OqdWhqb2qteftRk19oubdvuPGHaXmXtWNZ2PnP+9o/j4318o8PQNAjjwDQI48A0COPANAjjwDQI48A0COPANAjjwDQI48A0DO2GrY2tQazvM+0ZTmCs/Ueb5xFe7G7bbmLtjUndO8RmtT2147zn27PT0DQI48A0COPANAjjwDQI48A0COPANAjjwDQI48A0COPANAzuvz++uPX9xc4Drnxk90487O1PZT836e+rxrzWWo531Dd9y4J7jjxq3J9X/29AwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA5H+eWZc5tEp3bnbnR81a0ppxb/9nRvApTRzV1x567N6a2225c0WourO0c8/qvnp4BIEeeASBHngEgR54BIEeeASBHngEgR54BIEeeASBHngEg5/X5/bX4842LRedMreGc2xWaOqq1G+8r5/mfMXU2mvfGOe66f8b6PHt6BoAceQaAHHkGgBx5BoAceQaAHHkGgBx5BoAceQaAHHkGgJzX+/1e/Lm5hTT1n9fOrf9M7Qqdu77N5aDm/bz2vAW9c2485nOe9/vc3OZbWx+Vp2cAyJFnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyJFnAMiRZwDI+c1q2DlTGy7Nja0pN25d/bQ755zmPbk2tWTX/Hb/tO9R86jWdo7Z0zMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkvD6/vxZ/bq7SNNeOftq5mvq851aHmntGazce844bV//OrZWdc+M39Hmv9fQMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOb9ZDVtrruFMbYqdW9KZ0lwrW5u6J5srS2s3btXtsHX11zmqf4bVMAC4jDwDQI48A0COPANAjjwDQI48A0COPANAjjwDQI48A0DO1mrYjuaO0trzdtDOHfOOqc/bvL7NtaO15rk656ftvjV3wc6Zup89PQNAjjwDQI48A0COPANAjjwDQI48A0COPANAjjwDQI48A0DO6/1+j7xxc/3nRjduXd1oaqFp7XnnecfzzuSNe2RTr93RXCr09AwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA5H+cWXnac+89rz1sOutGNS0lTmmtHN/7nG6/+jhs/70/rgqdnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyPnY2dm5caFpaumsuZQ0dZ533vfc522eyalr1NwEPHeNmr8Maz/t1/vG78LOMXt6BoAceQaAHHkGgBx5BoAceQaAHHkGgBx5BoAceQaAHHkGgJyPc1s550yt4TzPuY2tc25cdzpnapFqhxWtv/7ac+97zvOWCtfO3XWengEgR54BIEeeASBHngEgR54BIEeeASBHngEgR54BIEeeASDnY2rRZkdzv2lKc0Xrxqt/7hNNHfM5zb25c3dsc0HvxoXEG38Z1s59Ik/PAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkPP6/P764xdP7UZNuXFV6nnLXzufaMe5973xm3JugWttahfsed/unf+848ZqTO2ReXoGgBx5BoAceQaAHHkGgBx5BoAceQaAHHkGgBx5BoAceQaAnI9zeyhTu0JNNy4Hrf205a/mwtq5Nav1f77xrmtuiq01l86av97N67tzNjw9A0COPANAjjwDQI48A0COPANAjjwDQI48A0COPANAjjwDQM7r8/tr+hj+Zs29m3O7QjvOLX/tuHGPbMe5Y56666Y2ts6Zuiefd2/smNoFm+qCp2cAyJFnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyJFnAMiRZwDI+dh5cXOHZW3qmG/cu9nZFTq3GzV1rqbujbVz16j5vms3fhea/Ob8deeO2dMzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5Lw+v7/++MXn1mGm9l/WblxJ29G8Rs17Y6155zTvWHfOr268Cjcujq1Nlc7TMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOR8rP/c3LqaWpY5t0rT3EE7d/Wb+03n7qvmUlJz9e/G3aipX4Zz5/nc552663acO5Nrnp4BIEeeASBHngEgR54BIEeeASBHngEgR54BIEeeASBHngEg5/V+v//4xee2Y25cpZlaLNrRvILn3ndqzWqteRWa52pH85hv/N2Y8rz7ef2+np4BIEeeASBHngEgR54BIEeeASBHngEgR54BIEeeASBHngEg5+PcWsrUa9fObfTsmNr3ObewtvO+6/88dcc275wdzXPVXP079w29cdtr6vpO/ee1c2fD0zMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkvN7v96F/fW6FZ2qvqnnMO+977mw095uaa0c37pE972xM7aA1v2XnTN05zc24NU/PAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkPP6/P5a/Lm5DXTj7sw5zQWuG7e9pq7+1H3V/ETNe3KHK/jXTV3BqWu05ukZAHLkGQBy5BkAcuQZAHLkGQBy5BkAcuQZAHLkGQBy5BkAcl7v93vxZztKf5epTbG1G/d9djzvzjm37tQ8Vz9tm2+teX13PG/1b239vp6eASBHngEgR54BIEeeASBHngEgR54BIEeeASBHngEgR54BIOc3q2FrzV2hteYG0437a83tp+Za2Y7nnaup+/nG5a+15/1uTP0i7Th3zJ6eASBHngEgR54BIEeeASBHngEgR54BIEeeASBHngEgR54BIOf1+f21+PO5Zaip//y8o2ru7DTP847m1tVa85uy1lyk2tH8ljXP8/N+J3fe19MzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5BxcDWtqbsdMrR0194zOmdrnWmtuME2xKPfX/3Pzzml+j3ZMre95egaAHHkGgBx5BoAceQaAHHkGgBx5BoAceQaAHHkGgBx5BoCcj3P/urlZc+M+1427QmtTq0NT99Vac2HtnOdtXTWv0dRvXfN+bm7krY/K0zMA5MgzAOTIMwDkyDMA5MgzAOTIMwDkyDMA5MgzAOTIMwDk/GY1bGqfq7k7s2Nq22vtxms0tQvWvII7btxvaq7v7Zha72pq/hJO/WdPzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJDzer/ff/zi5prVufddm9roae4ZTS00Ne+Nc268RmvN71Fzx3Dqe3Tu97n5uzH1nz09A0COPANAjjwDQI48A0COPANAjjwDQI48A0COPANAjjwDQM5vVsPO7b/wd2lu9DxvF2xqzWrH1Hlu3hvNba8dzzvPzSu4w2oYADyKPANAjjwDQI48A0COPANAjjwDQI48A0COPANAjjwDQM7r8/tr8efmqtTzXrujuYX0vOWgGz/vT1v9ay67nTuTU9+UqUW5HVMLa2vr9/X0DAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADkf0wfw/2tuuJzbu2luTu2Y2m+aWoXbceOOUlPzbm+uDZ4zdRWaK2lr62P29AwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA5r/f7/ccvPreTNbXScs7Uptja1BX0if4ZvkcFzZXDnf98jmP+ladnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyHl9fn8t/nxuD+XGlaXmUtK5/bWpBZ+pu+7GRaq1GzeY1p63wNW8J5sLeufOZPO1np4BIEeeASBHngEgR54BIEeeASBHngEgR54BIEeeASBHngEg5/V+vxd/Prf91FzCam5dnXvftamtnHPObTA1t592TF3f5k7WWvNsNH+Bn+fc9fX0DAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADm/WQ17nuYuWHOhqfl515obalP/eed9z2ne7Ws3LnA175zm2mDzu+DpGQBy5BkAcuQZAHLkGQBy5BkAcuQZAHLkGQBy5BkAcuQZAHI+ptZSzlnvsDTXnc5dhakVnqldsHP/+dy52tG8vudM/V6dO88/7Uye87zvgqdnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyJFnAMiRZwDIkWcAyPlY//nGpaRzr506Gzs7Wedeu+Pc8teOc+9742JR866b2pubOqodzztXa81v2c7n9fQMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOb9ZDVu7cf9l6n2nPtGNW0jNqzC1sDa1oXbO1L1xbm1w6uqv37f5m9P8z+fs/MZ6egaAHHkGgBx5BoAceQaAHHkGgBx5BoAceQaAHHkGgBx5BoCcrdUwfnXjos055xbHps7zzlHduIO2o/ldeN6y27m7bmoxcMfUQuK5c+XpGQBy5BkAcuQZAHLkGQBy5BkAcuQZAHLkGQBy5BkAcuQZAHKshv0v59Z/zm3WPG+Rqrk5de4TnTvP6/88te7UvK+a39DnrdFNHfO5q3/uzvH0DAA58gwAOfIMADnyDAA58gwAOfIMADnyDAA58gwAOfIMADlbq2FTq0M7musw5zT3qporaTfuCjXPc/Pznnvt2tQvQ/Pqn9P8/u6cDU/PAJAjzwCQI88AkCPPAJAjzwCQI88AkCPPAJAjzwCQI88AkPP6/P6aPoa/WXNHaa25GzVlaqHpeatSU6twO6bed0dzc2rtxt+cn3Y/e3oGgBx5BoAceQaAHHkGgBx5BoAceQaAHHkGgBx5BoAceQaAnP8BgC3QzFzg1KwAAAAASUVORK5CYII="></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="hs-wrap">
+    <view class="hs-box-wrap" onclick="document.querySelector('.hs-dialogs').style.display = 'flex';">
+      <view class="hs-title hsjc-title">
+        <image src="./static/hsjc.png"></image>
+        核酸检测
+        <image src="./static/more.png" style="margin-left: 1.333vw;"></image>
+      </view>
+      <view class="hs-box hs-green">
+        <view class="hs-info">
+          <span class="hs-day">24</span><span class="hs-txt">小时</span><span class="hs-txt">阴性</span>
+        </view>
+        <view class="hs-time covid-test-time"></view>
+      </view>
+    </view>
+    <view class="hs-box-wrap" onclick="navigateToTripCard();">
+      <view class="hs-title">
+        <image src="./static/txdsj.png"></image> 通信大数据
+      </view>
+      <view class="xc-box">
+        <image class="xc-img" src="./static/txdsjxck.png"></image>
+        <view>行程卡</view>
+      </view>
+    </view>
+  </view>
+  <view class="flex flex-wrap">
+    <view class="txt" onclick="this.style.display = 'none';"> 扫码未见异常 </view>
+    <view class="ridingcode">
+      <view class="ridingcode-left">
+        <text class="ridingcode-text1">一码多用</text>
+        <text class="ridingcode-text2">开通后，可刷码乘公交</text>
+      </view>
+      <view bind:tap="bindSigned" class="ridingcode-right">去开通 <image src="./static/qvkaitong.png"
+          style="width:1.6vw;height:2.667vw;margin-left: 0.8vw;"></image>
+      </view>
+    </view>
+  </view>
+  <view class="main-box">
+    <view class="main">
+      <view bind:tap="hsMap" class="access-box">
+        <view class="img">
+          <image src="./static/map.png" style="width:50px;height:50px;"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">核酸检测地图</view>
+        </view>
+      </view>
+      <view bind:tap="gogogo1" class="access-box">
+        <view class="img">
+          <image src="./static/syfxzb.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">涉疫风险自报</view>
+        </view>
+      </view>
+      <view bind:tap="antigen" class="access-box">
+        <view class="img">
+          <image src="./static/kyzcsb.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">抗原自测上报</view>
+        </view>
+      </view>
+      <view bind:tap="inoculationDetail" class="access-box" data-real="{{true}}">
+        <view class="img">
+          <image src="./static/xgymjzxx.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">新冠疫苗接种信息</view>
+        </view>
+      </view>
+      <view bind:tap="detectionmechanism" class="access-box" data-real="{{true}}">
+        <view class="img">
+          <image src="./static/snhsjcjg.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">省内核酸检测结果</view>
+        </view>
+      </view>
+      <view bind:tap="gogogogogo" class="access-box">
+        <view class="img">
+          <image src="./static/rjbjkm.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">入境版</view>
+          <view class="title">健康码</view>
+        </view>
+      </view>
+      <view bind:tap="gogogo" class="access-box">
+        <view class="img">
+          <image src="./static/dl.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">代领</view>
+        </view>
+      </view>
+      <view bind:tap="gotoYoungOld" class="access-box">
+        <view class="img">
+          <image src="./static/lyzc.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title"> 老幼助查 </view>
+        </view>
+      </view>
+      <view bind:tap="gogo" class="access-box" style="flex:1">
+        <view class="img">
+          <image src="./static/csm.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">场所码</view>
+        </view>
+      </view>
+      <view bind:tap="bindchengchema" class="access-box">
+        <view class="img">
+          <image src="./static/bmcc.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">便民乘车</view>
+        </view>
+      </view>
+      <view bind:tap="goAnswer" class="access-box">
+        <view class="img">
+          <image src="./static/cjwt.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title"> 常见问题 </view>
+        </view>
+      </view>
+      <view bind:tap="gogogogo" class="access-box">
+        <view class="img">
+          <image src="./static/dzjkk.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">电子</view>
+          <view class="title">健康卡</view>
+        </view>
+      </view>
+      <view bind:tap="onTapAccess" class="access-box" data-real="{{true}}" data-url="/pages/self/self">
+        <view class="img">
+          <image src="./static/jkxx.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">健康信息详情</view>
+        </view>
+      </view>
+      <view bind:tap="goToSs" class="access-box" data-real="{{true}}" data-url="/pages/self/self">
+        <view class="img">
+          <image src="./static/wyss.png"></image>
+        </view>
+        <view class="right-content">
+          <view class="title">我要申诉</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="tel" style="margin-top:1.333vw">依托全国一体化政务服务平台</view>
+  <view class="tel">实现跨省数据共享和互通互认</view>
+  <view class="tel" style="margin-top:2.667vw;margin-bottom:2.667vw;">主办单位：河北省政务服务管理办公室</view>
+</view>
+<view class="g-footer component-class" style="padding-top: 0;">
+  <view class="g-footer__content">
+    <view class="g-footer__content__text" style="color: black; font-size: 3.733vw;">腾讯公司/腾讯云提供技术支持</view>
+  </view>
+</view>
+
+<div style="height: 60px;"></div>
+
+<div style="position: fixed; bottom: 0; left: 0; width: 100vw; height: 52px; padding-bottom: env(safe-area-inset-bottom, 0); display: flex; justify-content: space-around; align-items: center; background-color: white;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img style="height: 29px;" src="./static/icon_home_selected@2x.png">
+    <span style="font-size: 13px; color: #4293F4;">首页</span>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img style="height: 29px;" src="./static/icon_me@2x.png">
+    <span style="font-size: 13px; color: #344356;">我的</span>
+  </div>
+</div>
+
+<script>
+  setDynamicTime("#datetime");
+  setStaticTime(".covid-test-time", 0, 19, 12, 12)
+  addStorageField("_name", "#name", "名字", "习近平", presetFilters.lastnameonly);
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", presetFilters.idcard(4, 4));
+  addStorageField("_covid_test_institution", ".covid-test-institution", "检测机构", "河北省疾病预防控制中心");
+
+  initServiceWorker("hebei-hc");
+</script>

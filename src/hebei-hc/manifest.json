@@ -1,0 +1,16 @@
+{
+  "short_name": "河北健康码",
+  "name": "河北健康码",
+  "icons": [
+    {
+      "src": "static/logo.png",
+      "type": "image/png",
+      "sizes": "460x460"
+    }
+  ],
+  "id": "ilovexjp-hebei-hc-simulator",
+  "start_url": ".",
+  "display": "standalone",
+  "scope": "/",
+  "description": "河北健康码模拟"
+}

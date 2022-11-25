@@ -69,7 +69,7 @@ body {
 }
 
 .top {
-  background-image: url("https://static-1300672061.file.myqcloud.com/cos/code_background.png");
+  background-image: url("./static/code_background.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }

@@ -5,8 +5,8 @@
 <meta name="theme-color" content="#FFFFFF">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" href="./static/logo_jiankangbao1@2x.png">
-<link rel="apple-touch-icon" sizes="128x128" href="./static/logo_jiankangbao1@2x.png">
+<link rel="icon" type="image/png" href="./static/ssbapp-logo.png">
+<link rel="apple-touch-icon" sizes="492x492" href="./static/ssbapp-logo.png">
 <link rel="stylesheet" href="../common/nav.css">
 <script src="../common/base.js"></script>
 <style>
@@ -155,8 +155,8 @@
     height: 100%;
     width: 100%;
     top: 0;
-    left: 100%;
-    transition: left .6s ease-out;
+    left: 0;
+    display: none;
   }
   #skip-scan {
     position: fixed;
@@ -178,16 +178,16 @@
 </style>
 <meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<audio style="display: none;" preload="auto" src="./static/1.wav"></audio>
+<audio style="display: none;" preload="auto" src="./static/绿码，核酸24小时内阴性.mp3"></audio>
 <div id="info">
-  <h2>本人信息扫码登记</h2>
+  <h2>场所码扫描</h2>
   <br>
   <span>“扫描” 时将使用摄像头</span>
   <span>获取到的所有信息均在本地处理</span>
   <br>
   <span>“扫描” 开始后</span>
-  <span><b>轻触屏幕</b> 将会 <b>播放“绿码，核酸一天”提示音</b></span>
-  <span>并显示北京健康宝页面</span>
+  <span><b>轻触屏幕</b> 将会 <b>播放“绿码，核酸24小时内阴性”提示音</b></span>
+  <span>并显示随申码场所码页面</span>
   <br><br>
   <p id="tap-to-continue">轻触屏幕继续...</p>
   <br><br>
@@ -202,7 +202,7 @@
       </div>
     </div>
     <div class="navbar__center">
-      <text>北京健康宝</text>
+      <text>随申码 - 场所码</text>
     </div>
     <div class="navbar__right">
 
@@ -275,7 +275,6 @@
     audio.play();
     document.getElementById("scan-content").remove();
     document.querySelector("iframe").style.display = "block";
-    document.querySelector("iframe").style.left = "0";
     document.querySelector("iframe").onload = () => {
       window.location.href = document.querySelector("iframe").contentWindow.location.pathname;
     };
@@ -284,43 +283,5 @@
     });
   });
 
-  initServiceWorker("jkb");
+  initServiceWorker("ssm");
 </script>
-<!--
-  {
-    "success": [
-      {
-        "title_cn": "提示音1",
-        "title_en": "",
-        "value": "1",
-        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/1.m4a"
-      },
-      {
-        "title_cn": "提示音2",
-        "title_en": "",
-        "value": "2",
-        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/2.m4a"
-      },
-      {
-        "title_cn": "提示音3",
-        "title_en": "",
-        "value": "3",
-        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/3.m4a"
-      },
-      {
-        "title_cn": "提示音4",
-        "title_en": "",
-        "value": "4",
-        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/4.m4a"
-      }
-    ],
-    "fail": [
-      {
-        "title_cn": "失败提示音0",
-        "title_en": "",
-        "value": "0",
-        "url": "https://xcx-static.yqgz.beijing.gov.cn/statics/audio/0.m4a"
-      }
-    ]
-  }
--->

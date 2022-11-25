@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <title>我的渝康码</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="viewport"
+  content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
 <meta name="theme-color" content="#368CF5">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
@@ -11,16 +12,16 @@
 <link rel="stylesheet" href="../common/nav.css">
 <script src="../common/base.js"></script>
 
-<div class="capsule capsule--wechat capsule--alternative" onclick="navigateHome();">
+<div class="capsule capsule--wechat" onclick="navigateHome();">
   <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="32" cy="14" r="9.5"/>
-    <circle cx="54" cy="14" r="6"/>
-    <circle cx="10" cy="14" r="6"/>
+    <circle cx="32" cy="14" r="9.5" />
+    <circle cx="54" cy="14" r="6" />
+    <circle cx="10" cy="14" r="6" />
   </svg>
   <div class="capsule__splitter"></div>
   <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="30" cy="30" r="9"/>
-    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
+    <circle cx="30" cy="30" r="9" />
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
   </svg>
 </div>
 
@@ -38,14 +39,14 @@
           </div>
         </div>
         <div class="navbar__center">
-          <span>我的渝康码</span>
+          <span style="font-weight: normal;">我的渝康码</span>
         </div>
         <div class="navbar__right"></div>
       </div>
     </div>
   </view>
   <view class="light-code-container">
-    <view class="top top_bg_mine">
+    <view class="top">
       <view class="top-tip">温馨提示：代人申领已移至首页防疫服务的“亲友代领”</view>
       <view class="top-info">
         <view class="top-info-name" id="masked-info">
@@ -77,13 +78,11 @@
       </view>
     </view>
     <view class="middle">
-      <view bindtap="handleNavigateTo"
-        class="block-item nucleic-block nucleic-block__active"
-       >
+      <view class="block-item nucleic-block nucleic-block__active" onclick="window.location.href = 'detail.html';">
         <view class="block-title">
           <text>核酸检测</text>
         </view>
-        <view class="block-container" onclick="window.location.href = 'detail.html';">
+        <view class="block-container">
           <view class="block-number">24</view>
           <view class="block-des">
             <view class="block-des-item">小时</view>
@@ -95,9 +94,7 @@
           <text wx:if="{{orderState}}">({{orderNumber}}s)</text>
         </view> -->
       </view>
-      <view bindtap="handleNavigateTo"
-        class="block-item vaccines-block vaccines-block__active"
-       >
+      <view bindtap="handleNavigateTo" class="block-item vaccines-block vaccines-block__active">
         <view class="block-title">
           <text>疫苗接种</text>
         </view>
