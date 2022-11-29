@@ -1,206 +1,209 @@
 <!DOCTYPE html>
-<title>随申码</title>
+<title>场所码</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
-<meta name="theme-color" content="#DDC089">
+<meta name="viewport"
+  content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="./static/ssbapp-logo.png">
 <link rel="apple-touch-icon" sizes="492x492" href="./static/ssbapp-logo.png">
-<link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="../common/nav.css">
+<link href="./static/app.cbd0be69.css" rel="stylesheet">
 <script src="../common/base.js"></script>
-<style>
-  .eyes-open #img-eyes-open {
-    display: block;
-  }
 
-  .eyes-open #img-eyes-closed {
-    display: none;
-  }
+<body style="font-size: 12px;">
+  <div class="capsule capsule--wechat" onclick="navigateHome();">
+    <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="14" r="9.5" />
+      <circle cx="54" cy="14" r="6" />
+      <circle cx="10" cy="14" r="6" />
+    </svg>
+    <div class="capsule__splitter"></div>
+    <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="9" />
+      <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+    </svg>
+  </div>
+  
+  <div class="navbar navbar--wechat">
+    <div class="navbar__placeholder"></div>
+    <div class="navbar__inner" style="background: white;">
+      <div class="navbar__left">
+        <div class="navbar__buttons">
+          <div class="navbar__button-goback" onclick="history.back();"></div>
+        </div>
+      </div>
+      <div class="navbar__center">
+        <span>场所码</span>
+      </div>
+      <div class="navbar__right"></div>
+    </div>
+  </div>
 
-  #img-eyes-open {
-    display: none;
-  }
-
-  #img-eyes-closed {
-    display: block;
-  }
-</style>
-<div class="capsule" onclick="navigateHome();">
-  <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="32" cy="14" r="9.5" />
-    <circle cx="54" cy="14" r="6" />
-    <circle cx="10" cy="14" r="6" />
-  </svg>
-  <div class="splitter"></div>
-  <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="30" cy="30" r="9" />
-    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
-  </svg>
-</div>
-<view class="top" style="height: 58px; padding-top: env(safe-area-inset-top, 0); box-sizing: content-box;">
-  <image src="./static/suishenma_bg.png" style="width:100%;height:813.11px;"></image>
-  <view class="text" style="bottom:3.333vw">随申码</view>
-  <view bindtap="goBack" class="back">
-    <image src="./static/back.png" onclick="history.back();"></image>
-  </view>
-</view>
-<view class="page" style="padding-top: 58px; padding-top: calc(58px + env(safe-area-inset-top, 0));">
-  <canvas class="my-qrcode" id="myQrcode" type="2d"></canvas>
-  <view class="content contentBox">
-    <view style="height: 7.467vw;">
-      <image class="title" src="./static/suishenma_title.png"></image>
-    </view>
-    <view style="display: flex;justify-content: center;margin-top: 4.267vw;">
-      <view class="photo photoPicAfter">
-        <image class="photoPic" mode="aspectFit" src="./static/suishenma_logo.png" id="_img"></image>
-      </view>
-    </view>
-    <view class="nameBox">
-      <view class="tainerBox eyes-open">
-        <view class="name" id="_name"></view>
-        <view bindtap="handleShowName" class="nameHide" id="img-eyes-open" onclick="switchNameDisplay(false);">
-          <image src="./static/eysOpen.png" style="width:5.333vw;height:5.333vw;"></image>
-        </view>
-        <view bindtap="handleShowName" class="nameHide" id="img-eyes-closed" onclick="switchNameDisplay(true);">
-          <image src="./static/eyeClose.png" style="width:5.333vw;height:5.333vw;"></image>
-        </view>
-      </view>
-    </view>
-    <view class="time">
-      <span id="_date"></span>
-      <span id="_time"></span><span class="timeSecond" id="_sec"></span>
-    </view>
-    <view style="display: flex;justify-content: center;margin-top: 2.133vw;"
-      onclick="window.location.href = './index.html';">
-      <view class="qrCode">
-        <view
-          style="background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyCAIAAABnRsZeAAAIQElEQVR4nO3cMXLzuhWA0SijxllW9uIs6u3Fb1lpmfYvMnCBDwZIn9NqLFEU/Q2KO/f18fX5j2f577//Grz6r7//s+Vvx+54VWNn3o1d7njNM/65+wKAp5EVICYrQExWgJisADFZAWKyAsRkBYjJChB7j1+emZVcZ9305x3naNd97q7vO2PXE7tuUvaO/4NOK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgJitA7Jsp27HnTRbumv78bVtjz9zdO3bmxtkz/wedVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2NSU7R3tmkrcNc86Zqfsn2au+cyNs7s4rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsV83ZTu2bi/szN+eudt11w7ddXb9gs/jtALEZAWIyQoQkxUgJitATFaAmKwAMVkBYrICxKambJ83OzgzK7lu6nTXBOeuvbC7Zo7P3Dc8dub/oNMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChD7Zsp21+zgLs+b4Fw3oXvm932eO94NpxUgJitATFaAmKwAMVkBYrICxGQFiMkKEJMVIPa6rmv3NfyoXXthx9ZtjV03o7lrh+6Z21v5k9MKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChB775poPHPX6bpp111mrmp8N86chV13VXfcKTu27m44rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsW922Z45szgzg3vmLOzYuonkM3/BXc58Jnfd55lrdloBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWLv8cu75v9mtqiOnTkbesc9qeuejTMng59n3X12WgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYq+Pr8/By2fOle7a0Hnm9OeuuzFj15088zc681cYs8sW+FGyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFi7zPn/8ZmrmrXNc/4bbO/Y2fuo73jczVj/Cs4rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsdd1XYOX7zjReMc9qTOfu86ZO4PH1r3zjDOfjXX/R04rQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0Ds9fH1OXh51ybUXc7cSLprp+yuSdkZ6yZHz/zbXUzZAj9KVoCYrAAxWQFisgLEZAWIyQoQkxUgJitAbOGU7Yxd+2jHnreB9bf9vmdOUY/d8blyWgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYq/rugYvP28j6ZnOvM8z7vgb3XFb7Zl7cJ1WgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDYN1O2M3bNLI6tm2g883NnnHmvzpxYPfN53vXOTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQOw9fvnMjaQzV3XmFtXnTY6O7frbXdb9CrveecxpBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIfbPL9sz9nWfa9X3vOHU6duZe2F3OfHLssgV+lKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjCKdsZZ847jq2b7zxzcvSO3/fM7cszzrxXTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQGxqynaXmV2nM++8zplTmDN2PTnrno11nvc8O60AMVkBYrICxGQFiMkKEJMVICYrQExWgJisALH3+OWZ+b8zN92eOYW5biPpmTOad9zOe+aE7tiuX99pBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIvXdNyo6deVXPuxszE7rjz113Vesmv+84NT62a27YaQWIyQoQkxUgJitATFaAmKwAMVkBYrICxGQFiL1nZgd3bSQ9cxpy1wzujOdtb52x7m48779szGkFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYi9Pr4+By+fOXc4duZm0F13ctce3LEzJ5LP/BV2Pc8znFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjruq7d1/B/nDkpO/POu5x5J+84GTy26xuN7XqenVaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNh73VvPTBbecZJybNdV7Zr+3LWf9cx51ufNdo+v2WkFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYi9Pr4+F731mRs61znz++6adn3epttdd/JM47vhtALEZAWIyQoQkxUgJitATFaAmKwAMVkBYrICxF7Xde2+hh+1axpy19TpDBOrf9o1+zt25syx0woQkxUgJitATFaAmKwAMVkBYrICxGQFiMkKEHufOdE4Y91E48znztznO26cfd5k8Dq7JnTXcVoBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWKvj6/PwctnTvjt2t+5zrqZ1DO3qO7627EzZ3/HzpySd1oBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWLvmT9+3lTirqnidXO0u77v8z535j6fOQu7jtMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChCbmrK9o107VnfZtdt13eeeufd317Nx5ryy0woQkxUgJitATFaAmKwAMVkBYrICxGQFiMkKEPt1U7ZjZ05wjt1xMnjmc8/8vut+313zyjOcVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2NSU7bopvV3WTWHumg294xzt2B03zo7dce/vmNMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChD7Zsp219zhOnf8Rmfuwb3j5+5yxx3JY+NrdloBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWL/A32nk4AKWFFIAAAAAElFTkSuQmCC'); background-size: 85% 85%; background-position: center; background-repeat:no-repeat; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-          <img src="./static/logo.png" style="width: 12vw; height: 12vw;">
-        </view>
-      </view>
-    </view>
-    <view class="qrText"> 绿色 </view>
-    <view class="yimaduoyong">
-      <view class="btn3">
-        <view class="place" id="_place_address_line1"></view>
-        <view class="address" id="_place_address_line2"></view>
-      </view>
-    </view>
-    <view class="hesuan">
-      <view style="color: #333333;">
-        <text style="color: #09BD65;font-weight:bold;font-size:10.667vw;">24</text> 小时内核酸检测结果<text
-          style="color: #09BD65;font-weight:bold;">【阴性】</text>
-      </view>
-    </view>
-  </view>
-  <view class="more contentBox">
-    <view class="rec-swiper" style="height:19.467vw">
-      <view class="case">
-        <view bindtap="goHesuan" class="caseItem">
-          <view style="width:14.4vw;height:14.4vw;">
-            <image class="caseItemIcon" src="./static/nucleic_acid_vaccine.png"></image>
-          </view>
-          <view class="caseItemName">疫苗&核酸</view>
-        </view>
-        <view bindtap="handleClickMoreItem" class="caseItem">
-          <view style="width:14.4vw;height:14.4vw;">
-            <image class="caseItemIcon" src="./static/newhscyd.png"></image>
-          </view>
-          <view class="caseItemName">采样点</view>
-        </view>
-        <view bindtap="handleClickMoreItem" class="caseItem">
-          <view style="width:14.4vw;height:14.4vw;">
-            <image class="caseItemIcon" src="./static/kangyuan.png"></image>
-          </view>
-          <view class="caseItemName">抗原查询</view>
-        </view>
-        <view bindtap="goXingchengma" class="caseItem" onclick="navigateToTripCard();">
-          <view style="width:14.4vw;height:14.4vw;">
-            <image class="caseItemIcon" src="./static/icon_xingcheng.png"></image>
-          </view>
-          <view class="caseItemName">行程卡</view>
-        </view>
-      </view>
-    </view>
-    <view ariaHidden="true" class="dots-rec2" style="margin-top: 1.867vw;">
-      <view class="dot2 active"></view>
-      <view class="dot2"></view>
-    </view>
-    <view class="link">
-      <text bindtap="goQa">常见问题</text>
-      <text>|</text>
-      <text bindtap="goKf">智能客服</text>
-      <text>|</text>
-      <text bindtap="toScan">扫码记录</text>
-      <text>|</text>
-      <text bindtap="goShensu">我要申诉</text>
-    </view>
-  </view>
-</view>
-<input type="file" style="display: none;" id="upload" oninput="onInput(this);">
-<script>
-  setDynamicTime("#_date", 0, 10);
-  setDynamicTime("#_time", 11, 17);
-  setDynamicTime("#_sec", 17, 19);
-
-  addStorageField("_place_address_line1", "#_place_address_line1", "场所地址（第一行）", "地铁");
-  addStorageField("_place_address_line2", "#_place_address_line2", "场所地址（第二行）", "地铁11号线");
-
-  let _name = localStorage.getItem("_name") || "习近平";
-  document.getElementById("_name").addEventListener("click", () => {
-    const res = window.prompt("修改名字：", _name);
-    if (res == "" || res == null) localStorage.removeItem("_name");
-    else localStorage.setItem("_name", res);
-    _name = res || "习近平";
-    switchNameDisplay(show_name);
-  });
-  let show_name = false;
-  function switchNameDisplay(t) {
-    show_name = t;
-    const hidden_name = new Array(_name.length).join("*") + _name.substr(-1);
-    document.getElementById("_name").innerText = show_name ? _name : hidden_name;
-    document.getElementsByClassName("tainerBox")[0].classList.add(t ? "eyes-open" : "eyes-closed");
-    document.getElementsByClassName("tainerBox")[0].classList.remove(t ? "eyes-closed" : "eyes-open");
-  }
-  switchNameDisplay(false);
-
-  const default_img = "./static/suishenma_logo.png";
-  document.getElementById("_img").attributes["src"].value = localStorage.getItem("_img") || default_img;
-  document.getElementById("_img").addEventListener("click", () => {
-    if (localStorage.getItem("_img")) {
-      localStorage.removeItem("_img");
-      document.getElementById("_img").attributes["src"].value = default_img;
-      return;
+  <div id="app">
+    <div>
+      <div class="qr-wap">
+        <div class="qr__main location">
+          <div class="qr__main__img">
+            <img src="./static/title.9e6c09b.png">
+          </div>
+          <div class="qr__main__logo">
+            <div class="qr__main__logo_img" id="_img" style="background-image: url(./static/default_head.59cc591.png);"></div>
+            <div class="qr__main__logo__idcard" style="display: none;"></div>
+            <input type="file" style="display: none;" id="upload" oninput="onInput(this);">
+          </div>
+          <div class="qr__main__name qr__main__name_no_service">
+            <span>
+              <span id="masked-name" style="display: inline;"></span>
+              <span id="name" style="display: none;"></span>
+              <i class="qr__main__name__open close" onclick="toggleMask();"></i>
+            </span>
+          </div>
+          <div class="qr__main__date location qr__main__date_no_service">
+            <span id="datetime"></span><strong id="sec"></strong>
+          </div>
+          <div class="qr__main__wapper">
+            <div class="qr__main__ewm" onclick="window.location.href = 'index.html';">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                  <img src="./static/logo.png" style="width: 11vw; height: 11vw; position: absolute;">
+                  <img class="qr__main__ewm__obj" style="display: inline-block;"
+                    src="data:image/png;base64,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">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="qr__main__status-text" style="color: rgb(9, 189, 101);">
+            绿色
+          </div>
+          <div class="qr__main__tip strong qr__main__tip_no_service" style="letter-spacing: 0px; margin-bottom: 0px;">
+            <p class="qr__location-name"></p>
+            <p class="qr__location-address"></p>
+          </div>
+          <div class="qr__main__hesuan">
+            <p><strong style="color: rgb(9, 189, 101);">
+                24
+              </strong>
+              小时内核酸检测结果
+              <span style="color: rgb(9, 189, 101);">【阴性】</span>
+            </p>
+          </div>
+        </div>
+        <div class="qr__bottom">
+          <div class="more_service location">
+            <div class="my-swipe van-swipe">
+              <div class="van-swipe__track">
+                <div class="van-swipe-item">
+                  <div class="more_service_ul location" style="justify-content: space-between;"><a href="javascript:;"
+                      class="li"><img src="./static/hsym.png">
+                      <div style="color: rgb(0, 0, 0);">
+                        核酸&amp;疫苗
+                      </div>
+                    </a><a href="javascript:;" class="li" onclick="navigateToTripCard();"><img src="./static/xck.png">
+                      <div style="color: rgb(0, 0, 0);">
+                        行程卡
+                      </div>
+                    </a><a href="javascript:;" class="li"><img src="./static/txz.png">
+                      <div style="color: rgb(0, 0, 0);">
+                        通行证
+                      </div>
+                    </a><a href="javascript:;" class="li"><img src="./static/fkdj.png">
+                      <div style="color: rgb(0, 0, 0);">
+                        访客登记
+                      </div>
+                    </a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="qr__main__link"><span class="strong">常见问题</span> <span class="strong split">|</span> <span
+              class="strong">智能客服</span> <span class="strong split">|</span> <span class="strong">我要申诉</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function (win, lib) { var doc = win.document; var docEl = doc.documentElement; var metaEl = doc.querySelector('meta[name="viewport"]'); var flexibleEl = doc.querySelector('meta[name="flexible"]'); var dpr = 0; var scale = 0; var tid; var flexible = lib.flexible || (lib.flexible = {}); if (metaEl) { console.warn("将根据已有的meta标签来设置缩放比例"); var match = metaEl.getAttribute("content").match(/initial\-scale=([\d\.]+)/); if (match) { scale = parseFloat(match[1]); dpr = parseInt(1 / scale) } } else { if (flexibleEl) { var content = flexibleEl.getAttribute("content"); if (content) { var initialDpr = content.match(/initial\-dpr=([\d\.]+)/); var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/); if (initialDpr) { dpr = parseFloat(initialDpr[1]); scale = parseFloat((1 / dpr).toFixed(2)) } if (maximumDpr) { dpr = parseFloat(maximumDpr[1]); scale = parseFloat((1 / dpr).toFixed(2)) } } } } if (!dpr && !scale) { var isAndroid = win.navigator.appVersion.match(/android/gi); var isIPhone = win.navigator.appVersion.match(/iphone/gi); var devicePixelRatio = win.devicePixelRatio; if (isIPhone) { if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) { dpr = 3 } else { if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)) { dpr = 2 } else { dpr = 1 } } } else { dpr = 1 } scale = 1 / dpr } docEl.setAttribute("data-dpr", dpr); if (!metaEl) { metaEl = doc.createElement("meta"); metaEl.setAttribute("name", "viewport"); metaEl.setAttribute("content", "initial-scale=" + scale + ", maximum-scale=" + scale + ", minimum-scale=" + scale + ", user-scalable=no"); if (docEl.firstElementChild) { docEl.firstElementChild.appendChild(metaEl) } else { var wrap = doc.createElement("div"); wrap.appendChild(metaEl); doc.write(wrap.innerHTML) } } function refreshRem() { var width = docEl.getBoundingClientRect().width; if (width / dpr > 540) { width = 540 * dpr } var rem = width / 10; docEl.style.fontSize = rem + "px"; flexible.rem = win.rem = rem } win.addEventListener("resize", function () { clearTimeout(tid); tid = setTimeout(refreshRem, 300) }, false); win.addEventListener("pageshow", function (e) { if (e.persisted) { clearTimeout(tid); tid = setTimeout(refreshRem, 300) } }, false); if (doc.readyState === "complete") { doc.body.style.fontSize = 12 * dpr + "px" } else { doc.addEventListener("DOMContentLoaded", function (e) { doc.body.style.fontSize = 12 * dpr + "px" }, false) } refreshRem(); flexible.dpr = win.dpr = dpr; flexible.refreshRem = refreshRem; flexible.rem2px = function (d) { var val = parseFloat(d) * this.rem; if (typeof d === "string" && d.match(/rem$/)) { val += "px" } return val }; flexible.px2rem = function (d) { var val = parseFloat(d) / this.rem; if (typeof d === "string" && d.match(/px$/)) { val += "rem" } return val } })(window, window["lib"] || (window["lib"] = {}));
+  </script>
+  <script>
+    function clip(n, t = 15) {
+      return {
+        first: n.substring(0, t),
+        second: n.length <= 2 * t ? n.substring(t) : n.substring(t, 2 * t) + "...",
+      };
     }
-    const input = document.getElementById("upload");
-    input.click();
-  });
 
-  function onInput(t) {
-    // getting a hold of the file reference
-    const file = t.files[0];
+    setDynamicTime("#datetime", 0, 17);
+    setDynamicTime("#sec", 17, 19);
+    addStorageField("_name", "#masked-name", "名字", "习近平", (s) => {
+      return "* ".repeat(s.length - 1) + s.slice(-1);
+    });
+    addStorageField("_name", "#name", "名字", "习近平");
+    addStorageField("_place_address_line1", ".qr__location-name", 
+      "场所名称（第一行）", "16号线华夏中路站", (s) => {
+        const res = clip(s, 15);
+        return `${res.first}<span style="white-space: nowrap;"><br>${res.second}</span>`;
+      }
+    );
+    addStorageField("_place_address_line2", ".qr__location-address", 
+      "场所地址（第二行）", "上海市/浦东新区/北蔡镇/罗山路4151号", (s) => {
+        const res = clip(s, 17);
+        return `${res.first}<span style="white-space: nowrap;"><br>${res.second}</span>`;
+      }
+    );
 
-    // setting up the reader
-    const reader = new FileReader();
-
-    // here we tell the reader what to do when it's done reading...
-    reader.onload = readerEvent => {
-      const content = readerEvent.target.result; // this is the content!
-      if (content) {
-        try {
-          localStorage.setItem("_img", content);
-        } catch (e) {
-          alert("照片文件较大，暂时不能保存在本地。");
-          localStorage.setItem("_img", default_img);
-        }
-        document.getElementById("_img").attributes["src"].value = content;
+    function toggleMask() {
+      const eye_icon = document.querySelector(".qr__main__name__open");
+      if (eye_icon.classList.contains("close")) {
+        eye_icon.classList.remove("close");
+        document.getElementById("masked-name").style.display = "none";
+        document.getElementById("name").style.display = "inline";
+      } else {
+        eye_icon.classList.add("close");
+        document.getElementById("masked-name").style.display = "inline";
+        document.getElementById("name").style.display = "none";
       }
     }
 
-    reader.readAsDataURL(file); // this is reading as data url
-  }
+    const default_img = "./static/default_head.59cc591.png";
+    if (localStorage.getItem("_img")) {
+      document.getElementById("_img").style.backgroundImage = `url(${localStorage.getItem("_img")})`;
+      document.querySelector(".qr__main__logo__idcard").style.display = "block";
+    }
 
-  initServiceWorker("ssm");
-</script>
+    document.getElementById("_img").addEventListener("click", () => {
+      if (localStorage.getItem("_img")) {
+        localStorage.removeItem("_img");
+        document.getElementById("_img").style.backgroundImage = `url(${default_img})`;
+        document.querySelector(".qr__main__logo__idcard").style.display = "none";
+        return;
+      }
+      const input = document.getElementById("upload");
+      input.click();
+    });
+    
+    function onInput(t) {
+      const file = t.files[0]; 
+      const reader = new FileReader();
+      
+      reader.onload = readerEvent => {
+        const content = readerEvent.target.result;
+        if (content) {
+          try {
+            localStorage.setItem("_img", content);
+          } catch (e) {
+            alert("照片文件较大，暂时不能保存在本地。");
+            localStorage.setItem("_img", default_img);
+          }
+          document.getElementById("_img").style.backgroundImage = `url(${content})`;
+          document.querySelector(".qr__main__logo__idcard").style.display = "block";
+        }
+      }
+      
+      reader.readAsDataURL(file);
+    }
+
+    initServiceWorker("ssm");
+  </script>
+</body>

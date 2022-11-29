@@ -1,0 +1,92 @@
+.capsule {
+  z-index: 9000;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, .6);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  &__menu-icon {
+    width: 16pt;
+    position: relative;
+  }
+
+  &__exit-icon {
+    width: 15pt;
+    position: relative;
+  }
+
+  &__splitter {
+    width: 0.25pt;
+    height: 14pt;
+    position: relative;
+  }
+
+  &--wechat {
+    width: 87px;
+    height: 32px;
+    position: fixed;
+    right: 7px;
+    right: calc(7px + env(safe-area-inset-right, 0));
+    top: 6px;
+    top: calc(6px + env(safe-area-inset-top, 0));
+    border: 0.5pt solid rgba(224, 224, 224, .67);
+
+    .capsule__menu-icon {
+      fill: black;
+      left: 1pt;
+    }
+    .capsule__exit-icon {
+      fill: black;
+      stroke: black;
+    }
+    .capsule__splitter {
+      background-color: rgba(0, 0, 0, .2);
+    }
+  }
+
+  &--alipay {
+    width: 79px;
+    height: 30px;
+    position: absolute;
+    right: 17px;
+    right: calc(17px + env(safe-area-inset-right, 0));
+    top: 7px;
+    top: calc(7px + env(safe-area-inset-top, 0));
+    border: 0.5pt solid #eeeeee;
+
+    .capsule__menu-icon {
+      fill: #333;
+      left: 1pt;
+      top: 0.25pt;
+    }
+    .capsule__exit-icon {
+      fill: #333;
+      stroke: #333;
+      left: -2px;
+    }
+    .capsule__splitter {
+      left: -0.5pt;
+      height: 13.5pt;
+      background-color: #c4c4c4;
+    }
+  }
+
+  &--alternative {
+    border: 0.5pt solid rgba(32, 32, 32, .33);
+    background-color: rgba(0, 0, 0, .2);
+
+    .capsule__menu-icon {
+      fill: white;
+    }
+    .capsule__exit-icon {
+      fill: white;
+      stroke: white;
+    }
+    .capsule__splitter {
+      background-color: rgba(255, 255, 255, .8);
+    }
+  }
+}

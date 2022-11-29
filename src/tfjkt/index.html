@@ -16,14 +16,14 @@
   <span class="title">四川天府健康通</span>
   <div></div>
 </div>
-<div class="capsule" onclick="navigateHome();">
-  <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+<div class="capsule capsule--wechat" onclick="navigateHome();">
+  <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
     <circle cx="32" cy="14" r="9.5"/>
     <circle cx="54" cy="14" r="6"/>
     <circle cx="10" cy="14" r="6"/>
   </svg>
-  <div class="splitter"></div>
-  <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <div class="capsule__splitter"></div>
+  <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
     <circle cx="30" cy="30" r="9"/>
     <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
   </svg>
@@ -105,7 +105,7 @@
           </view>
         </view>
         <view class=" type-gsd-h5-react:Container" id="id35"
-          style="width: 4vw; height: 4vw; border-style: none; border-radius: 50%; background: #3858E6; position: absolute; left: -2vw; top: 19.067vw; color: #; border-top-left-radius: 2vw; border-top-right-radius: 2vw; border-bottom-left-radius: 2vw;">
+          style="width: 4vw; height: 4vw; border-style: none; border-radius: 50%; background: #3858E6; position: absolute; left: -2vw; top: 19.067vw; border-top-left-radius: 2vw; border-top-right-radius: 2vw; border-bottom-left-radius: 2vw;">
         </view>
         <view class=" type-gsd-h5-react:Container" id="id36"
           style="width: 4vw; height: 4vw; border-radius: 50%; background: #3858E6; position: absolute; right: -2vw; top: 19.067vw; color: #2b4fde;">
@@ -272,7 +272,7 @@
   setDynamicTime("#_min", 11, 17);
   setDynamicTime("#_sec", 17, 19);
 
-  addStorageField("_name", "#_name", "名字", "习近平", presetFilters.name_keepfirstname);
+  addStorageField("_name", "#_name", "名字", "习近平", presetFilters.name_preferfirstname);
   addStorageField("_idcard", "#_idcard", "身份证号", "110101195306153019", presetFilters.idcard());
 
   initServiceWorker("tfjkt");

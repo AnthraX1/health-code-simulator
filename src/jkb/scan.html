@@ -2,8 +2,11 @@
 <title>扫一扫</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo_jiankangbao1@2x.png">
+<link rel="apple-touch-icon" sizes="128x128" href="./static/logo_jiankangbao1@2x.png">
 <link rel="stylesheet" href="../common/nav.css">
 <script src="../common/base.js"></script>
 <style>
@@ -175,7 +178,7 @@
 </style>
 <meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<audio style="display: none;" src="./static/1.wav"></audio>
+<audio style="display: none;" preload="auto" src="./static/1.wav"></audio>
 <div id="info">
   <h2>本人信息扫码登记</h2>
   <br>
@@ -190,29 +193,29 @@
   <br><br>
   <div id="skip-scan">跳过扫描</div>
 </div>
-<div class="weui-navigation-bar" id="nav">
-  <div class="weui-navigation-bar__placeholder"></div>
-  <div class="weui-navigation-bar__inner" style="color: black; background: white;">
-    <div class="weui-navigation-bar__left">
-      <div class="weui-navigation-bar__buttons" onclick="history.back();">
-        <div class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></div>
+<div class="navbar navbar--wechat" id="nav">
+  <div class="navbar__placeholder"></div>
+  <div class="navbar__inner" style="color: black; background: white;">
+    <div class="navbar__left">
+      <div class="navbar__buttons" onclick="history.back();">
+        <div class="navbar__button-goback"></div>
       </div>
     </div>
-    <div class="weui-navigation-bar__center">
+    <div class="navbar__center">
       <text>北京健康宝</text>
     </div>
-    <div class="weui-navigation-bar__right">
+    <div class="navbar__right">
 
     </div>
   </div>
-  <div class="capsule" onclick="navigateHome();">
-    <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+  <div class="capsule capsule--wechat" onclick="navigateHome();">
+    <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
       <circle cx="32" cy="14" r="9.5"/>
       <circle cx="54" cy="14" r="6"/>
       <circle cx="10" cy="14" r="6"/>
     </svg>
-    <div class="splitter"></div>
-    <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <div class="capsule__splitter"></div>
+    <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
       <circle cx="30" cy="30" r="9"/>
       <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
     </svg>

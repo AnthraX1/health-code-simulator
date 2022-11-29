@@ -11,30 +11,30 @@
 <link rel="stylesheet" href="../common/nav.css">
 <script src="../common/base.js"></script>
 <body>
-  <view class="weui-navigation-bar">
-    <view class="weui-navigation-bar__placeholder"></view>
-    <view class="weui-navigation-bar__inner" style="color: black; background: white;">
-      <view class="weui-navigation-bar__left">
-        <view class="weui-navigation-bar__buttons" onclick="history.back();">
-          <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view>
+  <view class="navbar navbar--wechat">
+    <view class="navbar__placeholder"></view>
+    <view class="navbar__inner" style="color: black; background: white;">
+      <view class="navbar__left">
+        <view class="navbar__buttons" onclick="history.back();">
+          <view class="navbar__button-goback"></view>
         </view>
       </view>
-      <view class="weui-navigation-bar__center">
+      <view class="navbar__center">
         <text>核酸检测记录</text>
       </view>
-      <view class="weui-navigation-bar__right">
+      <view class="navbar__right">
   
       </view>
     </view>
   </view>
-  <div class="capsule" onclick="navigateHome();">
-    <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+  <div class="capsule capsule--wechat" onclick="navigateHome();">
+    <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
       <circle cx="32" cy="14" r="9.5" />
       <circle cx="54" cy="14" r="6" />
       <circle cx="10" cy="14" r="6" />
     </svg>
-    <div class="splitter"></div>
-    <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <div class="capsule__splitter"></div>
+    <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
       <circle cx="30" cy="30" r="9" />
       <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
     </svg>
@@ -76,7 +76,7 @@
       </view>
       <view class="tabs__content">
         <view class="tab-pane">
-          <view class="txt">说明：省内核酸数据来源于广东省新冠病毒检测信息系统，支持查询近一个月记录。我省核酸检测结果信息由省有关部门统一报送国家平台，无需群众自行上报。</view>
+          <view class="txt">说明：省内核酸数据来源于广东省新冠病毒检测信息系统，支持查询近7日记录。我省核酸检测结果信息由省有关部门统一报送国家平台，无需群众自行上报。</view>
           <view class="member-list">
             <view class="member-item">
               <view class="member-top">
@@ -150,6 +150,59 @@
                     </view>
                     <view class="preview-item__content preview-item__content__text-right">
                       <text class="test-time" data-traceback-hours="32" data-traceback-range="4"></text>
+                    </view>
+                </view>
+                <view class="preview-item">
+                    <view class="preview-item__label">
+                      <text>检测机构</text>
+                    </view>
+                    <view class="preview-item__content preview-item__content__text-right">
+                      <text class="test-institution"></text>
+                    </view>
+                </view>
+                <view class="preview-item">
+                    <view class="preview-item__label">
+                      <text>数据来源</text>
+                    </view>
+                    <view class="preview-item__content preview-item__content__text-right">
+                      <text>广东省卫生健康委员会</text>
+                    </view>
+                </view>
+                <view class="preview-item">
+                    <view class="preview-item__label">
+                      <text>检测结果</text>
+                    </view>
+                    <view class="preview-item__content preview-item__content__text-right">
+                      <text style="color: #09BB07;">阴性</text>
+                    </view>
+                </view>
+                  
+                <!-- <template is="t" data="{{item:item,key:'采样时间'}}" wx:if="{{type==='hesuan'&&item['采样时间']&&item['采样时间']!=item['检测时间']}}"></template>
+                <template is="t" data="{{item:item,key:'检测时间'}}" wx:if="{{type==='hesuan'&&item['检测时间']}}"></template>
+                <template is="t" data="{{item:item,key:'检测机构'}}"></template>
+                <template is="t" data="{{item:item,key:'数据来源'}}"></template>
+                <template is="t" data="{{item:item,key:'检测结果'}}"></template> -->
+              </view>
+            </view>
+            <view class="member-item">
+              <view class="member-top">
+                <view class="member-name">习近平</view>
+              </view>
+              <view class="preview g-preview" direction="row">
+                <view class="preview-item">
+                    <view class="preview-item__label">
+                      <text>采样时间</text>
+                    </view>
+                    <view class="preview-item__content preview-item__content__text-right">
+                      <text class="sample-time" data-traceback-hours="64" data-traceback-range="8"></text>
+                    </view>
+                </view>
+                <view class="preview-item">
+                    <view class="preview-item__label">
+                      <text>检测时间</text>
+                    </view>
+                    <view class="preview-item__content preview-item__content__text-right">
+                      <text class="test-time" data-traceback-hours="54" data-traceback-range="8"></text>
                     </view>
                 </view>
                 <view class="preview-item">

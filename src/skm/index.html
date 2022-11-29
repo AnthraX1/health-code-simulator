@@ -2,16 +2,38 @@
 <html lang="en" class="pixel-ratio-2 retina android android-6 android-6-0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
-<meta name="theme-color" content="#3489eb">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>苏康码</title>
 <link rel="stylesheet" href="./plug/bootstrap-4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="./plug/mobileSelect/mobileSelect.css">
 <link rel="stylesheet" href="./css/index20220509.css">
+<link rel="stylesheet" href="../common/nav.css">
 <link rel="manifest" href="manifest.json">
 <script src="../common/base.js"></script>
 
-<div style="top: 0; left: 0; width: 100%; height: env(safe-area-inset-top, 0); background-color: #3489eb;"></div>
+<div class="navbar navbar--alipay">
+  <div class="navbar__placeholder"></div>
+  <div class="navbar__inner">
+    <div class="navbar__title">
+      苏康码
+    </div>
+    <div class="capsule capsule--alipay" onclick="navigateHome();">
+      <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="14" r="6" />
+        <circle cx="54" cy="14" r="6" />
+        <circle cx="10" cy="14" r="6" />
+      </svg>
+      <div class="capsule__splitter"></div>
+      <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <line x1="21" y1="21" x2="39" y2="39" stroke-width="5" />
+        <line x1="39" y1="21" x2="21" y2="39" stroke-width="5" />
+        <circle cx="30" cy="30" r="24" stroke-width="5" fill="transparent" />
+      </svg>
+    </div>
+  </div>
+</div>
+
 <div class="wrapper">
   <div class="title-pic hide">
     <div class="icons">

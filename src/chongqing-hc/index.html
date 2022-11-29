@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<title>我的渝康码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport"
+  content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#368CF5">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="apple-touch-icon" sizes="64x64" href="./static/logo.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+
+<div class="capsule capsule--wechat" onclick="navigateHome();">
+  <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5" />
+    <circle cx="54" cy="14" r="6" />
+    <circle cx="10" cy="14" r="6" />
+  </svg>
+  <div class="capsule__splitter"></div>
+  <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9" />
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+  </svg>
+</div>
+
+<view class="light-code">
+  <view style="position: relative;">
+    <div class="navbar navbar--wechat-alternative">
+      <div class="navbar__placeholder"></div>
+      <div class="navbar__inner" style="background: #368CF5;">
+        <div class="navbar__left">
+          <div class="navbar__buttons">
+            <view style="display: flex; align-items: center;" onclick="navigateHome();">
+              <image src="./static/nav_home.svg" style="width: 4vw; height: 4vw; margin-right: 1.33vw;"></image>
+              <text>首页</text>
+            </view>
+          </div>
+        </div>
+        <div class="navbar__center">
+          <span style="font-weight: normal;">我的渝康码</span>
+        </div>
+        <div class="navbar__right"></div>
+      </div>
+    </div>
+  </view>
+  <view class="light-code-container">
+    <view class="top">
+      <view class="top-tip">温馨提示：代人申领已移至首页防疫服务的“亲友代领”</view>
+      <view class="top-info">
+        <view class="top-info-name" id="masked-info">
+          <text class="top-info-name-self" id="masked-name"></text>
+          <image class="top-info-name-icon" src="./static/password-btn-white.svg" onclick="toggleMask(false);"></image>
+        </view>
+        <view class="top-info-name" id="info" style="display: none;">
+          <text class="top-info-name-self" id="name"></text>
+          <image class="top-info-name-icon" src="./static/password-btn2-white.svg" onclick="toggleMask(true);"></image>
+        </view>
+        <view bindtap="showRelationUsersPop" class="top-info-exchange">切换亮码人员</view>
+      </view>
+      <view class="code-area">
+        <view class="code-container">
+          <view class="code-box code_qrcode" onclick="window.location.href = 'checkin.html';">
+            <view class="code_self"
+              style="background-image: url(data:image/png;base64,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), linear-gradient(#009a2d, rgb(0,154,45)); background-size: 87% 87%;">
+            </view>
+          </view>
+          <view class="vaccines_done"></view>
+          <view class="golden_border"></view>
+        </view>
+      </view>
+      <view class="code-state code-state__green">绿码</view>
+      <view class="code-bottom">
+        <view class="code-timer"><span id="datetime"></span><span class="bigger" id="sec"></span>
+        </view>
+        <view bindtap="handleNavigateTo" class="code-report">立即上报</view>
+      </view>
+    </view>
+    <view class="middle">
+      <view class="block-item nucleic-block nucleic-block__active" onclick="window.location.href = 'detail.html';">
+        <view class="block-title">
+          <text>核酸检测</text>
+        </view>
+        <view class="block-container">
+          <view class="block-number">24</view>
+          <view class="block-des">
+            <view class="block-des-item">小时</view>
+            <view class="block-des-item">阴性</view>
+          </view>
+        </view>
+        <!-- <view catchtap="handlderNucilceKeepOrder" class="order-time-sty" wx:if="{{showOrder}}">
+          <text>点击更新</text>
+          <text wx:if="{{orderState}}">({{orderNumber}}s)</text>
+        </view> -->
+      </view>
+      <view bindtap="handleNavigateTo" class="block-item vaccines-block vaccines-block__active">
+        <view class="block-title">
+          <text>疫苗接种</text>
+        </view>
+        <view class="block-container">
+          <view class="block-number">3</view>
+          <view class="block-des">
+            <view class="block-des-item">剂</view>
+            <view class="block-des-item">(共3剂)</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom">
+      <view bindtap="onPlaceCodeScan" class="bt-item" onclick="window.location.href = 'checkin.html';">
+        <view class="bt-item-icon bt_item_icon_chagnsuoma"></view>
+        <view class="bt-item-text">场所码<text style="color: #006DF2;margin: 0 0.533vw;">|</text>入渝码</view>
+      </view>
+      <view bindtap="toTongxin" class="bt-item" onclick="navigateToTripCard();">
+        <view class="bt-item-icon bt_item_icon_xingcengma"></view>
+        <view class="bt-item-text">通信行程卡</view>
+      </view>
+      <view bindtap="handleNavigateTo" class="bt-item">
+        <view class="bt-item-icon bt_item_icon_yiwen"></view>
+        <view class="bt-item-text">我有疑问</view>
+      </view>
+    </view>
+  </view>
+  <!-- <g-footer></g-footer>
+  <g-poplayer bind:close="closePoplayer" visible="{{relationUserPopShow}}">
+    <view class="pop-container">
+      <view class="pop-header">
+        <view class="pop-header-text">切换亮码人员</view>
+        <view bindtap="closePoplayer" class="pop-header-close"></view>
+      </view>
+      <view class="pop-content" wx:if="{{users.length>1}}">
+        <view bindtap="exchangeCurrentUser"
+          class="{{user.codeId===currentUser.codeId?'pop-item pop-item_active':'pop-item'}}"
+          data-codeid="{{user.codeId}}" wx:for="{{users}}" wx:for-item="user"> {{user.username}} <text
+            wx:if="{{user.isMe}}">(本人)</text>
+        </view>
+      </view>
+      <view class="pop-content__none" wx:else>
+        <view class="others_codes_none_myname">{{currentUser.username}}(本人)</view>
+        <image class="others_codes_none" mode="widthFix"
+          src="https://static-1300672061.file.myqcloud.com/ykm_home_v3_static/others_code_none.png"></image>
+        <view class="others_codes_none_tips">您还未帮亲友代领渝康码！</view>
+      </view>
+      <view class="{{users.length>1?'pop-bottom':'pop-bottom-whitebg'}}">
+        <button bindtap="handleNavigateTo" class="mine__btn" type="primary">去帮亲友代领渝康码</button>
+      </view>
+    </view>
+  </g-poplayer> -->
+  <!-- <custompopup id="lightcodecustompopup"></custompopup>
+  <intercqpopup id="interCQTips"></intercqpopup>
+  <cqnucleictips id="cqnucleictips"></cqnucleictips> -->
+</view>
+<script>
+  setDynamicTime("#datetime", 0, 17);
+  setDynamicTime("#sec", 17, 19);
+  addStorageField("_name", "#masked-name", "名字", "习近平", presetFilters.lastcharonly);
+  addStorageField("_name", "#name", "名字", "习近平");
+
+  function toggleMask(t) {
+    document.getElementById("masked-info").style.display = t ? "flex" : "none";
+    document.getElementById("info").style.display = t ? "none" : "flex";
+  }
+
+  initServiceWorker("chongqing-hc");
+</script>

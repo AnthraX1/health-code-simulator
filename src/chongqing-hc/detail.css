@@ -1,0 +1,151 @@
+view {
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: "PingFang SC", sans-serif;
+}
+
+.user-message {
+  display: flex;
+  margin: 5.333vw 4vw 0;
+  width: 92vw;
+}
+
+.user-message-content {
+  flex: 1;
+}
+
+.user-message-icon {
+  flex: 0 0 10.667vw;
+  margin: 2.667vw 4vw 0 2.667vw;
+}
+
+.user-message-icon-image {
+  height: 10.667vw;
+  margin: 0 auto;
+  width: 10.667vw;
+}
+
+.user-message-icon-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.user-message-icon-text {
+  font-size: 3.733vw;
+  line-height: 6.4vw;
+  text-align: center;
+}
+
+.color-pass {
+  color: #4fd965;
+}
+
+.color-waring {
+  color: #fd6d6d;
+}
+
+.user-message-title {
+  line-height: 8vw;
+  padding: 1.333vw 0;
+}
+
+.nucleic-message-title,
+.user-message-title {
+  color: #333;
+  font-size: 3.733vw;
+  position: relative;
+  text-indent: 2.667vw;
+}
+
+.nucleic-message-title {
+  line-height: 4.8vw;
+  padding: 2.667vw 0;
+}
+
+.nucleic-message-title::before,
+.user-message-title::before {
+  background: #6870f0;
+  content: "";
+  height: 4.8vw;
+  left: 0;
+  position: absolute;
+  top: 2.933vw;
+  width: 0.533vw;
+}
+
+.user-message-text {
+  color: #333;
+  display: flex;
+  font-size: 3.733vw;
+  line-height: 4.8vw;
+  padding: 2.667vw 0;
+}
+
+.text-tips {
+  white-space: nowrap;
+  flex: 0 0 15.2vw;
+  margin-left: 2.667vw;
+  text-align: justify;
+  text-align-last: justify;
+  text-justify: distribute-all-lines;
+}
+
+.text-value {
+  flex: 1;
+  text-align: left;
+}
+
+.nucleic-message {
+  margin: 5.333vw 4vw 0;
+  width: 92vw;
+}
+
+.nucleic-message-text {
+  color: #333;
+  display: flex;
+  font-size: 3.733vw;
+  line-height: 4.8vw;
+  padding: 2.667vw 0;
+}
+
+.jigou-text {
+  flex: 1;
+  margin-right: 2.667vw;
+}
+
+.jigou-title {
+  white-space: nowrap;
+  flex: 0 0 15.2vw;
+  margin-left: 2.667vw;
+  text-align: justify;
+  text-align-last: justify;
+  text-justify: distribute-all-lines;
+}
+
+.summary {
+  margin: 16vw 4vw 0;
+  width: 92vw;
+}
+
+.stitle {
+  font-weight: 600;
+  margin-top: 2.667vw;
+  padding: 0 2.667vw;
+}
+
+.stext,
+.stitle {
+  /* font-family: PingFangSC-Regular; */
+  font-size: 3.467vw;
+  line-height: 4.8vw;
+}
+
+.stext {
+  color: #bbbec4;
+  padding: 2.667vw;
+}

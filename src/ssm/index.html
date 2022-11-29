@@ -24,14 +24,14 @@
     display: block;
   }
 </style>
-<div class="capsule" onclick="navigateHome();">
-  <svg class="capsule-menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+<div class="capsule capsule--wechat" onclick="navigateHome();">
+  <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
     <circle cx="32" cy="14" r="9.5"/>
     <circle cx="54" cy="14" r="6"/>
     <circle cx="10" cy="14" r="6"/>
   </svg>
-  <div class="splitter"></div>
-  <svg class="capsule-exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <div class="capsule__splitter"></div>
+  <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
     <circle cx="30" cy="30" r="9"/>
     <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent"/>
   </svg>
@@ -50,7 +50,7 @@
       <image class="title" src="./static/suishenma_title.png"></image>
     </view>
     <view style="display: flex;justify-content: center;margin-top: 4.267vw;">
-      <view class="photo photoPicAfter">
+      <view class="photo">
         <image class="photoPic" mode="aspectFit" src="./static/suishenma_logo.png" id="_img"></image>
       </view>
     </view>
@@ -75,7 +75,7 @@
       <span id="_date"></span>
       <span id="_time"></span><span class="timeSecond" id="_sec"></span>
     </view>
-    <view style="display: flex;justify-content: center;margin-top: 2.133vw;" onclick="window.location.href = './checkin.html';">
+    <view style="display: flex;justify-content: center;margin-top: 2.133vw;" onclick="window.location.href = './scan.html';">
       <view class="qrCode">
         <view style="background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyCAIAAABnRsZeAAAIQElEQVR4nO3cMXLzuhWA0SijxllW9uIs6u3Fb1lpmfYvMnCBDwZIn9NqLFEU/Q2KO/f18fX5j2f577//Grz6r7//s+Vvx+54VWNn3o1d7njNM/65+wKAp5EVICYrQExWgJisADFZAWKyAsRkBYjJChB7j1+emZVcZ9305x3naNd97q7vO2PXE7tuUvaO/4NOK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgJitA7Jsp27HnTRbumv78bVtjz9zdO3bmxtkz/wedVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2NSU7R3tmkrcNc86Zqfsn2au+cyNs7s4rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsV83ZTu2bi/szN+eudt11w7ddXb9gs/jtALEZAWIyQoQkxUgJitATFaAmKwAMVkBYrICxKambJ83OzgzK7lu6nTXBOeuvbC7Zo7P3Dc8dub/oNMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChD7Zsp21+zgLs+b4Fw3oXvm932eO94NpxUgJitATFaAmKwAMVkBYrICxGQFiMkKEJMVIPa6rmv3NfyoXXthx9ZtjV03o7lrh+6Z21v5k9MKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChB775poPHPX6bpp111mrmp8N86chV13VXfcKTu27m44rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsW922Z45szgzg3vmLOzYuonkM3/BXc58Jnfd55lrdloBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWLv8cu75v9mtqiOnTkbesc9qeuejTMng59n3X12WgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYq+Pr8/By2fOle7a0Hnm9OeuuzFj15088zc681cYs8sW+FGyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFi7zPn/8ZmrmrXNc/4bbO/Y2fuo73jczVj/Cs4rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsdd1XYOX7zjReMc9qTOfu86ZO4PH1r3zjDOfjXX/R04rQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0Ds9fH1OXh51ybUXc7cSLprp+yuSdkZ6yZHz/zbXUzZAj9KVoCYrAAxWQFisgLEZAWIyQoQkxUgJitAbOGU7Yxd+2jHnreB9bf9vmdOUY/d8blyWgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYq/rugYvP28j6ZnOvM8z7vgb3XFb7Zl7cJ1WgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDYN1O2M3bNLI6tm2g883NnnHmvzpxYPfN53vXOTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQOw9fvnMjaQzV3XmFtXnTY6O7frbXdb9CrveecxpBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIfbPL9sz9nWfa9X3vOHU6duZe2F3OfHLssgV+lKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjCKdsZZ847jq2b7zxzcvSO3/fM7cszzrxXTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQGxqynaXmV2nM++8zplTmDN2PTnrno11nvc8O60AMVkBYrICxGQFiMkKEJMVICYrQExWgJisALH3+OWZ+b8zN92eOYW5biPpmTOad9zOe+aE7tiuX99pBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIvXdNyo6deVXPuxszE7rjz113Vesmv+84NT62a27YaQWIyQoQkxUgJitATFaAmKwAMVkBYrICxGQFiL1nZgd3bSQ9cxpy1wzujOdtb52x7m48779szGkFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYi9Pr4+By+fOXc4duZm0F13ctce3LEzJ5LP/BV2Pc8znFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjruq7d1/B/nDkpO/POu5x5J+84GTy26xuN7XqenVaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNh73VvPTBbecZJybNdV7Zr+3LWf9cx51ufNdo+v2WkFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYi9Pr4+F731mRs61znz++6adn3epttdd/JM47vhtALEZAWIyQoQkxUgJitATFaAmKwAMVkBYrICxF7Xde2+hh+1axpy19TpDBOrf9o1+zt25syx0woQkxUgJitATFaAmKwAMVkBYrICxGQFiMkKEHufOdE4Y91E48znztznO26cfd5k8Dq7JnTXcVoBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWKvj6/PwctnTvjt2t+5zrqZ1DO3qO7627EzZ3/HzpySd1oBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWLvmT9+3lTirqnidXO0u77v8z535j6fOQu7jtMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChCbmrK9o107VnfZtdt13eeeufd317Nx5ryy0woQkxUgJitATFaAmKwAMVkBYrICxGQFiMkKEPt1U7ZjZ05wjt1xMnjmc8/8vut+313zyjOcVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaA2NSU7bopvV3WTWHumg294xzt2B03zo7dce/vmNMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChD7Zsp219zhOnf8Rmfuwb3j5+5yxx3JY+NrdloBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWL/A32nk4AKWFFIAAAAAElFTkSuQmCC'); background-size: 85% 85%; background-position: center; background-repeat:no-repeat; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
           <img src="./static/logo.png" style="width: 12vw; height: 12vw;">
@@ -175,18 +175,22 @@
   switchNameDisplay(false);
 
   const default_img = "./static/suishenma_logo.png";
-  document.getElementById("_img").attributes["src"].value = localStorage.getItem("_img") || default_img;
+  if (localStorage.getItem("_img")) {
+    document.getElementById("_img").attributes["src"].value = localStorage.getItem("_img");
+    document.querySelector(".photo").classList.add("photoPicAfter");
+  }
   document.getElementById("_img").addEventListener("click", () => {
     if (localStorage.getItem("_img")) {
       localStorage.removeItem("_img");
       document.getElementById("_img").attributes["src"].value = default_img;
+      document.querySelector(".photo").classList.remove("photoPicAfter");
       return;
     }
     const input = document.getElementById("upload");
     input.click();
   });
 
-  function onInput(t) { 
+  function onInput(t) {
     // getting a hold of the file reference
     const file = t.files[0]; 
 
@@ -204,6 +208,7 @@
           localStorage.setItem("_img", default_img);
         }
         document.getElementById("_img").attributes["src"].value = content;
+        document.querySelector(".photo").classList.add("photoPicAfter");
       }
     }
     

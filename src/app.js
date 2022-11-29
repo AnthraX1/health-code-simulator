@@ -60,7 +60,10 @@ const apps = {
     color: "#bf4046",
     help_text:
       "<p>点击姓名、证件号、场所地址等可以修改对应信息；</p><p>点击照片可以更改或移除照片，超过 4MB 的图片可能无法在本地保存；</p><p>点击二维码展示场所码。</p>",
-    menu: [{ title: "场所", icon: "place", link: "ssm/checkin.html" }],
+    menu: [
+      { title: "扫描", icon: "qr_code_scanner", link: "ssm/scan.html" },
+      { title: "场所", icon: "place", link: "ssm/checkin.html" },
+    ],
   },
   "shandong-hc": {
     title: "山东健康通行码",
@@ -151,7 +154,25 @@ const apps = {
     help_text:
       "<p>点击地点名称、姓名、证件号可以修改对应信息；</p><p>点击核酸检测时间可以切换小时数；</p><p>点击“已采样”可以切换今日是否采样。</p>",
     menu: [{ title: "场所", icon: "place", link: "shaanxi-hc/checkin.html" }],
-  }
+  },
+  "chongqing-hc": {
+    title: "渝康码",
+    icon: "chongqing-hc/static/logo.png",
+    link: "chongqing-hc/index.html",
+    color: "#f5aa06",
+    help_text: "<p>点击地点名称、姓名、证件号可以修改对应信息；</p><p>点击二维码可以切换至重庆市“场所码”。</p>",
+    menu: [
+      { title: "场所", icon: "place", link: "chongqing-hc/checkin.html" },
+      { title: "核酸", icon: "vaccines", link: "chongqing-hc/detail.html" },
+    ]
+  },
+  "hebei-hc": {
+    title: "河北健康码",
+    icon: "hebei-hc/static/logo.png",
+    link: "hebei-hc/index.html",
+    color: "#926266",
+    help_text: "<p>点击地点名称、姓名、证件号可以修改对应信息；</p><p>点击“扫码未见异常”可以隐藏该标识。</p>",
+  },
 };
 
 function onIconFail(t) {

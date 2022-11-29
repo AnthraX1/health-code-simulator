@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<title>核酸检测详情</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport"
+  content="width=device-width,height=device-height,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=0">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="./static/logo.png">
+<link rel="apple-touch-icon" sizes="64x64" href="./static/logo.png">
+<link rel="stylesheet" href="detail.css">
+<link rel="stylesheet" href="../common/nav.css">
+<script src="../common/base.js"></script>
+
+<div class="capsule capsule--wechat" onclick="navigateHome();">
+  <svg class="capsule__menu-icon" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="14" r="9.5" />
+    <circle cx="54" cy="14" r="6" />
+    <circle cx="10" cy="14" r="6" />
+  </svg>
+  <div class="capsule__splitter"></div>
+  <svg class="capsule__exit-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="30" r="9" />
+    <circle cx="30" cy="30" r="23" stroke-width="6" fill="transparent" />
+  </svg>
+</div>
+
+<div class="navbar navbar--wechat">
+  <div class="navbar__placeholder"></div>
+  <div class="navbar__inner" style="background: white;">
+    <div class="navbar__left">
+      <div class="navbar__buttons">
+        <div class="navbar__button-goback" onclick="history.back();"></div>
+      </div>
+    </div>
+    <div class="navbar__center">
+      <span>核酸检测详情</span>
+    </div>
+    <div class="navbar__right"></div>
+  </div>
+</div>
+
+<view>
+  <view class="user-message">
+    <view class="user-message-content">
+      <view class="user-message-title">用户信息</view>
+      <view class="user-message-text">
+        <view class="text-tips">用户</view>
+        <view class="text-value">：<span id="name"></span></view>
+      </view>
+      <view class="user-message-text">
+        <view class="text-tips">证件号码</view>
+        <view class="text-value">：<span id="idcard"></span></view>
+      </view>
+      <view class="user-message-text">
+        <view class="text-tips">手机号码</view>
+        <view class="text-value">：<span id="phone"></span></view>
+      </view>
+    </view>
+    <view class="user-message-icon">
+      <view class="user-message-icon-image">
+        <image src="./static/pass.svg"></image>
+      </view>
+      <view class="user-message-icon-text color-pass">阴性</view>
+    </view>
+  </view>
+  <view class="nucleic-message">
+    <view class="nucleic-message-title">检测报告</view>
+    <!-- <view class="nucleic-message-text" wx:if="{{hsJcInfo.testingNumber}}">
+      <view class="jigou-title">编号</view>
+      <view class="jigou-text">：<span id="covid-test-id"></span></view>
+    </view> -->
+    <view class="nucleic-message-text">
+      <view class="jigou-title">采样方式</view>
+      <view>：</view>
+      <view class="jigou-text"><span id="covid-test-method"></span></view>
+    </view>
+    <view class="nucleic-message-text">
+      <view class="jigou-title">采样点名</view>
+      <view class="jigou-text">：<span id="covid-test-sample-spot"></span></view>
+    </view>
+    <view class="nucleic-message-text">
+      <view class="jigou-title">采样时间</view>
+      <view class="jigou-text">：<span id="covid-test-sample-time"></span></view>
+    </view>
+    <view class="nucleic-message-text">
+      <view class="jigou-title">检测机构</view>
+      <view class="jigou-text">：<span id="covid-test-institution"></span></view>
+    </view>
+    <view class="nucleic-message-text">
+      <view class="jigou-title">检测时间</view>
+      <view class="jigou-text">：<span id="covid-test-time"></span></view>
+    </view>
+    <view class="nucleic-message-text">
+      <view class="jigou-title">检测结果</view>
+      <view class="jigou-text">：阴性</view>
+    </view>
+  </view>
+  <view class="summary">
+    <view class="stitle">服务说明:</view>
+    <view class="stext">相关查询结果基于卫生健康部门数据库，数据由各检测机构提供，正在不断汇聚更新中。若有疑问，请咨询核酸检测机构。</view>
+  </view>
+</view>
+<script>
+  addStorageField("_name", "#name", "名字", "习近平", function(n) {
+    return null == n ? "" : 2 == n.length ? "*" + n.substring(1, 2) : 3 == n.length ? n.substring(0, 1) + "*" + n.substring(2, 3) : n.length > 3 ? n.substring(0, 1) + "**" + n.substring(3, n.length) : void 0;
+  });
+  addStorageField("_idcard", "#idcard", "身份证号", "110101195306153019", presetFilters.idcard(6, 4));
+  addStorageField("_phone", "#phone", "手机号码", "13019890604", presetFilters.phone(3, 3));
+
+  // addStorageField("_covid_test_id", "#covid-test-id", "检测报告编号", "000000000000");
+  addStorageField("_covid_test_method", "#covid-test-method", "采样方式", "咽拭子");
+  addStorageField("_covid_test_sample_spot", "#covid-test-sample-spot", "采样点名", "渝中区疾病预防控制中心");
+  setStaticTime("#covid-test-sample-time", 0, 19, 15, 8);
+  addStorageField("_covid_test_institution", "#covid-test-institution", "检测机构", "重庆迪安医学检测中心");
+  setStaticTime("#covid-test-time", 0, 19, 4, 6);
+
+  initServiceWorker("chongqing-hc");
+</script>
